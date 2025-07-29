@@ -2,6 +2,8 @@
 #include <ctime>                                                // Для функции srand() которая помогает делать реальный рандомайзер
 #include <cmath>                                                // Для математических операторов
 #include <string>
+#include <iomanip>                                              // Чтобы небыло лишних нулей вконце ***
+#include <sstream>                                              // Чтобы небыло лишних нулей вконце ***
 using namespace std;
 
 int main_menu()                                                 // Функция которая выводит главное меню
@@ -16,6 +18,15 @@ int main_menu()                                                 // Функци�
     cout << "Ваш выбор: ";
     cin >> choice_mm;
     return choice_mm;
+}
+
+string FormatDouble(double val, int maxPrecision = 10) {          // Чтобы небыло лишних нулей вконце ***
+    ostringstream out;
+    out << fixed << setprecision(maxPrecision) << val;
+    string s = out.str();
+    s.erase(s.find_last_not_of('0') + 1);
+    if (s.back() == '.') s.pop_back();
+    return s;
 }
 
 int NOD(int number1, int number2)                               // Ищет и возвращает НОД двух чисел
@@ -206,7 +217,7 @@ string FractionPlusMinus(int number)                            // Генери�
             check = 0;
     } while (check != 1);
     cout <<  "\\item Найдите значение выражения: \n \\[ \n   " + FractionPrint(b[0], b[1]) + SIGN(sign, 2) + FractionPrint(b[2], b[3]) + "\n \\]" << endl;
-    Answer = "  \\item " + to_string(answer) + " \n";
+    Answer = "  \\item " + FormatDouble(answer) + " \n";
     return Answer;
 }
 
@@ -243,7 +254,7 @@ string FractionMultDiv(int number)
             check = -1;
     } while (check != 1);
     cout << "\\item Найдите значение выражения: \n \\[ \n   " + FractionPrint(a[0], a[1]) + SIGN_MultDel(type) + FractionPrint(a[2], a[3]) + "\n \\]" << endl;
-    Answer = "  \\item " + to_string(answer) + " \n";
+    Answer = "  \\item " + FormatDouble(answer) + " \n";
     return Answer;
 }
 
@@ -267,7 +278,7 @@ string DFractionMultDiv(int number)                               // Генер�
         cout << "\\[" << endl;
         cout << "   " << number1 << "\\cdot" << number2 << endl;
         cout << "\\]" << endl;
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
 
     case 2:
@@ -282,7 +293,7 @@ string DFractionMultDiv(int number)                               // Генер�
         cout << "\\[" << endl;
         cout << "   \\frac{" << number1 << "}{" << number2 << "}" << endl;
         cout << "\\]" << endl;
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
     }
     return Answer;
@@ -291,14 +302,18 @@ string DFractionMultDiv(int number)                               // Генер�
 string DFractionPlusMinus(int number)                             // Генерирует примеры на сложение и вычитание десятичных дробей
 {
     double a[2];
+    int znak1 = rand();
+    int znak2 = rand();
+    double answer;
     string Answer;
     for (int n = 0; n < 2; n++)
         a[n] = static_cast<double>((rand() % 999 + 1)) / 100;
     cout << "\\item Найдите значение выражения: " << endl;
     cout << "\\[" << endl;
-    cout << "   " << SIGN(rand(), 1) << a[0] << SIGN(rand(), 2) << a[1] << endl;
+    cout << "   " << SIGN(znak1, 1) << a[0] << SIGN(znak2, 2) << a[1] << endl;
     cout << "\\]" << endl;
-    Answer = "  \\item Десятичные дроби \n";
+    answer = pow(-1, znak1)*a[0] + pow(-1,znak2)*a[1];
+    Answer = "  \\item " + FormatDouble(answer) + "\n";
     return Answer;
 
 }
@@ -321,28 +336,28 @@ string LetterEqu(int number)
             cout << "\\item Найдите значение выражения: \\[\n	(\\sqrt{" << a << "}+" << b <<
                 ")^2 - " << 2 * b << "\\sqrt{" << a << "} \n \\]" << endl;
             answer = a + b * b;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 2:
             cout << "\\item Найдите значение выражения: \\[\n	(" << a << "+\\sqrt{" << b <<
                 "})^2 - " << 2 * a << "\\sqrt{" << b << "} \n \\]" << endl;
             answer = a * a + b;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 3:
             cout << "\\item Найдите значение выражения: \\[\n	" << 2 * b << "\\sqrt{" << a <<
                 "} + (\\sqrt{" << a << "} - " << b << ")^2 \n \\]" << endl;
             answer = a + b * b;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 4:
             cout << "\\item Найдите значение выражения: \\[\n	" << 2 * a << "\\sqrt{" << b <<
                 "} - (" << a << " + \\sqrt{" << b << "})^2 \n \\]" << endl;
             answer = (a * a) * (-1) - b;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
         }
         break;
@@ -355,7 +370,7 @@ string LetterEqu(int number)
                 "\\sqrt{a^2 + " << 2 * c << "ab + " << c * c << "b^2}$ при a = " << a << " и b = " << b << ".\\\\" << endl;
             answer = fabs(a + c * b);
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 2:
@@ -363,7 +378,7 @@ string LetterEqu(int number)
                 "\\sqrt{" << c * c << "a^2 + " << 2 * c << "ab + b^2}$ при a = " << a << " и b = " << b << ".\\\\" << endl;
             answer = fabs(a * c + b);
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 3:
@@ -371,7 +386,7 @@ string LetterEqu(int number)
                 "\\sqrt{a^2 - " << 2 * c << "ab + " << c * c << "b^2}$ при a = " << a << " и b = " << b << ".\\\\" << endl;
             answer = fabs(a - c * b);
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 4:
@@ -379,7 +394,7 @@ string LetterEqu(int number)
                 "\\sqrt{" << c * c << "a^2 - " << 2 * c << "ab + b^2}$ при a = " << a << " и b = " << b << ".\\\\" << endl;
             answer = fabs(a * c - b);
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
         }
         break;
@@ -396,7 +411,7 @@ string LetterEqu(int number)
                 "\\left(\\sqrt{" << a * a * d << "} - \\sqrt{" << d << "}\\right)\\sqrt{" << d << "}$.\\\\" << endl;
             answer = a * d - d;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 2:
@@ -404,7 +419,7 @@ string LetterEqu(int number)
                 "\\left(\\sqrt{" << d << "} + \\sqrt{" << d * a * a << "}\\right)\\sqrt{" << d << "}$.\\\\" << endl;
             answer = a * d + d;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 3:
@@ -412,7 +427,7 @@ string LetterEqu(int number)
                 "\\sqrt{" << d << "}\\left(\\sqrt{" << d << "} - \\sqrt{" << a * a * d << "}\\right)$.\\\\" << endl;
             answer = d - a * d;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 4:
@@ -420,7 +435,7 @@ string LetterEqu(int number)
                 "\\sqrt{" << d << "}\\left(\\sqrt{" << d * a * a << "} + \\sqrt{" << d << "}\\right)$.\\\\" << endl;
             answer = d + a * d;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
         }
         break;
@@ -440,7 +455,7 @@ string LetterEqu(int number)
                 "\\left(\\sqrt{" << e << "} - " << a << "\\right)\\left(\\sqrt{" << e << "} + " << a << "\\right)$.\\\\" << endl;
             answer = e - a * a;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 2:
@@ -448,7 +463,7 @@ string LetterEqu(int number)
                 "\\left(" << a << "+ \\sqrt{" << e << "}\\right)\\left(" << a << "-\\sqrt{" << e << "}\\right)$.\\\\" << endl;
             answer = a * a - e;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 3:
@@ -456,7 +471,7 @@ string LetterEqu(int number)
                 "\\left(\\sqrt{" << e << "}-\\sqrt{" << f << "}\\right)\\left(\\sqrt{" << e << "}+\\sqrt{" << f << "}\\right)$.\\\\" << endl;
             answer = e - f;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 4:
@@ -464,7 +479,7 @@ string LetterEqu(int number)
                 "\\left(\\sqrt{" << e << "}+\\sqrt{" << f << "}\\right)\\left(\\sqrt{" << e << "}-\\sqrt{" << f << "}\\right)$.\\\\" << endl;
             answer = e - f;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
         }
         break;
@@ -501,7 +516,7 @@ string Pow(int number)
                 "\\frac{" << a << "^{" << pok[0] << "}\\cdot" << a << "^{" << pok[1] << "}}{" << a << "^{" << pok[2] << "}}$. \\\\" << endl;
             //cout << answer << "\\\\" << endl;
             answer = pow(a, pok[0]) * pow(a, pok[1]) / pow(a, pok[2]);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         else
         {
@@ -509,7 +524,7 @@ string Pow(int number)
                 "\\frac{a^{" << pok[0] << "}\\cdot a^{" << pok[1] << "}}{" << "a^{" << pok[2] << "}}$, при a = " << a << ". \\\\" << endl;
             //cout << answer << "\\\\" << endl;
             answer = pow(a, pok[0]) * pow(a, pok[1]) / pow(a, pok[2]);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         break;
 
@@ -529,7 +544,7 @@ string Pow(int number)
                 a << "^{" << pok[0] << "}\\cdot" << a << "^{" << pok[1] << "}:" << a << "^{" << pok[2] << "}$. \\\\" << endl;
             //cout << answer << "\\\\" << endl;
             answer = pow(a, pok[0]) * pow(a, pok[1]) / pow(a, pok[2]);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         else
         {
@@ -537,7 +552,7 @@ string Pow(int number)
                 "a^{" << pok[0] << "}\\cdot a^{" << pok[1] << "}:" << "a^{" << pok[2] << "}$, при a = " << a << ". \\\\" << endl;
             //cout << answer << "\\\\" << endl;
             answer = pow(a, pok[0]) * pow(a, pok[1]) / pow(a, pok[2]);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         break;
 
@@ -557,7 +572,7 @@ string Pow(int number)
                 "\\frac{\\left(a^{" << pok[0] << "}\\right)^{" << pok[1] << "}}{a^{" << pok[2] << "}}$, при a = " << a << ". \\\\" << endl;
             //cout << answer << "\\\\" << endl;
             answer = pow((pow(a, pok[0])), pok[1]) / pow(a, pok[2]);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         else
         {
@@ -576,7 +591,7 @@ string Pow(int number)
                 "\\frac{\\left(a^{" << pok[0] << "}\\right)^{" << pok[1] << "}}{a^{" << pok[2] << "}}$, при a = $\\sqrt{" << a << "}$. \\\\" << endl;
             //cout << answer << "\\\\" << endl;
             answer = pow((pow(sqrt(a), pok[0])), pok[1]) / pow(sqrt(a), pok[2]);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         break;
 
@@ -597,7 +612,7 @@ string Pow(int number)
                 "\\frac{a^{" << pok[0] << "}\\cdot\\left(b^{" << pok[1] << "}\\right)^{" << pok[2] << "}}{\\left(a\\cdot b\\right)^{" << pok[3] << "}}$, при a = " << a << " и b = " << b << ". \\\\" << endl;
             //cout << answer << "\\\\" << endl;
             answer = pow(a, pok[0]) * pow((pow(b, pok[1])), pok[2]) / pow((a * b), pok[3]);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         else
         {
@@ -617,7 +632,7 @@ string Pow(int number)
                 "\\frac{a^{" << pok[0] << "}\\cdot\\left(b^{" << pok[1] << "}\\right)^{" << pok[2] << "}}{\\left(a\\cdot b\\right)^{" << pok[3] << "}}$, при a = " << a << " и b = $\\sqrt{" << b << "}$. \\\\" << endl;
             //cout << answer << "\\\\" << endl;
             answer = pow(a, pok[0]) * pow((pow(sqrt(b), pok[1])), pok[2]) / pow((a * sqrt(b)), pok[3]);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         break;
     }
@@ -653,7 +668,7 @@ string Sqrt(int number)
             "\\frac{\\sqrt{" << a << "}\\cdot\\sqrt{" << b << "}}{\\sqrt{" << c << "}}$." << endl;
         //cout << answer << "\\\\" << endl;
         answer = sqrt(a) * sqrt(b) / sqrt(c);
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
 
     case 2:
@@ -678,7 +693,7 @@ string Sqrt(int number)
                 "\\sqrt{" << a << "\\cdot" << b << "}\\cdot\\sqrt{" << c << "}$." << endl;
             //cout << answer << "\\\\" << endl;
             answer = sqrt(a) * sqrt(b) * sqrt(c);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         else
         {
@@ -686,7 +701,7 @@ string Sqrt(int number)
                 "\\sqrt{" << a << "}\\cdot\\sqrt{" << b << "\\cdot" << c << "}$." << endl;
             //cout << answer << "\\\\" << endl;
             answer = sqrt(a) * sqrt(b) * sqrt(c);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         break;
 
@@ -714,7 +729,7 @@ string Sqrt(int number)
                 d << "\\sqrt{" << a << "}\\cdot" << e << "\\sqrt{" << b << "}\\cdot\\sqrt{" << c << "}$." << endl;
             //cout << "\\\\" << answer << "\\\\" << endl;
             answer = sqrt(a) * sqrt(b) * sqrt(c) * d * e;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         else
         {
@@ -722,7 +737,7 @@ string Sqrt(int number)
                 d << "\\sqrt{" << a << "}\\cdot\\sqrt{" << b << "}\\cdot" << e << "\\sqrt{" << c << "}$." << endl;
             //cout << "\\\\" << answer << "\\\\" << endl;
             answer = sqrt(a) * sqrt(b) * sqrt(c) * d * e;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         break;
 
@@ -746,7 +761,7 @@ string Sqrt(int number)
                 "\\frac{\\left(" << b << "\\sqrt{" << a << "}\\right)^2}{" << c << "}$." << endl;
             //cout << "\\\\" << answer << "\\\\" << endl;
             answer = (a * b * b) / c;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 2:
@@ -765,7 +780,7 @@ string Sqrt(int number)
                 "\\frac{" << c << "}{\\left(" << b << "\\sqrt{" << a << "}\\right)^2}$." << endl;
             //cout << "\\\\" << answer << "\\\\" << endl;
             answer = c / (b * b * a);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
         }
         break;
@@ -794,7 +809,7 @@ string Sqrt(int number)
                 "\\sqrt{\\frac{1}{" << c << "}\\cdot a^{" << d << "}b^{" << e << "}}$ при a = " << a << ", b = " << b << "." << endl;
             //cout << "\\\\" << answer << "\\\\" << endl;
             answer = sqrt(pow(a, d) * pow(b, e) / c);
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 2:
@@ -816,7 +831,7 @@ string Sqrt(int number)
                 "\\sqrt{\\frac{" << b << "a^{" << d << "}}{a^{" << e << "}}}$ при a = " << a << "." << endl;
             //cout << "\\\\" << answer << "\\\\" << endl;
             answer = sqrt(b * pow(a, d) / pow(a, e));
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
             break;
 
         case 3:
@@ -841,7 +856,7 @@ string Sqrt(int number)
                     "\\sqrt{(-a)^{" << d << "}\\cdot a^{" << e << "}}$ при a = " << a << "." << endl;
                 //cout << "\\\\" << answer << "\\\\" << endl;
                 answer = sqrt(pow(a, d) * pow(a, e));
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
             }
             else
             {
@@ -849,7 +864,7 @@ string Sqrt(int number)
                     "\\sqrt{a^{" << d << "}\\cdot (-a)^{" << e << "}}$ при a = " << a << "." << endl;
                 //cout << "\\\\" << answer << "\\\\" << endl;
                 answer = sqrt(pow(a, d) * pow(a, e));
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
             }
             break;
 
@@ -879,7 +894,7 @@ string TeorVer(int number)
         } while (check != 1);
         cout << "\\item    У бабушки " << a << " чашек: " << b << " с красными цветами, остальные с синими.Бабушка наливает чай в случайно выбранную чашку.Найдите вероятность того, что это будет чашка с синими цветами." << endl;
         //cout << "\\\\" << answer << "\\\\" << endl;
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
 
     case 2:
@@ -897,7 +912,7 @@ string TeorVer(int number)
         } while (check != 1);
         cout << "\\item    В среднем из " << a << " карманных фонариков, поступивших в продажу, " << b << " неисправных.Найдите вероятность того, что выбранный наудачу в магазине фонарик окажется исправен." << endl;
         //cout << "\\\\" << answer << "\\\\" << endl;
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
 
     case 3:
@@ -913,7 +928,7 @@ string TeorVer(int number)
         } while (check != 1);
         cout << "\\item    В фирме такси в данный момент свободно " << a << " машин: " << b << " чёрных, " << c << " жёлтая и " << d << " зелёных.По вызову выехала одна из машин, случайно оказавшаяся ближе всего к заказчику.Найдите вероятность того, что к нему приедет жёлтое такси." << endl;
         //cout << "\\\\" << answer << "\\\\" << endl;
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
 
     case 4:
@@ -928,7 +943,7 @@ string TeorVer(int number)
             } while (check != 1);
             cout << "\\item    В лыжных гонках участвуют " << a << " спортсменов из России, " << b << " спортсмен из Швеции и " << c << " спортсмена из Норвегии.Порядок, в котором спортсмены стартуют, определяется жребием.Найдите вероятность того, что первым будет стартовать спортсмен из Швеции." << endl;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         else
         {
@@ -941,7 +956,7 @@ string TeorVer(int number)
             } while (check != 1);
             cout << "\\item    В лыжных гонках участвуют " << a << " спортсменов из России, " << b << " спортсмена из Норвегии и " << c << " спортсменов из Швеции.Порядок, в котором спортсмены стартуют, определяется жребием.Найдите вероятность того, что первым будет стартовать спортсмен не из России." << endl;
             //cout << "\\\\" << answer << "\\\\" << endl;
-            Answer = "  \\item " + to_string(answer) + " \n";
+            Answer = "  \\item " + FormatDouble(answer) + " \n";
         }
         break;
 
@@ -953,7 +968,7 @@ string TeorVer(int number)
         } while (check != 1);
         cout << "\\item    Вероятность того, что новая шариковая ручка пишет плохо (или не пишет), равна " << (a / 100) << ". Покупатель в магазине выбирает одну шариковую ручку. Найдите вероятность того, что эта ручка пишет хорошо." << endl;
         //cout << "\\\\" << answer << "\\\\" << endl;
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
 
     case 6:
@@ -967,7 +982,7 @@ string TeorVer(int number)
         } while (check != 1);
         cout << "\\item    На экзамене " << a << " билетов, Оскар не выучил " << b << " из них. Найдите вероятность того, что ему попадётся выученный билет." << endl;
         //cout << "\\\\" << answer << "\\\\" << endl;
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
 
     case 7:
@@ -982,7 +997,7 @@ string TeorVer(int number)
         } while (check != 1);
         cout << "\\item    Родительский комитет закупил " << a << " пазлов для подарков детям в связи с окончанием учебного года, из них " << b << " с машинами и " << c << " с видами городов.Подарки распределяются случайным образом между " << a << " детьми, среди которых есть Витя.Найдите вероятность того, что Вите достанется пазл с машиной." << endl;
         //cout << "\\\\" << answer << "\\\\" << endl;
-        Answer = "  \\item " + to_string(answer) + " \n";
+        Answer = "  \\item " + FormatDouble(answer) + " \n";
         break;
     }
     return Answer;
@@ -4349,11 +4364,11 @@ string Graphic()
                     GraphVar[i].PorQ = 0;
                     GraphVar[i].TF = 0;
                     GraphVar[i].used = 0;
-                    GraphVar[i].GraphOut = "     \\pgfplotsset{compat=1.18, \n       width=6cm %ширина графика% \n} \n       \\begin{axis}[xmin=-3.5, xmax=3.5, \n       ymin=-3.5, ymax=3.5, \n         axis lines=middle, \n       xtick={-3, -2, -1, 0, 1, 2, 3}, %задает иксы которые будут отмечены \n      xticklabels={$$, $$, $$, $$, $1$, $$, $$}, %то что нужно будет отметить по х \n         xticklabel style={anchor=north}, %где будет отмечено значение х \n      ytick={-3, -2, -1, 0, 1, 2, 3}, \n      yticklabels={$$, $$, $$, $$, $1$, $$, $$}, \n       yticklabel style={anchor=east}, \n      xmajorgrids=true, %полоски от значений на оси \n        ymajorgrids=true, \n        grid style=dashed, %стиль дополнительных полосок \n         xlabel=$x$, ylabel=$y$,]  \n";
+                    GraphVar[i].GraphOut = "";
                     if((k[i]==1)||(k[i]==-1))
-                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, k[i]) + "1*x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "}; \n       \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, k[i]) + "1*x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "}\n";
                     else
-                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, k[i]) + to_string(static_cast<int>(fabs(k[i]))) + "* x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "}; \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, k[i]) + to_string(static_cast<int>(fabs(k[i]))) + "* x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "}\n";
                 }
                 GraphVar[0].VarAnswer = "$k>0$, $b>0$";
                 GraphVar[1].VarAnswer = "$k<0$, $b>0$";
@@ -4395,13 +4410,13 @@ string Graphic()
                             }
                     }while(check!=1);
                 }
-                cout << "\\item На рисунках изображены графики функций вида $y=kx+b$. Установите соответствие между знаками коэффициентов $k$ и $b$ и графиками функций.\\\\" << endl << "\\textbf{Графики:}";
-                cout << "\\begin{table}[h!]" << endl
-                    << "    \\centering" << endl
-                    << "   \\begin{tabular}{m{4.5cm} m{4.5cm} m{4.5cm}}" << endl;
+                cout << "\\item На рисунках изображены графики функций вида $y=kx+b$. Установите соответствие между знаками коэффициентов $k$ и $b$ и графиками функций." << endl << endl;
+                cout << "\\vspace{1em}" << endl << endl 
+                    << "\\noindent" << endl;
                     for(int i = 1; i<=3; i++)
                     {
-                        cout << "\\textbf{" << i << ")}" << endl << "  \\begin{tikzpicture} " << endl;
+                        cout << "\\begin{minipage}[t]{0.3\\textwidth}" << endl 
+                             << "\\centering" << endl;
                         for(int m = 0; m<4; m++)
                         {
                             if(GraphVar[m].PorQ == i)
@@ -4409,13 +4424,13 @@ string Graphic()
                                 cout << GraphVar[m].GraphOut;
                             }
                         }
-                        cout << "\\end{axis} " << endl << "\\end{tikzpicture} " << endl;
-                        if(i!=3)
-                            cout << "&" << endl;
+                        cout << "График " << i << endl << "\\end{minipage} " << endl;
+                        if(i != 3)
+                            cout << "\\hfill" << endl;
                     }
-                cout << "   \\end{tabular}" << endl << "\\end{table}" << endl << endl;
+                cout << endl << "\\vspace{1.5em}" << endl;
                 cout << "\\textbf{Варианты ответа:}" << endl;
-                cout << "\\begin{enumerate}" << endl;
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl;
                 for(int i = 1; i<=3; i++)
                 {
                     for(int m=0; m<4; m++)
@@ -4424,8 +4439,19 @@ string Graphic()
                             cout << "\\item     " << GraphVar[m].VarAnswer << endl;
                     }
                 }
-                cout << "\\end{enumerate}" << endl;
-                Answer = "  \\item " + to_string(static_cast<int>(answer[0])) + to_string(static_cast<int>(answer[1])) + to_string(static_cast<int>(answer[2])) + "\n";
+                cout << "\\end{enumerate}" << endl << endl << endl;
+
+                Answer = "  \\item ";
+                for(int i = 1; i <= 3; i++)
+                {
+                    for(int m = 0; m<4; m++)
+                    {
+                        if(GraphVar[m].PorQ == i)
+                            Answer = Answer + to_string(static_cast<int>(GraphVar[m].PorO));
+                    }
+                }
+                Answer = Answer + " \n";
+
                 //cout << Answer << endl;
                 break;
 
@@ -4467,11 +4493,11 @@ string Graphic()
                     GraphVar[i].PorQ = 0;
                     GraphVar[i].TF = 0;
                     GraphVar[i].used = 0;
-                    GraphVar[i].GraphOut = "     \\pgfplotsset{compat=1.18, \n       width=6cm %ширина графика% \n} \n       \\begin{axis}[xmin=-3.5, xmax=3.5, \n       ymin=-3.5, ymax=3.5, \n         axis lines=middle, \n       xtick={-3, -2, -1, 0, 1, 2, 3}, %задает иксы которые будут отмечены \n      xticklabels={$$, $$, $$, $$, $1$, $$, $$}, %то что нужно будет отметить по х \n         xticklabel style={anchor=north}, %где будет отмечено значение х \n      ytick={-3, -2, -1, 0, 1, 2, 3}, \n      yticklabels={$$, $$, $$, $$, $1$, $$, $$}, \n       yticklabel style={anchor=east}, \n      xmajorgrids=true, %полоски от значений на оси \n        ymajorgrids=true, \n        grid style=dashed, %стиль дополнительных полосок \n         xlabel=$x$, ylabel=$y$,]  \n";
+                    GraphVar[i].GraphOut = "";
                     if((k[i]==1)||(k[i]==-1))
-                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, k[i]) + "1*x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "}; \n       \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, k[i]) + "1*x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "}\n";
                     else
-                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, k[i]) + to_string(static_cast<int>(fabs(k[i]))) + "* x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "}; \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, k[i]) + to_string(static_cast<int>(fabs(k[i]))) + "* x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "}\n";
                 }
 
                 if((k[0]==1)||(k[0]==-1))
@@ -4530,13 +4556,13 @@ string Graphic()
                             }
                     }while(check!=1);
                 }
-                cout << "\\item Установите соответствие между графиками функций и формулами, которые их задают.\\\\" << endl << "\\textbf{Графики:}";
-                cout << "\\begin{table}[h!]" << endl
-                    << "    \\centering" << endl
-                    << "   \\begin{tabular}{m{4.5cm} m{4.5cm} m{4.5cm}}" << endl;
+                cout << "\\item Установите соответствие между графиками функций и формулами, которые их задают." << endl;
+                cout << "\\vspace{1em}" << endl << endl 
+                    << "\\noindent" << endl;
                     for(int i = 1; i<=3; i++)
                     {
-                        cout << "\\textbf{" << i << ")}" << endl << "  \\begin{tikzpicture} " << endl;
+                        cout << "\\begin{minipage}[t]{0.3\\textwidth}" << endl 
+                             << "\\centering" << endl;
                         for(int m = 0; m<4; m++)
                         {
                             if(GraphVar[m].PorQ == i)
@@ -4544,13 +4570,13 @@ string Graphic()
                                 cout << GraphVar[m].GraphOut;
                             }
                         }
-                        cout << "\\end{axis} " << endl << "\\end{tikzpicture} " << endl;
-                        if(i!=3)
-                            cout << "&" << endl;
+                        cout << "График " << i << endl << "\\end{minipage} " << endl;
+                        if(i != 3)
+                            cout << "\\hfill" << endl;
                     }
-                cout << "   \\end{tabular}" << endl << "\\end{table}" << endl << endl;
+                cout << endl << "\\vspace{1.5em}" << endl;
                 cout << "\\textbf{Варианты ответа:}" << endl;
-                cout << "\\begin{enumerate}" << endl;
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl;
                 for(int i = 1; i<=3; i++)
                 {
                     for(int m=0; m<4; m++)
@@ -4559,8 +4585,19 @@ string Graphic()
                             cout << "\\item     " << GraphVar[m].VarAnswer << endl;
                     }
                 }
-                cout << "\\end{enumerate}" << endl;
-                Answer = "  \\item " + to_string(static_cast<int>(answer[0])) + to_string(static_cast<int>(answer[1])) + to_string(static_cast<int>(answer[2])) + "\n";
+                cout << "\\end{enumerate}" << endl << endl << endl;
+
+                Answer = "  \\item ";
+                for(int i = 1; i <= 3; i++)
+                {
+                    for(int m = 0; m<4; m++)
+                    {
+                        if(GraphVar[m].PorQ == i)
+                            Answer = Answer + to_string(static_cast<int>(GraphVar[m].PorO));
+                    }
+                }
+                Answer = Answer + " \n";
+
                 //cout << Answer << endl;
                 break;
             
@@ -4606,11 +4643,11 @@ string Graphic()
                     GraphVar[i].PorQ = 0;
                     GraphVar[i].TF = 0;
                     GraphVar[i].used = 0;
-                    GraphVar[i].GraphOut = "     \\pgfplotsset{compat=1.18, \n       width=6cm %ширина графика% \n} \n       \\begin{axis}[xmin=-3.5, xmax=3.5, \n       ymin=-3.5, ymax=3.5, \n         axis lines=middle, \n       xtick={-3, -2, -1, 0, 1, 2, 3}, %задает иксы которые будут отмечены \n      xticklabels={$$, $$, $$, $$, $1$, $$, $$}, %то что нужно будет отметить по х \n         xticklabel style={anchor=north}, %где будет отмечено значение х \n      ytick={-3, -2, -1, 0, 1, 2, 3}, \n      yticklabels={$$, $$, $$, $$, $1$, $$, $$}, \n       yticklabel style={anchor=east}, \n      xmajorgrids=true, %полоски от значений на оси \n        ymajorgrids=true, \n        grid style=dashed, %стиль дополнительных полосок \n         xlabel=$x$, ylabel=$y$,]  \n";
+                    GraphVar[i].GraphOut = "";
                     if((a[i]==1)||(a[i]==-1))
-                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, a[i]) + "1*x*x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "*x" + SignUr(2,c[i]) + to_string(static_cast<int>(fabs(c[i]))) + "}; \n       \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, a[i]) + "1*x*x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "*x" + SignUr(2,c[i]) + to_string(static_cast<int>(fabs(c[i]))) + "}\n";
                     else
-                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, a[i]) + to_string(static_cast<int>(fabs(a[i]))) + "*x*x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "*x" + SignUr(2,c[i]) + to_string(static_cast<int>(fabs(c[i]))) + "}; \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[i].GraphOut = GraphVar[i].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, a[i]) + to_string(static_cast<int>(fabs(a[i]))) + "*x*x" + SignUr(2,b[i]) + to_string(static_cast<int>(fabs(b[i]))) + "*x" + SignUr(2,c[i]) + to_string(static_cast<int>(fabs(c[i]))) + "}\n";
                 }
                 GraphVar[0].VarAnswer = "$a>0$, $c>0$";
                 GraphVar[1].VarAnswer = "$a<0$, $c>0$";
@@ -4652,13 +4689,13 @@ string Graphic()
                             }
                     }while(check!=1);
                 }
-                cout << "\\item На рисунках изображены графики функций вида $y=ax^2+bx+c$. Установите соответствие между знаками коэффициентов $a$ и $c$ и графиками функций.\\\\" << endl << "\\textbf{Графики:}";
-                cout << "\\begin{table}[h!]" << endl
-                    << "    \\centering" << endl
-                    << "   \\begin{tabular}{m{4.5cm} m{4.5cm} m{4.5cm}}" << endl;
+                cout << "\\item На рисунках изображены графики функций вида $y=ax^2+bx+c$. Установите соответствие между знаками коэффициентов $a$ и $c$ и графиками функций." << endl;
+                cout << "\\vspace{1em}" << endl << endl 
+                    << "\\noindent" << endl;
                     for(int i = 1; i<=3; i++)
                     {
-                        cout << "\\textbf{" << i << ")}" << endl << "  \\begin{tikzpicture} " << endl;
+                        cout << "\\begin{minipage}[t]{0.3\\textwidth}" << endl 
+                             << "\\centering" << endl;
                         for(int m = 0; m<4; m++)
                         {
                             if(GraphVar[m].PorQ == i)
@@ -4666,13 +4703,13 @@ string Graphic()
                                 cout << GraphVar[m].GraphOut;
                             }
                         }
-                        cout << "\\end{axis} " << endl << "\\end{tikzpicture} " << endl;
-                        if(i!=3)
-                            cout << "&" << endl;
+                        cout << "График " << i << endl << "\\end{minipage} " << endl;
+                        if(i != 3)
+                            cout << "\\hfill" << endl;
                     }
-                cout << "   \\end{tabular}" << endl << "\\end{table}" << endl << endl;
+                cout << endl << "\\vspace{1.5em}" << endl;
                 cout << "\\textbf{Варианты ответа:}" << endl;
-                cout << "\\begin{enumerate}" << endl;
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl;
                 for(int i = 1; i<=3; i++)
                 {
                     for(int m=0; m<4; m++)
@@ -4681,8 +4718,19 @@ string Graphic()
                             cout << "\\item     " << GraphVar[m].VarAnswer << endl;
                     }
                 }
-                cout << "\\end{enumerate}" << endl;
-                Answer = "  \\item " + to_string(static_cast<int>(answer[0])) + to_string(static_cast<int>(answer[1])) + to_string(static_cast<int>(answer[2])) + "\n";
+                cout << "\\end{enumerate}" << endl << endl << endl;
+
+                Answer = "  \\item ";
+                for(int i = 1; i <= 3; i++)
+                {
+                    for(int m = 0; m<4; m++)
+                    {
+                        if(GraphVar[m].PorQ == i)
+                            Answer = Answer + to_string(static_cast<int>(GraphVar[m].PorO));
+                    }
+                }
+                Answer = Answer + " \n";
+
                 //cout << Answer << endl;
                 break;
 
@@ -4729,24 +4777,24 @@ string Graphic()
                     GraphVar[i].used = 0;
                 }
 
-                GraphVar[0].GraphOut = "     \\pgfplotsset{compat=1.18, \n       width=6cm %ширина графика% \n} \n       \\begin{axis}[xmin=-3.5, xmax=3.5, \n       ymin=-3.5, ymax=3.5, \n         axis lines=middle, \n       xtick={-3, -2, -1, 0, 1, 2, 3}, %задает иксы которые будут отмечены \n      xticklabels={$$, $$, $$, $$, $1$, $$, $$}, %то что нужно будет отметить по х \n         xticklabel style={anchor=north}, %где будет отмечено значение х \n      ytick={-3, -2, -1, 0, 1, 2, 3}, \n      yticklabels={$$, $$, $$, $$, $1$, $$, $$}, \n       yticklabel style={anchor=east}, \n      xmajorgrids=true, %полоски от значений на оси \n        ymajorgrids=true, \n        grid style=dashed, %стиль дополнительных полосок \n         xlabel=$x$, ylabel=$y$,]  \n";
+                GraphVar[0].GraphOut = "";
                     if((k[0]==1)||(k[0]==-1))
-                        GraphVar[0].GraphOut = GraphVar[0].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, k[0]) + "1*x" + SignUr(2,b[0]) + to_string(static_cast<int>(fabs(b[0]))) + "}; \n       \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[0].GraphOut = GraphVar[0].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, k[0]) + "1*x" + SignUr(2,b[0]) + to_string(static_cast<int>(fabs(b[0]))) + "}\n";
                     else
-                        GraphVar[0].GraphOut = GraphVar[0].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, k[0]) + to_string(static_cast<int>(fabs(k[0]))) + "* x" + SignUr(2,b[0]) + to_string(static_cast<int>(fabs(b[0]))) + "}; \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[0].GraphOut = GraphVar[0].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, k[0]) + to_string(static_cast<int>(fabs(k[0]))) + "* x" + SignUr(2,b[0]) + to_string(static_cast<int>(fabs(b[0])))  + "}\n";
 
 
-                GraphVar[1].GraphOut = "     \\pgfplotsset{compat=1.18, \n       width=6cm %ширина графика% \n} \n       \\begin{axis}[xmin=-3.5, xmax=3.5, \n       ymin=-3.5, ymax=3.5, \n         axis lines=middle, \n       xtick={-3, -2, -1, 0, 1, 2, 3}, %задает иксы которые будут отмечены \n      xticklabels={$$, $$, $$, $$, $1$, $$, $$}, %то что нужно будет отметить по х \n         xticklabel style={anchor=north}, %где будет отмечено значение х \n      ytick={-3, -2, -1, 0, 1, 2, 3}, \n      yticklabels={$$, $$, $$, $$, $1$, $$, $$}, \n       yticklabel style={anchor=east}, \n      xmajorgrids=true, %полоски от значений на оси \n        ymajorgrids=true, \n        grid style=dashed, %стиль дополнительных полосок \n         xlabel=$x$, ylabel=$y$,]  \n";
+                GraphVar[1].GraphOut = "";
                 if((a[0]==1)||(a[0]==-1))
-                        GraphVar[1].GraphOut = GraphVar[1].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, a[0]) + "1*x*x" + SignUr(2,b[1]) + to_string(static_cast<int>(fabs(b[1]))) + "*x" + SignUr(2,c[0]) + to_string(static_cast<int>(fabs(c[0]))) + "}; \n       \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                        GraphVar[1].GraphOut = GraphVar[1].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, a[0]) + "1*x*x" + SignUr(2,b[1]) + to_string(static_cast<int>(fabs(b[1]))) + "*x" + SignUr(2,c[0]) + to_string(static_cast<int>(fabs(c[0])))  + "}\n";
                 else
-                    GraphVar[1].GraphOut = GraphVar[1].GraphOut + "     \\addplot[domain=-3.5:3.5,black, thick, samples=1000]{" + SignUr(1, a[0]) + to_string(static_cast<int>(fabs(a[0]))) + "*x*x" + SignUr(2,b[1]) + to_string(static_cast<int>(fabs(b[1]))) + "*x" + SignUr(2,c[0]) + to_string(static_cast<int>(fabs(c[0]))) + "}; \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                    GraphVar[1].GraphOut = GraphVar[1].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, a[0]) + to_string(static_cast<int>(fabs(a[0]))) + "*x*x" + SignUr(2,b[1]) + to_string(static_cast<int>(fabs(b[1]))) + "*x" + SignUr(2,c[0]) + to_string(static_cast<int>(fabs(c[0])))  + "}\n";
                 
-                GraphVar[2].GraphOut = "     \\pgfplotsset{compat=1.18, \n       width=6cm %ширина графика% \n} \n       \\begin{axis}[xmin=-3.5, xmax=3.5, \n       ymin=-3.5, ymax=3.5, \n         axis lines=middle, \n       xtick={-3, -2, -1, 0, 1, 2, 3}, %задает иксы которые будут отмечены \n      xticklabels={$$, $$, $$, $$, $1$, $$, $$}, %то что нужно будет отметить по х \n         xticklabel style={anchor=north}, %где будет отмечено значение х \n      ytick={-3, -2, -1, 0, 1, 2, 3}, \n      yticklabels={$$, $$, $$, $$, $1$, $$, $$}, \n       yticklabel style={anchor=east}, \n      xmajorgrids=true, %полоски от значений на оси \n        ymajorgrids=true, \n        grid style=dashed, %стиль дополнительных полосок \n         xlabel=$x$, ylabel=$y$,]  \n";
-                GraphVar[2].GraphOut = GraphVar[2].GraphOut + "     \\addplot[domain=-3.5:-0.1,black, thick, samples=1000]{" + to_string(static_cast<int>(k[1])) +  "/x}; \n        \\addplot[domain=0.1:3.5,black, thick, samples=1000]{ " + to_string(static_cast<int>(k[1])) + "/x};\n        \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                GraphVar[2].GraphOut = "";
+                GraphVar[2].GraphOut = GraphVar[2].GraphOut + "\\mygraphonlyfirst{" + to_string(static_cast<int>(k[1])) +  "/x}; \n ";
 
-                GraphVar[3].GraphOut = "     \\pgfplotsset{compat=1.18, \n       width=6cm %ширина графика% \n} \n       \\begin{axis}[xmin=-3.5, xmax=3.5, \n       ymin=-3.5, ymax=3.5, \n         axis lines=middle, \n       xtick={-3, -2, -1, 0, 1, 2, 3}, %задает иксы которые будут отмечены \n      xticklabels={$$, $$, $$, $$, $1$, $$, $$}, %то что нужно будет отметить по х \n         xticklabel style={anchor=north}, %где будет отмечено значение х \n      ytick={-3, -2, -1, 0, 1, 2, 3}, \n      yticklabels={$$, $$, $$, $$, $1$, $$, $$}, \n       yticklabel style={anchor=east}, \n      xmajorgrids=true, %полоски от значений на оси \n        ymajorgrids=true, \n        grid style=dashed, %стиль дополнительных полосок \n         xlabel=$x$, ylabel=$y$,]  \n";
-                GraphVar[3].GraphOut = GraphVar[3].GraphOut + "     \\addplot[domain=0:3.5,black, thick, samples=1000]{" + SignUr(1, k[2]) + to_string(static_cast<int>(fabs(k[2]))) + "*sqrt(x)" + "}; \n       \\coordinate[label=below left:$0$] (O) at (0,0); \n         \\coordinate[label=below left:$0$] (O) at (0,0); \n";
+                GraphVar[3].GraphOut = "";
+                GraphVar[3].GraphOut = GraphVar[3].GraphOut + "\\mygraphonlyfirst{" + SignUr(1, k[2]) + to_string(static_cast<int>(fabs(k[2]))) + "*sqrt(x)" + "} \n";
 
                 if((k[0]==1)||(k[0]==-1))
                     GraphVar[0].VarAnswer = "$y=" + SignUr(1,k[0]) + "x" + SignUr(2,b[0]) + to_string(static_cast<int>(fabs(b[0]))) + "$";
@@ -4801,13 +4849,13 @@ string Graphic()
                             }
                     }while(check!=1);
                 }
-                cout << "\\item Установите соответствие между функциями и их графиками.\\\\" << endl << "\\textbf{Графики:}";
-                cout << "\\begin{table}[h!]" << endl
-                    << "    \\centering" << endl
-                    << "   \\begin{tabular}{m{4.5cm} m{4.5cm} m{4.5cm}}" << endl;
+                cout << "\\item Установите соответствие между функциями и их графиками." << endl;
+                cout << "\\vspace{1em}" << endl << endl 
+                    << "\\noindent" << endl;
                     for(int i = 1; i<=3; i++)
                     {
-                        cout << "\\textbf{" << i << ")}" << endl << "  \\begin{tikzpicture} " << endl;
+                        cout << "\\begin{minipage}[t]{0.3\\textwidth}" << endl 
+                             << "\\centering" << endl;
                         for(int m = 0; m<4; m++)
                         {
                             if(GraphVar[m].PorQ == i)
@@ -4815,13 +4863,13 @@ string Graphic()
                                 cout << GraphVar[m].GraphOut;
                             }
                         }
-                        cout << "\\end{axis} " << endl << "\\end{tikzpicture} " << endl;
-                        if(i!=3)
-                            cout << "&" << endl;
+                        cout << "График " << i << endl << "\\end{minipage} " << endl;
+                        if(i != 3)
+                            cout << "\\hfill" << endl;
                     }
-                cout << "   \\end{tabular}" << endl << "\\end{table}" << endl << endl;
+                cout << endl << "\\vspace{1.5em}" << endl;
                 cout << "\\textbf{Варианты ответа:}" << endl;
-                cout << "\\begin{enumerate}" << endl;
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl;
                 for(int i = 1; i<=3; i++)
                 {
                     for(int m=0; m<4; m++)
@@ -4830,8 +4878,19 @@ string Graphic()
                             cout << "\\item     " << GraphVar[m].VarAnswer << endl;
                     }
                 }
-                cout << "\\end{enumerate}" << endl;
-                Answer = "  \\item " + to_string(static_cast<int>(answer[0])) + to_string(static_cast<int>(answer[1])) + to_string(static_cast<int>(answer[2])) + "\n";
+                cout << "\\end{enumerate}" << endl << endl << endl;
+
+                Answer = "  \\item ";
+                for(int i = 1; i <= 3; i++)
+                {
+                    for(int m = 0; m<4; m++)
+                    {
+                        if(GraphVar[m].PorQ == i)
+                            Answer = Answer + to_string(static_cast<int>(GraphVar[m].PorO));
+                    }
+                }
+                Answer = Answer + " \n";
+
                 //cout << Answer << endl;
                 break;
 

@@ -2,6 +2,13 @@
     "files.associations": {
         "ostream": "cpp",
         "iostream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iomanip": "cpp",
+        "iosfwd": "cpp",
+        "ios": "cpp",
+        "__split_buffer": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "vector": "cpp"
     }
 }
