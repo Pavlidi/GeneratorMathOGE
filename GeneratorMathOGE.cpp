@@ -5074,15 +5074,15 @@ string TreugUgli(int i)
                     answer = Agrad;
                 } while (check != 1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "       В треугольник $ABC$ угол $C$ равен $" << Bgrad << "^{\\circ}$. Найдите внешний угол при вершине $C$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "       В треугольник $ABC$ угол $C$ равен $" << Bgrad << "^{\\circ}$. Найдите внешний угол при вершине $C$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$] (C) at (0,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (" << Agrad << ":" << r2 << ");" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << r1 << ");" << endl
                     << "            \\coordinate (O) at (0:{" << r2 << "*cos(" << Agrad << ")});" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (O);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5102,16 +5102,16 @@ string TreugUgli(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольник $ABC$ известно, что $AB=BC$, $\\angle ABC=" << (180-2*Agrad) << "^{\\circ}$. Найдите угол $BCA$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольник $ABC$ известно, что $AB=BC$, $\\angle ABC=" << (180-2*Agrad) << "^{\\circ}$. Найдите угол $BCA$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (0,0);" << endl
                     << "            \\coordinate[label=below:$C$] (C) at (-" << Agrad << ":" << r1 << ");" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (-" << (180-Agrad) << ":" << r1 << ");" << endl
                     << "            \\tkzMarkSegment[mark=|](B,A);" << endl
                     << "            \\tkzMarkSegment[mark=|](B,C);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5132,9 +5132,9 @@ string TreugUgli(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ известно, что $\\angle BAC=" << Agrad << "^{\\circ}$, $AD$ -- биссектриса. Найдите угол $BAD$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ известно, что $\\angle BAC=" << Agrad << "^{\\circ}$, $AD$ -- биссектриса. Найдите угол $BAD$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (0,0);" << endl
                     << "            \\coordinate[label=below:$C$] (C) at (3.5,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (" << Agrad << ":" << r1 << ");" << endl
@@ -5142,7 +5142,7 @@ string TreugUgli(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (D);" << endl
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.5](D,A,B);" << endl
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.5](C,A,D);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5160,15 +5160,15 @@ string TreugUgli(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Один из острых углов прямоугольного треугольника равен $" << Agrad << "^{\\circ}$. Найдите его другой острый угол. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Один из острых углов прямоугольного треугольника равен $" << Agrad << "^{\\circ}$. Найдите его другой острый угол. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (0,0);" << endl
                     << "            \\coordinate (C) at (3.5,0);" << endl
                     << "            \\coordinate (B) at (23:3.22);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,B,C);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5187,16 +5187,16 @@ string TreugUgli(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В остроугольном треугольнике $ABC$ проведена высота $BH$, $\\angle BAC=" << Agrad << "^{\\circ}$. Найдите угол $ABH$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В остроугольном треугольнике $ABC$ проведена высота $BH$, $\\angle BAC=" << Agrad << "^{\\circ}$. Найдите угол $ABH$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (0,0);" << endl
                     << "            \\coordinate[label=below:$C$] (C) at (3.5,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (" << Agrad << ":{" << (3.5*cos(Arad)) << "});" << endl
                     << "            \\coordinate[label=below:$H$] (H) at (0:{" << (3.5 * pow(cos(Arad),2)) << "});" << endl
                     << "            \\draw[thick] (B) -- (A) -- (C) -- (B) -- (H);" << endl
                     << "            \\tkzMarkRightAngle(B,H,A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5217,14 +5217,14 @@ string TreugUgli(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике два угла равны $" << Agrad << "^{\\circ}$ и $" << Bgrad << "^{\\circ}$. Найдите его третий угол. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике два угла равны $" << Agrad << "^{\\circ}$ и $" << Bgrad << "^{\\circ}$. Найдите его третий угол. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (0,0);" << endl
                     << "            \\coordinate (C) at (-" << Agrad << ":" << r1 << ");" << endl
                     << "            \\coordinate (B) at ({-180+" << Bgrad << "}:" << r2 << ");" << endl
                     << "            \\draw[thick] (B) -- (A) -- (C) -- (B);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5246,16 +5246,16 @@ string TreugStoron(int i)
                 r = rand()%15+3;
                 answer = 6*r;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Радиус окружности, вписанной в равносторонний треугольник, равен $" << r << "\\sqrt{3}$. Найдите длину стороны этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Радиус окружности, вписанной в равносторонний треугольник, равен $" << r << "\\sqrt{3}$. Найдите длину стороны этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (O) at (0,0);" << endl
                     << "            \\coordinate (A) at (-30:1.5);" << endl
                     << "            \\coordinate (B) at (-150:1.5);" << endl
                     << "            \\coordinate (C) at (90:1.5);" << endl
                     << "            \\draw[thick] (O) circle(0.75);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5264,16 +5264,16 @@ string TreugStoron(int i)
                 a = rand()%40+2;
                 answer = a/2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Сторона равностороннего треугольника равна $" << a << "\\sqrt{3}$. Найдите радиус окружности, вписанной в этот треугольник. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Сторона равностороннего треугольника равна $" << a << "\\sqrt{3}$. Найдите радиус окружности, вписанной в этот треугольник." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (O) at (0,0);" << endl
                     << "            \\coordinate (A) at (-30:1.5);" << endl
                     << "            \\coordinate (B) at (-150:1.5);" << endl
                     << "            \\coordinate (C) at (90:1.5);" << endl
                     << "            \\draw[thick] (O) circle(0.75);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5282,16 +5282,16 @@ string TreugStoron(int i)
                 a = rand()%40+2;
                 answer = a;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Сторона равностороннего треугольника равна $" << a << "\\sqrt{3}$. Найдите радиус окружности, описанной около этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Сторона равностороннего треугольника равна $" << a << "\\sqrt{3}$. Найдите радиус окружности, описанной около этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (O) at (0,0);" << endl
                     << "            \\coordinate (A) at (-30:1.5);" << endl
                     << "            \\coordinate (B) at (-150:1.5);" << endl
                     << "            \\coordinate (C) at (90:1.5);" << endl
                     << "            \\draw[thick] (O) circle(1.5);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5300,16 +5300,16 @@ string TreugStoron(int i)
                 R = rand()%15+3;
                 answer = 3*R;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Радиус окружности,  описанной около равностороннего треугольника, равен $" << R << "\\sqrt{3}$. Найдите длину стороны этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Радиус окружности,  описанной около равностороннего треугольника, равен $" << R << "\\sqrt{3}$. Найдите длину стороны этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (O) at (0,0);" << endl
                     << "            \\coordinate (A) at (-30:1.5);" << endl
                     << "            \\coordinate (B) at (-150:1.5);" << endl
                     << "            \\coordinate (C) at (90:1.5);" << endl
                     << "            \\draw[thick] (O) circle(1.5);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5318,9 +5318,9 @@ string TreugStoron(int i)
                 h = rand()%15+3;
                 answer = 2*h;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Медиана равностороннего треугольника равна $" << h << "\\sqrt{3}$. Найдите сторону этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Медиана равностороннего треугольника равна $" << h << "\\sqrt{3}$. Найдите сторону этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (O) at (0,0);" << endl
                     << "            \\coordinate (A) at (-30:1.5);" << endl
                     << "            \\coordinate (B) at (-150:1.5);" << endl
@@ -5329,7 +5329,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (D) -- (C);" << endl
                     << "            \\tkzMarkSegment[mark=|, thick](B,D);" << endl
                     << "            \\tkzMarkSegment[mark=|, thick](D,A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5338,9 +5338,9 @@ string TreugStoron(int i)
                 a = rand()%15+3;
                 answer = 1.5*a;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Сторона равностороннего треугольника равна $" << a << "\\sqrt{3}$. Найдите биссектрису этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Сторона равностороннего треугольника равна $" << a << "\\sqrt{3}$. Найдите биссектрису этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (O) at (0,0);" << endl
                     << "            \\coordinate (A) at (-30:1.5);" << endl
                     << "            \\coordinate (B) at (-150:1.5);" << endl
@@ -5349,7 +5349,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (D) -- (C);" << endl
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.7](B,C,D);" << endl
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.7](D,C,A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                   cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5358,9 +5358,9 @@ string TreugStoron(int i)
                 h = rand()%15+3;
                 answer = 2*h;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Высота равностороннего треугольника равна $" << h << "\\sqrt{3}$. Найдите сторону этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Высота равностороннего треугольника равна $" << h << "\\sqrt{3}$. Найдите сторону этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (O) at (0,0);" << endl
                     << "            \\coordinate (A) at (-30:1.5);" << endl
                     << "            \\coordinate (B) at (-150:1.5);" << endl
@@ -5368,7 +5368,7 @@ string TreugStoron(int i)
                     << "            \\coordinate (D) at (-90:0.75);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (D) -- (C);" << endl
                     << "            \\tkzMarkRightAngle(A,D,C);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5388,15 +5388,15 @@ string TreugStoron(int i)
                     max = b;
                 k = max/2.2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Катеты прямоугольного треугольника равны $" << a << "$ и $" << b << "$. Найдите гипотенузу этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Катеты прямоугольного треугольника равны $" << a << "$ и $" << b << "$. Найдите гипотенузу этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (C) at (0,0);" << endl
                     << "            \\coordinate (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5422,15 +5422,15 @@ string TreugStoron(int i)
                     max = b;
                 k = max/2.2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В прямоугольном треугольнике катет и гипотенуза равны $" << a << "$ и $" << c << " соответственно$. Найдите другой катет этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В прямоугольном треугольнике катет и гипотенуза равны $" << a << "$ и $" << c << " соответственно$. Найдите другой катет этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (C) at (0,0);" << endl
                     << "            \\coordinate (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5451,15 +5451,15 @@ string TreugStoron(int i)
                 k = max/2.2;
                 answer = c/2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ известно, что $AC = " << a << "$, $BC = " << b << "$, угол $C$ равен $90^{\\circ}$. Найдите радиус описанной около этого треугольника окружности. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ известно, что $AC = " << a << "$, $BC = " << b << "$, угол $C$ равен $90^{\\circ}$. Найдите радиус описанной около этого треугольника окружности." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (C) at (0,0);" << endl
                     << "            \\coordinate (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5495,9 +5495,9 @@ string TreugStoron(int i)
                         check = 0;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Точки $M$ и $N$ являются серединами сторон $AB$ и $BC$ треугольника $ABC$, сторона $AB$ равна " << b << ", сторона $BC$ равна " << c << ", сторона $AC$ равна " << a << ". Найдите $MN$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Точки $M$ и $N$ являются серединами сторон $AB$ и $BC$ треугольника $ABC$, сторона $AB$ равна " << b << ", сторона $BC$ равна " << c << ", сторона $AC$ равна " << a << ". Найдите $MN$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$]   (A) at (0,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (" << alpha << ":" << (b/k) << ");" << endl
                     << "            \\coordinate[label=below:$C$] (C) at (0:" << (a/k) << ");" << endl
@@ -5508,7 +5508,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkSegment[mark=||](N,B);" << endl
                     << "            \\tkzMarkSegment[mark=||](C,N);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (M) -- (N);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5549,9 +5549,9 @@ string TreugStoron(int i)
                         check = 0;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ известно, что $AC=" << a << "$, $BM$ -- медиана, $BM=" << r << "$. Найдите $AM$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ известно, что $AC=" << a << "$, $BM$ -- медиана, $BM=" << r << "$. Найдите $AM$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$]   (A) at (0,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (" << alpha << ":" << (b/k) << ");" << endl
                     << "            \\coordinate[label=below:$C$] (C) at (0:" << (a/k) << ");" << endl
@@ -5559,7 +5559,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkSegment[mark=|](A,M);" << endl
                     << "            \\tkzMarkSegment[mark=|](C,M);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (M) -- (B);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5580,15 +5580,15 @@ string TreugStoron(int i)
                 k = max/2.2;
                 answer = a*b/2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Катеты прямоугольного треугольника равны $" << a << "$ и $" << b << "$. Найдите площадь этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Катеты прямоугольного треугольника равны $" << a << "$ и $" << b << "$. Найдите площадь этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (C) at (0,0);" << endl
                     << "            \\coordinate (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5620,14 +5620,14 @@ string TreugStoron(int i)
                         check = 0;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ известно, что $AB=" << a << "$, $BC=" << b << "$, $\\sin(\\angle ABC)=\\frac{" << betta[0] << "}{" << betta[1] << "}$. Найдите площадь треугольника $ABC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ известно, что $AB=" << a << "$, $BC=" << b << "$, $\\sin(\\angle ABC)=\\frac{" << betta[0] << "}{" << betta[1] << "}$. Найдите площадь треугольника $ABC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (-30-" << alpha << ":" << a/k << ");" << endl
                     << "            \\coordinate[label=right:$C$] (C) at (-30:" << b/k << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5660,16 +5660,16 @@ string TreugStoron(int i)
                         check = 0;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Сторона треугольника равна " << a << ", а высота, проведенная к этой стороне, равна " << h << ". Найдите площадь этого треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Сторона треугольника равна " << a << ", а высота, проведенная к этой стороне, равна " << h << ". Найдите площадь этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (B) at (0,0);" << endl
                     << "            \\coordinate (A) at (-30-" << alpha << ":" << a/k << ");" << endl
                     << "            \\coordinate (C) at (-30:" << b/k << ");" << endl
                     << "            \\coordinate (O) at (-30-" << alpha << ":" << (b*cos((PI*alpha)/180))/k << ");" << endl
                     << "            \\tkzMarkRightAngle(A,O,C);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (O) -- (C);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5697,15 +5697,15 @@ string TreugStoron(int i)
                     answer = r*(a+b+c)/2;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Периметр треугольника равен " << a+b+c << ", одна из его сторон равна " << a << ", а радиус вписанной в него окружности равен " << r << ". Найдите площадь этого  треугольника. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Периметр треугольника равен " << a+b+c << ", одна из его сторон равна " << a << ", а радиус вписанной в него окружности равен " << r << ". Найдите площадь этого  треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << r/k << ");" << endl
                     << "            \\coordinate (A) at (" << betta[0] + gamma[0]/2 << ":" << (r/cos((PI*gamma[0])/360))/k << ");" << endl
                     << "            \\coordinate (B) at (" << betta[1] + gamma[1]/2 << ":" << (r/cos((PI*gamma[1])/360))/k << ");" << endl
                     << "            \\coordinate (C) at (" << 270 + gamma[2]/2 << ":" << (r/cos((PI*gamma[2])/360))/k << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5741,16 +5741,16 @@ string TreugReshotka(int i)
                 else
                     answer = x;
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        На клетчатой бумаге с размером клетки 1х1 изображен ромб. Найдите длину его большей диагонали. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        На клетчатой бумаге с размером клетки 1х1 изображен ромб. Найдите длину его большей диагонали." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw [gray!50, step=0.5] (0,0) grid (" << (xmax/10) << "," << (ymax/10) << ");" << endl
                     << "            \\coordinate (A) at (0.5," << (ymax/20) << ");" << endl
                     << "            \\coordinate (B) at (" << xmax/20 << "," << (ymax/10)-0.5 << ");" << endl
                     << "            \\coordinate (C) at (" << (xmax/10)-0.5 << "," << (ymax/20) << ");" << endl
                     << "            \\coordinate (D) at (" << xmax/20 << "," << 0.5 << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5774,15 +5774,15 @@ string TreugReshotka(int i)
                 } while (check != 1);
                 answer = (xmax - 10) / 10;
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        На клетчатой бумаге с размером клетки 1x1 изображен треугольник $ABC$. Найдите длину его средней линии, параллельной стороне $AC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        На клетчатой бумаге с размером клетки 1x1 изображен треугольник $ABC$. Найдите длину его средней линии, параллельной стороне $AC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw [gray!50, step=0.5] (0,0) grid (" << (xmax / 10) << "," << (ymax / 10) << ");" << endl
                     << "            \\coordinate[label=below left:$A$] (A) at (0.5,0.5);" << endl
                     << "            \\coordinate[label=above right:$B$] (B) at (" << (xmid/10) << "," << ((ymax - 5) / 10) << ");"
                     << "            \\coordinate[label=below right:$C$] (C) at (" << ((xmax - 5) / 10) << ",0.5);"
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);";
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5806,15 +5806,15 @@ string TreugReshotka(int i)
                 } while (check != 1);
                 answer = ((xmax/5)-2)*((ymax/5)-2)/2;
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        На клетчатой бумаге с размером клетки 1x1 изображен треугольник. Найдите его площадь. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        На клетчатой бумаге с размером клетки 1x1 изображен треугольник. Найдите его площадь." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw [gray!50, step=0.5] (0,0) grid (" << (xmax / 10) << "," << (ymax / 10) << ");" << endl
                     << "            \\coordinate (A) at (0.5,0.5);" << endl
                     << "            \\coordinate (B) at (" << (xmid/10) << "," << ((ymax - 5) / 10) << ");"
                     << "            \\coordinate (C) at (" << ((xmax - 5) / 10) << ",0.5);"
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);";
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5855,15 +5855,15 @@ string TreugTrigonom(int i)
                         max = sqrt(c*c-b*b);
                     k=max/2.2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $BC=" << b << "$, $AB=" << c << "$. Найдите $\\sin(A)$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $BC=" << b << "$, $AB=" << c << "$. Найдите $\\sin(A)$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (sqrt(pow(c,2)-pow(b,2))/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5890,15 +5890,15 @@ string TreugTrigonom(int i)
                     max = sqrt(c*c-a*a);
                 k=max/2.2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $AC=" << a << "$, $AB=" << c << "$. Найдите $\\sin(B)$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $AC=" << a << "$, $AB=" << c << "$. Найдите $\\sin(B)$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (sqrt(pow(c,2)-pow(a,2))/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5925,15 +5925,15 @@ string TreugTrigonom(int i)
                     max = sqrt(c*c-a*a);
                 k=max/2.2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $AC=" << a << "$, $AB=" << c << "$. Найдите $\\cos(A)$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $AC=" << a << "$, $AB=" << c << "$. Найдите $\\cos(A)$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (sqrt(pow(c,2)-pow(a,2))/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5960,15 +5960,15 @@ string TreugTrigonom(int i)
                     max = sqrt(c*c-b*b);
                 k=max/2.2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $BC=" << b << "$, $AB=" << c << "$. Найдите $\\cos(B)$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $BC=" << b << "$, $AB=" << c << "$. Найдите $\\cos(B)$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (sqrt(pow(c,2)-pow(b,2))/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -5988,15 +5988,15 @@ string TreugTrigonom(int i)
                     max = a;
                 k=max/2.2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $BC=" << b << "$, $AC=" << a << "$. Найдите $\\tg(A)$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $BC=" << b << "$, $AC=" << a << "$. Найдите $\\tg(A)$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6016,15 +6016,15 @@ string TreugTrigonom(int i)
                     max = a;
                 k=max/2.2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $BC=" << b << "$, $AC=" << a << "$. Найдите $\\tg(B)$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $BC=" << b << "$, $AC=" << a << "$. Найдите $\\tg(B)$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6056,15 +6056,15 @@ string TreugTrigonom(int i)
                 k=max/2.2;
                 answer = b;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\sin(A)=\\frac{" << chisl << "}{" << znam << "}$, $AB=" << c << "$. Найдите $BC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\sin(A)=\\frac{" << chisl << "}{" << znam << "}$, $AB=" << c << "$. Найдите $BC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6098,15 +6098,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = c;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\sin(A)=\\frac{" << chisl << "}{" << znam << "}$, $BC=" << b << "$. Найдите $AB$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\sin(A)=\\frac{" << chisl << "}{" << znam << "}$, $BC=" << b << "$. Найдите $AB$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6140,15 +6140,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = a;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\sin(B)=\\frac{" << chisl << "}{" << znam << "}$, $AB=" << c << "$. Найдите $AC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\sin(B)=\\frac{" << chisl << "}{" << znam << "}$, $AB=" << c << "$. Найдите $AC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6182,15 +6182,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = c;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\sin(B)=\\frac{" << chisl << "}{" << znam << "}$, $AC=" << a << "$. Найдите $AB$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\sin(B)=\\frac{" << chisl << "}{" << znam << "}$, $AC=" << a << "$. Найдите $AB$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6224,15 +6224,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = b;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\cos(B)=\\frac{" << chisl << "}{" << znam << "}$, $AB=" << c << "$. Найдите $BC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\cos(B)=\\frac{" << chisl << "}{" << znam << "}$, $AB=" << c << "$. Найдите $BC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6266,15 +6266,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = c;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\cos(B)=\\frac{" << chisl << "}{" << znam << "}$, $BC=" << b << "$. Найдите $AB$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\cos(B)=\\frac{" << chisl << "}{" << znam << "}$, $BC=" << b << "$. Найдите $AB$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6308,15 +6308,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = a;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\cos(A)=\\frac{" << chisl << "}{" << znam << "}$, $AB=" << c << "$. Найдите $AC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\cos(A)=\\frac{" << chisl << "}{" << znam << "}$, $AB=" << c << "$. Найдите $AC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6350,15 +6350,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = c;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\cos(A)=\\frac{" << chisl << "}{" << znam << "}$, $AC=" << a << "$. Найдите $AB$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\cos(A)=\\frac{" << chisl << "}{" << znam << "}$, $AC=" << a << "$. Найдите $AB$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6389,15 +6389,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = b;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\tg(A)=\\frac{" << chisl << "}{" << znam << "}$, $AC=" << a << "$. Найдите $BC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\tg(A)=\\frac{" << chisl << "}{" << znam << "}$, $AC=" << a << "$. Найдите $BC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6428,15 +6428,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = a;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\tg(A)=\\frac{" << chisl << "}{" << znam << "}$, $BC=" << b << "$. Найдите $AC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\tg(A)=\\frac{" << chisl << "}{" << znam << "}$, $BC=" << b << "$. Найдите $AC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6467,15 +6467,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = a;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\tg(B)=\\frac{" << chisl << "}{" << znam << "}$, $BC=" << b << "$. Найдите $AC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\tg(B)=\\frac{" << chisl << "}{" << znam << "}$, $BC=" << b << "$. Найдите $AC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6506,15 +6506,15 @@ string TreugTrigonom(int i)
                 }while(check!=1);
                 answer = b;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\tg(B)=\\frac{" << chisl << "}{" << znam << "}$, $AC=" << a << "$. Найдите $BC$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике $ABC$ угол $C$ равен $90^{\\circ}$, $\\tg(B)=\\frac{" << chisl << "}{" << znam << "}$, $AC=" << a << "$. Найдите $BC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$C$]   (C) at (0,0);" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (180:" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (90:" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6557,9 +6557,9 @@ string Parallelogramm(int i)
                             check = 0;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Диагональ $AC$ параллелограмма $ABCD$ образует с его сторонами углы, равные $" << alpha << "^{\\circ}$ и $" << betta << "^{\\circ}$. Найдите больший угол этого параллелограмма. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Диагональ $AC$ параллелограмма $ABCD$ образует с его сторонами углы, равные $" << alpha << "^{\\circ}$ и $" << betta << "^{\\circ}$. Найдите больший угол этого параллелограмма. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$]   (A) at (0,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (" << (alpha+betta) << ":" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$C$] (C) at (" << alpha << ":" << (c/k) << ");" << endl
@@ -6569,7 +6569,7 @@ string Parallelogramm(int i)
                     << "            \\tkzLabelAngle[pos=1](D,A,C) {$\\alpha$};" << endl
                     << "            \\tkzLabelAngle[pos=1](C,A,B) {$\\beta$};" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6601,16 +6601,16 @@ string Parallelogramm(int i)
                 }while(check!=1);
                 answer = (static_cast<double>(static_cast<int>(l)))/2;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Диагонали $AC$ и $BD$ параллелограмма $ABCD$ пересекаются в точке $O$, $AC=" << static_cast<int>(c) << "$, $BD=" << static_cast<int>(l) << "$, $AB=" << a << "$. Найдите $DO$.  &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Диагонали $AC$ и $BD$ параллелограмма $ABCD$ пересекаются в точке $O$, $AC=" << static_cast<int>(c) << "$, $BD=" << static_cast<int>(l) << "$, $AB=" << a << "$. Найдите $DO$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$]   (A) at (0,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (" << (alpha+betta) << ":" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$C$] (C) at (" << alpha << ":" << (c/k) << ");" << endl
                     << "            \\coordinate[label=below:$D$] (D) at (" << 0 << ":" << (b/k) << ");" << endl
                     << "            \\coordinate[label=left:$O$] (O) at (" << alpha << ":" << (c/(2*k)) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6644,9 +6644,9 @@ string Parallelogramm(int i)
                 }while(check!=1);
                 answer = 180 - alpha - betta;
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Диагональ $BD$ параллелограмма $ABCD$ образует с его сторонами углы, равные $" << alpha << "^{\\circ}$ и $" << betta << "^{\\circ}$. Найдите меньший угол этого параллелограмма. Ответ дайте в градусах.   &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Диагональ $BD$ параллелограмма $ABCD$ образует с его сторонами углы, равные $" << alpha << "^{\\circ}$ и $" << betta << "^{\\circ}$. Найдите меньший угол этого параллелограмма. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (0,0);" << endl
                     << "            \\coordinate[label=above:$C$] (C) at (0:" << (b/k) << ");" << endl
                     << "            \\coordinate[label=below:$D$] (D) at (-" << betta << ":" << (c/k) << ");" << endl
@@ -6656,7 +6656,7 @@ string Parallelogramm(int i)
                     << "            \\tkzLabelAngle[pos=0.8](D,B,C) {$\\alpha$};" << endl
                     << "            \\tkzLabelAngle[pos=0.8](A,B,D) {$\\beta$};" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (D);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6693,15 +6693,15 @@ string Parallelogramm(int i)
                     else
                         answer = 180 - 2*betta;
                     cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        Диагональ прямоугольника образует угол $" << betta << "^{\\circ}$ с одной из его сторон. Найдите острый угол между диагоналями этого прямоугольника. Ответ дайте в градусах.  &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        Диагональ прямоугольника образует угол $" << betta << "^{\\circ}$ с одной из его сторон. Найдите острый угол между диагоналями этого прямоугольника. Ответ дайте в градусах." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                         << "            \\coordinate (B) at (0,0);" << endl
                         << "            \\coordinate (C) at (0:" << (b/k) << ");" << endl
                         << "            \\coordinate (D) at (-" << betta << ":" << (c/k) << ");" << endl
                         << "            \\coordinate (A) at (-" << (alpha+betta) << ":" << (a/k) << ");" << endl
                         << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
-                        cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                        cout << "\\end{tikzpicture}" << endl << endl;
                     //cout << answer << endl;
                     Answer = "  \\item " + to_string(answer) + " \n";
                     break;
@@ -6718,15 +6718,15 @@ string Parallelogramm(int i)
                         k = a/2.2;
                     }while(check!=1);
                     cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        В ромбе $ABCD$ угол $ABC$ равен $" << alpha << "^{\\circ}$. Найдите угол $ACD$. Ответ дайте в градусах.  &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        В ромбе $ABCD$ угол $ABC$ равен $" << alpha << "^{\\circ}$. Найдите угол $ACD$. Ответ дайте в градусах." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                         << "            \\coordinate[label=above:$B$] (B) at (0,0);" << endl
                         << "            \\coordinate[label=above:$C$] (C) at (0:" << (a/k) << ");" << endl
                         << "            \\coordinate[label=below:$D$] (D) at (-" << (alpha/2) << ":" << (c/k) << ");" << endl
                         << "            \\coordinate[label=below:$A$] (A) at (-" << (alpha) << ":" << (a/k) << ");" << endl
                         << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl;
-                        cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                        cout << "\\end{tikzpicture}" << endl << endl;
                     //cout << answer << endl;
                     Answer = "  \\item " + to_string(answer) + " \n";
                     break;
@@ -6754,15 +6754,15 @@ string Parallelogramm(int i)
                             check = 0;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Один из углов параллелограмма равен $" << (alpha+betta) << "^{\\circ}$. Найдите больший угол этого параллелограмма. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Один из углов параллелограмма равен $" << (alpha+betta) << "^{\\circ}$. Найдите больший угол этого параллелограмма. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate   (A) at (0,0);" << endl
                     << "            \\coordinate (B) at (" << (alpha+betta) << ":" << (a/k) << ");" << endl
                     << "            \\coordinate (C) at (" << alpha << ":" << (c/k) << ");" << endl
                     << "            \\coordinate(D) at (" << 0 << ":" << (b/k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6789,9 +6789,9 @@ string Parallelogramm(int i)
                         check = 0;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Найдите острый угол параллелограмма $ABCD$, если биссектриса угла $A$ образует со стороной $BC$ угол, равный $" << (alpha/2) << "^{\\circ}$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Найдите острый угол параллелограмма $ABCD$, если биссектриса угла $A$ образует со стороной $BC$ угол, равный $" << (alpha/2) << "^{\\circ}$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$]  (A) at (0,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (" << (alpha) << ":" << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$C$] (C) at (" << ((b+a*cos((alpha*PI)/180))/k) << "," << (h/k) << ");" << endl
@@ -6800,7 +6800,7 @@ string Parallelogramm(int i)
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.5](O,A,B);" << endl
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.5](D,A,O);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (O);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6809,15 +6809,15 @@ string Parallelogramm(int i)
                     a = rand()%20 + 3;
                     answer = pow(a,2)/2;
                     cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        Периметр ромба равен " << (4*a) << ", а один из углов равен $30^{\\circ}$. Найдите площадь этого ромба. &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        Периметр ромба равен " << (4*a) << ", а один из углов равен $30^{\\circ}$. Найдите площадь этого ромба." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (0,0);" << endl
                     << "            \\coordinate (B) at (30:2.2);" << endl
                     << "            \\coordinate (C) at (" << (2.2+(2.2*cos(PI/6))) << "," << (2.2*sin(PI/6)) << ");" << endl
                     << "            \\coordinate(D) at (0:2.2);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6826,9 +6826,9 @@ string Parallelogramm(int i)
                    a = rand()%20 + 3;
                     answer = a/2;
                     cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        Сторона ромба равна " << (a) << ", а один из углов равен $150^{\\circ}$. Найдите высоту этого ромба. &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        Сторона ромба равна " << (a) << ", а один из углов равен $150^{\\circ}$. Найдите высоту этого ромба." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (0,0);" << endl
                     << "            \\coordinate (B) at (30:2.2);" << endl
                     << "            \\coordinate (C) at (" << (2.2+(2.2*cos(PI/6))) << "," << (2.2*sin(PI/6)) << ");" << endl
@@ -6836,7 +6836,7 @@ string Parallelogramm(int i)
                     << "            \\coordinate (O) at (" << (2.2*cos(PI/6)) << ", 0);" << endl
                     << "            \\tkzMarkRightAngle(A,O,B);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (O);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6876,9 +6876,9 @@ string Parallelogramm(int i)
                     else
                         answer = h2;
                     cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        Площадь параллелограмма равна " << S << ", а две его стороны равны " << a << " и " << b << ". Найдите его высоты. В ответе укажите большую высоту. &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        Площадь параллелограмма равна " << S << ", а две его стороны равны " << a << " и " << b << ". Найдите его высоты. В ответе укажите большую высоту." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (0,0);" << endl
                     << "            \\coordinate (B) at (" << ((a*cos(alpha))/k) << ", " << ((a*sin(alpha))/k) << ");" << endl
                     << "            \\coordinate (C) at (" << ((a*cos(alpha)+b)/k) << "," << ((a*sin(alpha))/k) << ");" << endl
@@ -6888,7 +6888,7 @@ string Parallelogramm(int i)
                     << "            \\tkzMarkRightAngle(A,O1,B);" << endl
                     << "            \\tkzMarkRightAngle(C,O2,B);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (O1) -- (D) -- (O2) -- (B);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6897,15 +6897,15 @@ string Parallelogramm(int i)
                 a = rand()%20+3;
                 answer = a*2;
                 cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        Сторона квадрата равна $" << a << "\\sqrt{2}$. Найдите диагональ этого квадрата. &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        Сторона квадрата равна $" << a << "\\sqrt{2}$. Найдите диагональ этого квадрата." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (0,0);" << endl
                     << "            \\coordinate (B) at (2,0);" << endl
                     << "            \\coordinate (C) at (2,2);" << endl
                     << "            \\coordinate (D) at (0,2);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6914,15 +6914,15 @@ string Parallelogramm(int i)
                 a = rand()%20+3;
                 answer = a;
                 cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        Диагональ квадрата равна $" << a << "\\sqrt{2}$. Найдите сторону этого квадрата. &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        Диагональ квадрата равна $" << a << "\\sqrt{2}$. Найдите сторону этого квадрата." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (0,0);" << endl
                     << "            \\coordinate (B) at (2,0);" << endl
                     << "            \\coordinate (C) at (2,2);" << endl
                     << "            \\coordinate (D) at (0,2);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6949,16 +6949,16 @@ string Parallelogramm(int i)
                         check = 0;
                 }while(check!=1);
                 cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        Диагонали $AC$ и $BD$ прямоугольника $ABCD$ пересекаются в точке $O$, $BO=" << c/2 << "$, $AB=" << a << "$. Найдите $AC$. &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        Диагонали $AC$ и $BD$ прямоугольника $ABCD$ пересекаются в точке $O$, $BO=" << c/2 << "$, $AB=" << a << "$. Найдите $AC$." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (0,0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (0," << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$C$] (C) at (" << (b/k) << "," << (a/k) << ");" << endl
                     << "            \\coordinate[label=above:$O$] (O) at (" << (b/k)/2 << "," << (a/k)/2 << ");" << endl
                     << "            \\coordinate[label=below:$D$] (D) at (" << (b/k) << ",0);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
-                    cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -6976,15 +6976,15 @@ string Parallelogramm(int i)
                         answer = alpha/2;
                     }while(check!=1);
                     cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        В ромбе $ABCD$ угол $BCD$ равен $" << 180 - alpha << "^{\\circ}$. Найдите угол $BCD$. Ответ дайте в градусах.  &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        В ромбе $ABCD$ угол $BCD$ равен $" << 180 - alpha << "^{\\circ}$. Найдите угол $BCD$. Ответ дайте в градусах." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                         << "            \\coordinate[label=above:$B$] (B) at (0,0);" << endl
                         << "            \\coordinate[label=above:$C$] (C) at (0:" << (a/k) << ");" << endl
                         << "            \\coordinate[label=below:$D$] (D) at (-" << (alpha/2) << ":" << (c/k) << ");" << endl
                         << "            \\coordinate[label=below:$A$] (A) at (-" << (alpha) << ":" << (a/k) << ");" << endl
                         << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (D);" << endl;
-                        cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                        cout << "\\end{tikzpicture}" << endl << endl;
                     //cout << answer << endl;
                     Answer = "  \\item " + to_string(answer) + " \n";
                     break;
@@ -7007,9 +7007,9 @@ string Parallelogramm(int i)
                 }while(check!=1);
                 answer = (a+b)*h;
                 cout << "%" << (i+1) << endl;
-                    cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                    cout << "        Найдите площадь параллелограмма, изображенного на рисунке.  &" << endl;
-                    cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                    cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                    cout << "        Найдите площадь параллелограмма, изображенного на рисунке." << endl;
+                    cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                         << "        \\coordinate (O) at (" << a/k << ",0);" << endl
                         << "        \\coordinate (A) at (0,0);" << endl
                         << "        \\coordinate (B) at (" << (a/k) << ", " << (h/k) << ");" << endl
@@ -7021,7 +7021,7 @@ string Parallelogramm(int i)
                         << "        \\coordinate[label=left:$" << c << "$] (Q4) at (" << (a*0.5)/k << "," << (h*0.5)/k << ");" << endl
                         << "        \\tkzMarkRightAngle(B,O,D);" << endl
                         << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (O) -- (B);" << endl;
-                        cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                        cout << "\\end{tikzpicture}" << endl << endl;
                     //cout << answer << endl;
                     Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7052,16 +7052,16 @@ string Trapet(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Один из углов прямоугольной трапеции равен $" << alpha << "^{\\circ}$. Найдите больший угол этой трапеции. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Один из углов прямоугольной трапеции равен $" << alpha << "^{\\circ}$. Найдите больший угол этой трапеции. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (0,0);" << endl
                     << "            \\coordinate (B) at (0," << (a / k) << ");" << endl
                     << "            \\coordinate (C) at (" << (a / k) << "," << (a / k) << ");" << endl
                     << "            \\coordinate (D) at (" << ((a + b) / k) << ",0);" << endl
                     << "            \\tkzMarkRightAngle(B,A,D);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7079,9 +7079,9 @@ string Trapet(int i)
                 } while (check != 1);
                 answer = 2 * (a + b);
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В равнобедренной трапеции известны высота, меньшее основание и угол при основании (см.рисунок). Найдите большее основание. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В равнобедренной трапеции известны высота, меньшее основание и угол при основании (см.рисунок). Найдите большее основание." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (-" << ((a + b) / k) << ",0);" << endl
                     << "            \\coordinate (B) at (-" << a / k << "," << (b / k) << ");" << endl
                     << "            \\coordinate (C) at (" << (a / k) << "," << (b / k) << ");" << endl
@@ -7093,7 +7093,7 @@ string Trapet(int i)
                     << "            \\tkzLabelAngle[pos=0.7](D,A,B) {$45^{\\circ}$};" << endl
                     << "            \\tkzMarkRightAngle(B,O,D);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (O);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7111,9 +7111,9 @@ string Trapet(int i)
                 } while (check != 1);
                 answer = 2 * a;
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В равнобедренной трапеции известны высота, большее основание и угол при основании (см.рисунок). Найдите меньшее основание. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В равнобедренной трапеции известны высота, большее основание и угол при основании (см.рисунок). Найдите меньшее основание." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (-" << ((a + b) / k) << ",0);" << endl
                     << "            \\coordinate (B) at (-" << a / k << "," << (b / k) << ");" << endl
                     << "            \\coordinate (C) at (" << (a / k) << "," << (b / k) << ");" << endl
@@ -7125,7 +7125,7 @@ string Trapet(int i)
                     << "            \\tkzLabelAngle[pos=0.7](D,A,B) {$45^{\\circ}$};" << endl
                     << "            \\tkzMarkRightAngle(B,O,D);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (O);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7149,9 +7149,9 @@ string Trapet(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Основания трапеции равны " << 2*a << " и " << 2*b << ", а высота равна " << h1 << ". Найдите среднюю линию этой трапеции. & " << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Основания трапеции равны " << 2*a << " и " << 2*b << ", а высота равна " << h1 << ". Найдите среднюю линию этой трапеции." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (-" << b / k << ",0);" << endl
                     << "            \\coordinate (B) at (-" << (a - h) / k << "," << h1 / k << ");" << endl
                     << "            \\coordinate (C) at (" << (a + h) / k << "," << h1 / k << ");" << endl
@@ -7163,7 +7163,7 @@ string Trapet(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl
                     << "            \\draw[thick] (B) -- (O);" << endl
                     << "            \\draw[thick] (N) -- (M);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7187,9 +7187,9 @@ string Trapet(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Основания трапеции равны " << 2 * a << " и " << 2 * b << ". Найдите больший из отрезков, на которые делит среднюю линию этой трапеции одна из ее диагоналей. & " << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Основания трапеции равны " << 2 * a << " и " << 2 * b << ". Найдите больший из отрезков, на которые делит среднюю линию этой трапеции одна из ее диагоналей." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (-" << b / k << ",0);" << endl
                     << "            \\coordinate (B) at (-" << (a - h) / k << "," << h1 / k << ");" << endl
                     << "            \\coordinate (C) at (" << (a + h) / k << "," << h1 / k << ");" << endl
@@ -7199,7 +7199,7 @@ string Trapet(int i)
                     << "            \\coordinate (M) at (" << (b + a + h) / (2 * k) << "," << h1 / (2 * k) << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl
                     << "            \\draw[thick] (N) -- (M);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7227,9 +7227,9 @@ string Trapet(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Высота равнобедренной трапеции, проведенная из вершины $C$, делит основание $AD$ на отрезки длиной $" << (b-a) << "$ и $" << (a+b) << "$. Найдите длину основания $BC$. & " << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Высота равнобедренной трапеции, проведенная из вершины $C$, делит основание $AD$ на отрезки длиной $" << (b-a) << "$ и $" << (a+b) << "$. Найдите длину основания $BC$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (-" << b / k << ",0);" << endl
                     << "            \\coordinate[label=above:$B$] (B) at (-" << (a - h) / k << "," << h1 / k << ");" << endl
                     << "            \\coordinate[label=above:$C$] (C) at (" << (a + h) / k << "," << h1 / k << ");" << endl
@@ -7238,7 +7238,7 @@ string Trapet(int i)
                     << "            \\tkzMarkRightAngle(D,O,C);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl
                     << "            \\draw[thick] (C) -- (O);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7263,15 +7263,15 @@ string Trapet(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Один из углов равнобедренной трапеции равен $" << alpha << "^{\\circ}$. Найдите больший угол этой трапеции. Ответ дайте в градусах. & " << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Один из углов равнобедренной трапеции равен $" << alpha << "^{\\circ}$. Найдите больший угол этой трапеции. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (-" << (a+b) / k << ",0);" << endl
                     << "            \\coordinate (B) at (-" << (a / k) << "," << h1 / k << ");" << endl
                     << "            \\coordinate (C) at (" << (a / k) << "," << h1 / k << ");" << endl
                     << "            \\coordinate (D) at (" << (a + b) / k << ",0);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7296,15 +7296,15 @@ string Trapet(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Сумма двух углов равнобедренной трапеции равна $" << 2*alpha << "^{\\circ}$. Найдите больший угол этой трапеции. Ответ дайте в градусах. & " << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Сумма двух углов равнобедренной трапеции равна $" << 2*alpha << "^{\\circ}$. Найдите больший угол этой трапеции. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (-" << (a + b) / k << ",0);" << endl
                     << "            \\coordinate (B) at (-" << (a / k) << "," << h1 / k << ");" << endl
                     << "            \\coordinate (C) at (" << (a / k) << "," << h1 / k << ");" << endl
                     << "            \\coordinate (D) at (" << (a + b) / k << ",0);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7329,9 +7329,9 @@ string Trapet(int i)
                 } while (check != 1);
                 answer = h1*(a+b);
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Основания трапеции равны " << 2*a << " и " << 2*b << ", а высота равна " << h1 << ". Найдите площадь этой трапеции. & " << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Основания трапеции равны " << 2*a << " и " << 2*b << ", а высота равна " << h1 << ". Найдите площадь этой трапеции." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (-" << b / k << ",0);" << endl
                     << "            \\coordinate (B) at (-" << (a - h) / k << "," << h1 / k << ");" << endl
                     << "            \\coordinate (C) at (" << (a + h) / k << "," << h1 / k << ");" << endl
@@ -7342,7 +7342,7 @@ string Trapet(int i)
                     << "            \\tkzMarkRightAngle(B,O,A);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl
                     << "            \\draw[thick] (B) -- (O);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7360,9 +7360,9 @@ string Trapet(int i)
                 } while (check != 1);
                 answer = (2*a + 2*b + 2*a)*b/2;
                 cout << "%" << (i + 1) << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В равнобедренной трапеции известны высота, большее основание и угол при основании (см.рисунок). Найдите меньшее основание. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В равнобедренной трапеции известны высота, большее основание и угол при основании (см.рисунок). Найдите меньшее основание." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (-" << ((a + b) / k) << ",0);" << endl
                     << "            \\coordinate (B) at (-" << a / k << "," << (b / k) << ");" << endl
                     << "            \\coordinate (C) at (" << (a / k) << "," << (b / k) << ");" << endl
@@ -7373,7 +7373,7 @@ string Trapet(int i)
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.3](D,A,B);" << endl
                     << "            \\tkzLabelAngle[pos=0.7](D,A,B) {$45^{\\circ}$};" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7407,9 +7407,9 @@ string MnogougReshotka(int i)
                         answer = x;
                 } while (check != 1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item\n" << endl << "\\begin{minipage}[t]{0.75\\textwidth}" << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
                 cout << "        На клетчатой бумаге с размером клетки 1x1 изображен ромб. Найдите длину его большей диагонали. " << endl;
-                cout << "\\end{minipage}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw [gray!50, step=0.5] (0,0) grid (" << xmax << "," << ymax << ");" << endl
                     << "            \\coordinate (A) at (0.5," << ymax/2 << ");" << endl
                     << "            \\coordinate (B) at (" << xmax/2 << "," << ymax-0.5 << ");" << endl
@@ -7435,9 +7435,9 @@ string MnogougReshotka(int i)
                     answer = x * y / 2;
                 } while (check != 1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item\n" << endl << "\\begin{minipage}[t]{0.75\\textwidth}" << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
                 cout << "        На клетчатой бумаге с размером клетки 1x1 изображен ромб. Найдите площадь этого ромба. " << endl;
-                cout << "\\end{minipage}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw [gray!50, step=0.5] (0,0) grid (" << xmax << "," << ymax << ");" << endl
                     << "            \\coordinate (A) at (0.5," << ymax / 2 << ");" << endl
                     << "            \\coordinate (B) at (" << xmax / 2 << "," << ymax - 0.5 << ");" << endl
@@ -7467,9 +7467,9 @@ string MnogougReshotka(int i)
                     answer = (delta1 +delta2 + x)/2;
                 } while (check != 1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item\n" << endl << "\\begin{minipage}[t]{0.75\\textwidth}" << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
                 cout << "        На клетчатой бумаге с размером клетки 1x1 изображена трапеция. Найдите длину её средней линии. " << endl;
-                cout << "\\end{minipage}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw [gray!50, step=0.5] (0,0) grid (" << xmax << "," << ymax << ");" << endl
                     << "            \\coordinate (A) at (0.5,0.5);" << endl
                     << "            \\coordinate (B) at (" << (xmax-delta1) / 2 << "," << ymax - 0.5 << ");" << endl
@@ -7496,9 +7496,9 @@ string MnogougReshotka(int i)
                     answer = x*y;
                 } while (check != 1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item\n" << endl << "\\begin{minipage}[t]{0.75\\textwidth}" << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
                 cout << "        На клетчатой бумаге с размером клетки 1x1 изображен параллелограмм. Найдите его площадь." << endl;
-                cout << "\\end{minipage}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw [gray!50, step=0.5] (0,0) grid (" << xmax << "," << ymax << ");" << endl
                     << "            \\coordinate (A) at (0.5,0.5);" << endl
                     << "            \\coordinate (B) at (" << (delta1*0.5) << "," << ymax - 0.5 << ");" << endl
@@ -7531,9 +7531,9 @@ string MnogougReshotka(int i)
                         check = 0;
                 } while (check != 1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item\n" << endl << "\\begin{minipage}[t]{0.75\\textwidth}" << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
                 cout << "        На клетчатой бумаге с размером клетки 1x1 изображена трапеция. Найдите её площадь." << endl;
-                cout << "\\end{minipage}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw [gray!50, step=0.5] (0,0) grid (" << xmax << "," << ymax << ");" << endl
                     << "            \\coordinate (A) at (0.5,0.5);" << endl
                     << "            \\coordinate (B) at (" << (delta1*0.5) << "," << ymax - 0.5 << ");" << endl
@@ -7562,15 +7562,15 @@ string Okrugn(int i)
                 answer = a;
                 R = 1.5;
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Сторона квадрата равна $" << a << "\\sqrt{2}$. Найдите радиус окружности, описанной около этого квадрата. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Сторона квадрата равна $" << a << "\\sqrt{2}$. Найдите радиус окружности, описанной около этого квадрата." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\coordinate (A) at (45:" << R << ");" << endl
                     << "            \\coordinate (B) at (135:" << R << ");" << endl
                     << "            \\coordinate (C) at (225:" << R << ");" << endl
                     << "            \\coordinate (D) at (315:" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7581,9 +7581,9 @@ string Okrugn(int i)
                 R = 1.5;
                 r = R / sqrt(2);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Найдите площадь квадрата, описанного около окружности радиуса " << a << ". &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Найдите площадь квадрата, описанного около окружности радиуса " << a << "." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[fill=black] (0,0) circle(1pt);" << endl
                     << "            \\draw[thick] (0,0) circle(" << r << ");" << endl
                     << "            \\coordinate (A) at (45:" << R << ");" << endl
@@ -7591,7 +7591,7 @@ string Okrugn(int i)
                     << "            \\coordinate (C) at (225:" << R << ");" << endl
                     << "            \\coordinate (D) at (315:" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7602,9 +7602,9 @@ string Okrugn(int i)
                 R = 1.5;
                 r = R / sqrt(2);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Сторона квадрата равна " << a << ". Найдите радиус окружности, вписанной в этот квадрат. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Сторона квадрата равна " << a << ". Найдите радиус окружности, вписанной в этот квадрат." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[fill=black] (0,0) circle(1pt);" << endl
                     << "            \\draw[thick] (0,0) circle(" << r << ");" << endl
                     << "            \\coordinate (A) at (45:" << R << ");" << endl
@@ -7612,7 +7612,7 @@ string Okrugn(int i)
                     << "            \\coordinate (C) at (225:" << R << ");" << endl
                     << "            \\coordinate (D) at (315:" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7622,9 +7622,9 @@ string Okrugn(int i)
                 answer = 2*a;
                 R = 1.5;
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Радиус окружности, описанной около квадрата, равен $" << a << "\\sqrt{2}$. Найдите длину стороны этого квадрата. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Радиус окружности, описанной около квадрата, равен $" << a << "\\sqrt{2}$. Найдите длину стороны этого квадрата." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[fill=black] (0,0) circle(1pt);" << endl
                     << "            \\draw[thick] (0,0) circle(" << R << ");" << endl
                     << "            \\coordinate (A) at (45:" << R << ");" << endl
@@ -7632,7 +7632,7 @@ string Okrugn(int i)
                     << "            \\coordinate (C) at (225:" << R << ");" << endl
                     << "            \\coordinate (D) at (315:" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7643,9 +7643,9 @@ string Okrugn(int i)
                 R = 1.5;
                 r = R / sqrt(2);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Радиус вписанной в квадрат окружности равен $" << a << "\\sqrt{2}$. Найдите диагональ этого квадрата. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Радиус вписанной в квадрат окружности равен $" << a << "\\sqrt{2}$. Найдите диагональ этого квадрата." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[fill=black] (0,0) circle(1pt);" << endl
                     << "            \\draw[thick] (0,0) circle(" << r << ");" << endl
                     << "            \\coordinate (A) at (45:" << R << ");" << endl
@@ -7653,7 +7653,7 @@ string Okrugn(int i)
                     << "            \\coordinate (C) at (225:" << R << ");" << endl
                     << "            \\coordinate (D) at (315:" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                // cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7718,16 +7718,16 @@ string Okrugn(int i)
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
 
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Четырехугольник $ABCD$ описан около окружности, $AB=" << side[2] << "$, $BC=" << side[1] << "$, $CD=" << side[0] << "$. Найдите $AD$. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Четырехугольник $ABCD$ описан около окружности, $AB=" << side[2] << "$, $BC=" << side[1] << "$, $CD=" << side[0] << "$. Найдите $AD$." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << R/k << ");" << endl
                     << "            \\coordinate[label=left:$C$] (C) at (" << (alpha[0]+(betta[1]/2)) << ":" << l[1]/k << ");" << endl
                     << "            \\coordinate[label=left:$B$] (B) at (" << (alpha[1]+(betta[2]/2)) << ":" << l[2]/k << ");" << endl
                     << "            \\coordinate[label=below:$A$] (A) at (" << (alpha[2]+(betta[3]/2)) << ":" << l[3]/k << ");" << endl
                     << "            \\coordinate[label=right:$D$] (D) at (" << (alpha[3]+(betta[0]/2)) << ":" << l[0]/k << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7787,16 +7787,16 @@ string Okrugn(int i)
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
 
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Радиус окружности, вписанной в равнобедренную трапецию, равен " << R << ". Найдите высоту этой трапеции. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Радиус окружности, вписанной в равнобедренную трапецию, равен " << R << ". Найдите высоту этой трапеции." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << R/k << ");" << endl
                     << "            \\coordinate (C) at (" << (alpha[0]+(betta[1]/2)) << ":" << l[1]/k << ");" << endl
                     << "            \\coordinate (B) at (" << (alpha[1]+(betta[2]/2)) << ":" << l[2]/k << ");" << endl
                     << "            \\coordinate (A) at (" << (alpha[2]+(betta[3]/2)) << ":" << l[3]/k << ");" << endl
                     << "            \\coordinate (D) at (" << (alpha[3]+(betta[0]/2)) << ":" << l[0]/k << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7857,9 +7857,9 @@ string Okrugn(int i)
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
 
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Радиус окружности, вписанной в прямоугольную трапецию, равен " << R << ". Найдите высоту этой трапеции. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Радиус окружности, вписанной в прямоугольную трапецию, равен " << R << ". Найдите высоту этой трапеции." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << R/k << ");" << endl
                     << "            \\coordinate (C) at (" << (alpha[0]+(betta[1]/2)) << ":" << l[1]/k << ");" << endl
                     << "            \\coordinate (B) at (" << (alpha[1]+(betta[2]/2)) << ":" << l[2]/k << ");" << endl
@@ -7867,7 +7867,7 @@ string Okrugn(int i)
                     << "            \\coordinate (D) at (" << (alpha[3]+(betta[0]/2)) << ":" << l[0]/k << ");" << endl
                     << "            \\tkzMarkRightAngle(A,D,C);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7883,16 +7883,16 @@ string Okrugn(int i)
                         check = 0;
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Угол $A$ трапеции $ABCD$ с основаниями $AD$ и $BC$, вписанной в окружность, равен $" << (180 - answer) << "^{\\circ}$. Найдите угол $B$ этой трапеции. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Угол $A$ трапеции $ABCD$ с основаниями $AD$ и $BC$, вписанной в окружность, равен $" << (180 - answer) << "^{\\circ}$. Найдите угол $B$ этой трапеции. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << r << ");" << endl
                     << "            \\coordinate[label=below left:$A$] (A) at (" << 180 + betta[0] << ":" << r << ");" << endl
                     << "            \\coordinate[label=above left:$B$] (B) at (" << 180 - alpha[0] << ":" << r << ");" << endl
                     << "            \\coordinate[label=above right:$C$] (C) at (" << alpha[0] << ":" << r << ");" << endl
                     << "            \\coordinate[label=below right:$D$] (D) at (-" <<  betta[0] << ":" << r << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7937,16 +7937,16 @@ string Okrugn(int i)
                     answer = betta[1];
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Четырехугольник $ABCD$ вписан в окружность. Угол $ABD$ равен $" << (alpha[3]-alpha[2])/2 << "^{\\circ}$, угол $CAD$ равен $" << (360-alpha[3]+alpha[0])/2 << "^{\\circ}$. Найдите угол $ABC$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Четырехугольник $ABCD$ вписан в окружность. Угол $ABD$ равен $" << (alpha[3]-alpha[2])/2 << "^{\\circ}$, угол $CAD$ равен $" << (360-alpha[3]+alpha[0])/2 << "^{\\circ}$. Найдите угол $ABC$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << R << ");" << endl
                     << "            \\coordinate[label=below left:$A$] (A) at (" << alpha[2] << ":" << R << ");" << endl
                     << "            \\coordinate[label=above left:$B$] (B) at (" << alpha[1] << ":" << R << ");" << endl
                     << "            \\coordinate[label=above right:$C$] (C) at (" << alpha[0] << ":" << R << ");" << endl
                     << "            \\coordinate[label=below right:$D$] (D) at (" <<  alpha[3] << ":" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -7987,9 +7987,9 @@ string Okrugn(int i)
                     answer = (alpha[2] - alpha[1])/2;
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        В окружности с центром в точке $O$ отрезки $AC$ и $BD$ -- диаметры. Угол $AOD$ равен $" << (alpha[3] - alpha[2]) << "^{\\circ}$. Найдите угол $ACB$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В окружности с центром в точке $O$ отрезки $AC$ и $BD$ -- диаметры. Угол $AOD$ равен $" << (alpha[3] - alpha[2]) << "^{\\circ}$. Найдите угол $ACB$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << R << ");" << endl
                     << "            \\coordinate[label=below:$O$] (O) at(0,0);" << endl
                     << "            \\draw[fill=black] (O) circle(1pt);" << endl
@@ -7998,7 +7998,7 @@ string Okrugn(int i)
                     << "            \\coordinate[label=above right:$C$] (C) at (" << alpha[0] << ":" << R << ");" << endl
                     << "            \\coordinate[label=below right:$D$] (D) at (" <<  alpha[3] << ":" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (C) -- (B) -- (D);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -8026,16 +8026,16 @@ string Okrugn(int i)
                     answer = 90 - (180-alpha[1])/2;
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        На окружности по разные стороны от диаметра $AB$ взяты точки $M$ и $N$. Известно, что угол $NBA=" << (180-alpha[1])/2 << "^{\\circ}$. Найдите угол $NMB$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        На окружности по разные стороны от диаметра $AB$ взяты точки $M$ и $N$. Известно, что угол $NBA=" << (180-alpha[1])/2 << "^{\\circ}$. Найдите угол $NMB$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << R << ");" << endl
                     << "            \\coordinate[label=left:$A$] (A) at (" << alpha[2] << ":" << R << ");" << endl
                     << "            \\coordinate[label=above left:$N$] (N) at (" << alpha[1] << ":" << R << ");" << endl
                     << "            \\coordinate[label=right:$B$] (B) at (" << alpha[0] << ":" << R << ");" << endl
                     << "            \\coordinate[label=below right:$M$] (M) at (" <<  alpha[3] << ":" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (N) -- (M) -- (B);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -8051,9 +8051,9 @@ string Okrugn(int i)
                     check = 1;
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Треугольник $ABC$ вписан в окружность с центром в точке $O$. Точки $O$ и $C$ лежат в одной полуплоскости относительно прямой $AB$. Найдите угол $ACB$, если угол $AOB$  равен $" << (alpha[2] - alpha[1]) << "^{\\circ}$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Треугольник $ABC$ вписан в окружность с центром в точке $O$. Точки $O$ и $C$ лежат в одной полуплоскости относительно прямой $AB$. Найдите угол $ACB$, если угол $AOB$  равен $" << (alpha[2] - alpha[1]) << "^{\\circ}$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << R << ");" << endl
                     << "            \\coordinate[label=above:$O$] (O) at(0,0);" << endl
                     << "            \\draw[fill=black] (O) circle(1pt);" << endl
@@ -8061,7 +8061,7 @@ string Okrugn(int i)
                     << "            \\coordinate[label=below left:$A$] (A) at (" << alpha[1] << ":" << R << ");" << endl
                     << "            \\coordinate[label=above:$C$] (C) at (" << alpha[0] << ":" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (C) -- (B) -- (A) -- (O) -- (B);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
@@ -8106,16 +8106,16 @@ string Okrugn(int i)
                     answer = (alpha[3]-alpha[2])/2;
                 }while(check!=1);
                 cout << "%" << i + 1 << endl;
-                cout << "\\item  \\textbf{Условие}:" << endl << "\\begin{table}[h!]" << endl << "   \\begin{tabular}{m{10cm} m{3cm}}" << endl;
-                cout << "        Четырехугольник $ABCD$ вписан в окружность. Угол $ABC$ равен $" << (360-alpha[2]+alpha[0])/2 << "^{\\circ}$, угол $CAD$ равен $" << (360-alpha[3]+alpha[0])/2 << "^{\\circ}$. Найдите угол $ABD$. Ответ дайте в градусах. &" << endl;
-                cout << "       \\begin{center}" << endl << "            \\begin{tikzpicture}" << endl
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Четырехугольник $ABCD$ вписан в окружность. Угол $ABC$ равен $" << (360-alpha[2]+alpha[0])/2 << "^{\\circ}$, угол $CAD$ равен $" << (360-alpha[3]+alpha[0])/2 << "^{\\circ}$. Найдите угол $ABD$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
                     << "            \\draw[thick] (0,0) circle(" << R << ");" << endl
                     << "            \\coordinate[label=below left:$A$] (A) at (" << alpha[2] << ":" << R << ");" << endl
                     << "            \\coordinate[label=above left:$B$] (B) at (" << alpha[1] << ":" << R << ");" << endl
                     << "            \\coordinate[label=above right:$C$] (C) at (" << alpha[0] << ":" << R << ");" << endl
                     << "            \\coordinate[label=below right:$D$] (D) at (" <<  alpha[3] << ":" << R << ");" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
-                cout << "        \\end{tikzpicture}" << endl << "     \\end{center}" << endl << "      \\end{tabular}" << endl << "\\end{table}" << endl << endl << endl << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
                 Answer = "  \\item " + to_string(answer) + " \n";
                 break;
