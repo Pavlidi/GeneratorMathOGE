@@ -143,7 +143,7 @@ string FractionPrint(double number1, double number2)                 // Возв
     return fraction;
 }
 
-string FractionPlusMinus(int number)                            // Генерирует примеры на сложение и вычитание обычных дробей
+string FractionPlusMinus(int number, int AllType)                            // Генерирует примеры на сложение и вычитание обычных дробей
 {
     string Answer;
     double a[5];                                                                    // Составные дробей
@@ -155,7 +155,10 @@ string FractionPlusMinus(int number)                            // Генери�
     do {                                                                    // Генерирует дроби
         for (int n = 0; n < 5; n++)
             a[n] = (rand() % 50) + 1;
-        type = (rand() % 4) + 1;
+        if(AllType == 0)
+            type = (rand() % 4) + 1;
+        else
+            type = AllType;
         switch (type)
         {
 
@@ -221,7 +224,7 @@ string FractionPlusMinus(int number)                            // Генери�
     return Answer;
 }
 
-string FractionMultDiv(int number)
+string FractionMultDiv(int number, int AllType)
 {
     string Answer;
     double a[4];
@@ -231,7 +234,10 @@ string FractionMultDiv(int number)
     do {                                                                    // Генерирует дроби
         for (int n = 0; n < 4; n++)
             a[n] = (rand() % 50) + 1;
-        type = (rand() % 2) + 1;
+        if(AllType == 0)
+            type = (rand() % 2) + 1;
+        else
+            type = AllType;
         switch (type)
         {
 
@@ -258,12 +264,15 @@ string FractionMultDiv(int number)
     return Answer;
 }
 
-string DFractionMultDiv(int number)                               // Генерирует примеры на умножение и деление десятичных дробей
+string DFractionMultDiv(int number, int AllType)                               // Генерирует примеры на умножение и деление десятичных дробей
 {
     int type;
     double number1, number2, answer;
     string Answer;
-    type = (rand() % 2) + 1;
+    if(AllType == 0)
+        type = (rand() % 2) + 1;
+    else
+        type = AllType;
     switch (type)
     {
     case 1:
@@ -318,15 +327,19 @@ string DFractionPlusMinus(int number)                             // Генер�
 
 }
 
-string LetterEqu(int number)
+string LetterEqu(int number, int AllType)
 {
-    int type = (rand() % 4) + 1;
+    int type;
     int type_1 = (rand() % 4) + 1;
     double a = rand() % 27 + 2;
     double b = rand() % 27 + 2;
     double c = rand() % 27 + 2;
     double answer;
     string Answer;
+    if(AllType == 0)
+        type = (rand() % 4) + 1;
+    else
+        type = AllType;
     switch (type)
     {
     case 1:	// Буквенные 1
@@ -489,15 +502,19 @@ string LetterEqu(int number)
 
 }
 
-string Pow(int number)
+string Pow(int number, int AllType)
 {
-    int type = rand() % 4 + 1;
+    int type;
     int type_1;
     double a, b;
     double pok[4];
     double answer;
     double check;
     string Answer;
+    if(AllType == 0)
+        type = rand() % 4 + 1;
+    else
+        type = AllType;
     switch (type)
     {
     case 1:
@@ -639,15 +656,18 @@ string Pow(int number)
     return Answer;
 }
 
-string Sqrt(int number)
+string Sqrt(int number, int AllType)
 {
-    int type = rand() % 5 + 1;
+    int type;
     int type_1;
     double a, b, c, d, e;
     double answer;
     string Answer;
     double check;
-
+    if(AllType == 0)
+        type = rand() % 5 + 1;
+    else
+        type = AllType;
     switch (type)
     {
     case 1:
@@ -874,13 +894,17 @@ string Sqrt(int number)
     return Answer;
 }
 
-string TeorVer(int number)
+string TeorVer(int number, int AllType)
 {
-    int type = rand() % 7 + 1;
+    int type;
     double a, b, c, d, e, f;
     double answer;
     string Answer;
     double check;
+    if(AllType == 0)
+        type = rand() % 7 + 1;
+    else
+        type = AllType;
     switch (type)
     {
     case 1:
@@ -1132,9 +1156,9 @@ string ZnakNer(int type, int Type, int pos) // Type - тип неравенст�
     return znak;
 }
 
-string NumberLine2(int number)
+string NumberLine2(int number, int AllType)
 {
-    int type = rand()%2+1;
+            int type;
 			double a, p, q, r;
 			string min, mid, max;
 			FarString True[3];
@@ -1142,6 +1166,10 @@ string NumberLine2(int number)
 			string Out[4];
 			string Answer;
 			double answer, check;
+            if(AllType == 0)
+                type = rand()%2+1;
+            else
+                type = AllType;
 			switch (type)
 			{
 			case 1:
@@ -1252,14 +1280,14 @@ string NumberLine2(int number)
 						"		\\draw[fill=black] (r) circle (1.5pt);" << endl <<
 						"	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 					cout << "Какая из разностей $q-p$, $q-r$, $r-p$ положительна?" << endl;
-					cout << "\\begin{enumerate}" << endl
+					cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 						<< "	\\item " << Out[0] << endl
 						<< "	\\item " << Out[1] << endl
 						<< "	\\item " << Out[2] << endl
 						<< "	\\item " << Out[3] << endl
 						<< "\\end{enumerate}" << endl << endl;
 					//cout << answer << endl;
-					Answer = "  \\item " + to_string(answer) + " \n";
+					Answer = "  \\item " + FormatDouble(answer) + " \n";
 				}
 				else
 				{
@@ -1368,14 +1396,14 @@ string NumberLine2(int number)
 						"		\\draw[fill=black] (r) circle (1.5pt);" << endl <<
 						"	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 					cout << "Какая из разностей $q-p$, $q-r$, $r-p$ отрицательна?" << endl;
-					cout << "\\begin{enumerate}" << endl
+					cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 						<< "	\\item " << Out[0] << endl
 						<< "	\\item " << Out[1] << endl
 						<< "	\\item " << Out[2] << endl
 						<< "	\\item " << Out[3] << endl
 						<< "\\end{enumerate}" << endl << endl;
 					//cout << answer << endl;
-					Answer = "  \\item " + to_string(answer) + " \n";
+					Answer = "  \\item " + FormatDouble(answer) + " \n";
 				}
 				break;
 
@@ -1643,14 +1671,14 @@ string NumberLine2(int number)
 					}
 					cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 					cout << "Какое из утверждений для этого числа является верным?" << endl;
-					cout << "\\begin{enumerate}" << endl
+					cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 						<< "	\\item " << Out[0] << endl
 						<< "	\\item " << Out[1] << endl
 						<< "	\\item " << Out[2] << endl
 						<< "	\\item " << Out[3] << endl
 						<< "\\end{enumerate}" << endl << endl;
 					//cout << answer << endl;
-					Answer = "  \\item " + to_string(answer) + " \n";
+					Answer = "  \\item " + FormatDouble(answer) + " \n";
 				}
 				else
 				{
@@ -1916,30 +1944,34 @@ string NumberLine2(int number)
 					}
 					cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 					cout << "Какое из утверждений для этого числа является не верным?" << endl;
-					cout << "\\begin{enumerate}" << endl
+					cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 						<< "	\\item " << Out[0] << endl
 						<< "	\\item " << Out[1] << endl
 						<< "	\\item " << Out[2] << endl
 						<< "	\\item " << Out[3] << endl
 						<< "\\end{enumerate}" << endl << endl;
 					//cout << answer << endl;
-					Answer = "  \\item " + to_string(answer) + " \n";
+					Answer = "  \\item " + FormatDouble(answer) + " \n";
 				}
 
 			}
 			return Answer;
 }
 
-string NumberLine1(int number)
+string NumberLine1(int number, int AllType)
 {
     int answer;
 			int check = 0;
-			int type = rand()%7 + 1;
+			int type;
 			FarString True;
 			FarString False[3];
 			FarStringTF TrueFalse[4];
 			string Out[4];
 			string Answer;
+            if(AllType == 0)
+                type = rand()%7 + 1;
+            else
+                type = AllType;
 			switch (type)
 			{
 			case 1:
@@ -1998,14 +2030,14 @@ string NumberLine1(int number)
 				}
 
 				cout << "\\item Между какими числами заключено число $\\sqrt{" << a1 << "}$ ? " << endl;
-				cout << "\\begin{enumerate}" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
 					<< "	\\item " << Out[3] << endl
 					<< "\\end{enumerate}" << endl << endl;
 				//cout << answer << endl;
-				Answer = "  \\item " + to_string(answer) + " \n";
+				Answer = "  \\item " + FormatDouble(answer) + " \n";
 				break;
 
 			case 2:
@@ -2076,14 +2108,14 @@ string NumberLine1(int number)
 				}
 
 				cout << "\\item Между какими числами заключено число $\\frac{" << a2[0] << "}{" << a2[1] << "}$ ? " << endl;
-				cout << "\\begin{enumerate}" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
 					<< "	\\item " << Out[3] << endl
 					<< "\\end{enumerate}" << endl << endl;
 				//cout << answer << endl;
-				Answer = "  \\item " + to_string(answer) + " \n";
+				Answer = "  \\item " + FormatDouble(answer) + " \n";
 				break;
 
 			case 3:
@@ -2156,14 +2188,14 @@ string NumberLine1(int number)
 					}
 				}
 				cout << "\\item Какому из данных промежутков принадлежит число $\\frac{" << a3[0] << "}{" << a3[1] << "}$ ? " << endl;
-				cout << "\\begin{enumerate}" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
 					<< "	\\item " << Out[3] << endl
 					<< "\\end{enumerate}" << endl << endl;
 				//cout << answer << endl;
-				Answer = "  \\item " + to_string(answer) + " \n";
+				Answer = "  \\item " + FormatDouble(answer) + " \n";
 				break;
 
 			case 4:
@@ -2263,14 +2295,14 @@ string NumberLine1(int number)
 
 				cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 				cout << "Какая это точка?" << endl;
-				cout << "\\begin{enumerate}" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
 					<< "	\\item " << Out[3] << endl
 					<< "\\end{enumerate}" << endl << endl;
 				//cout << "Ответ: " << answer << endl;
-				Answer = "  \\item " + to_string(answer) + " \n";
+				Answer = "  \\item " + FormatDouble(answer) + " \n";
 
 				break;
 
@@ -2385,14 +2417,14 @@ string NumberLine1(int number)
 
 				cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 				cout << "Какая это точка?" << endl;
-				cout << "\\begin{enumerate}" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
 					<< "	\\item " << Out[3] << endl
 					<< "\\end{enumerate}" << endl << endl;
 				//cout << "Ответ: " << answer << endl;
-				Answer = "  \\item " + to_string(answer) + " \n";
+				Answer = "  \\item " + FormatDouble(answer) + " \n";
 
 				break;
 			
@@ -2502,14 +2534,14 @@ string NumberLine1(int number)
 
 				cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 				cout << "Какое это число?" << endl;
-				cout << "\\begin{enumerate}" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
 					<< "	\\item " << Out[3] << endl
 					<< "\\end{enumerate}" << endl << endl;
 				//cout << "Ответ: " << answer << endl;
-				Answer = "  \\item " + to_string(answer) + " \n";
+				Answer = "  \\item " + FormatDouble(answer) + " \n";
 				break;
 
 			case 7:
@@ -2614,14 +2646,14 @@ string NumberLine1(int number)
 
 				cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 				cout << "Какой точке соответствует число " << a7[aanswer] << "?" << endl;
-				cout << "\\begin{enumerate}" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
 					<< "	\\item " << Out[3] << endl
 					<< "\\end{enumerate}" << endl << endl;
 				//cout << "Ответ: " << answer << endl;
-				Answer = "  \\item " + to_string(answer) + " \n";
+				Answer = "  \\item " + FormatDouble(answer) + " \n";
 
 				break;
 			}
@@ -2640,15 +2672,19 @@ string SignUr(int pos, double number)
     return sgn;
 }
 
-string LineUravn(int number)
+string LineUravn(int number, int AllType)
 {
-    int type = rand()%2+1;
+            int type;
             double x;
             double a[4];
             int check = 0;
             double answer;
             double ost;
             string Answer;
+            if(AllType == 0)
+                type = rand()%2+1;
+            else
+                type = AllType;
             switch(type)
             {
                 case 1:
@@ -2666,7 +2702,7 @@ string LineUravn(int number)
 
                     cout << "\\item Найдите корень уравнения $" << SignUr(1, a[0]) << fabs(a[0]) << "(x " << SignUr(2, a[1]) << fabs(a[1]) << ")=" << SignUr(1, a[2]) << fabs(a[2]) << "$." << endl;
                     //cout << "\\\\ Ответ:" << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
 
                 case 2:
@@ -2684,16 +2720,16 @@ string LineUravn(int number)
 
                     cout << "\\item Найдите корень уравнения $" << SignUr(1,a[0]) << fabs(a[0]) << SignUr(2, a[1]) << fabs(a[1]) << "x = " << SignUr(1,a[2]) << fabs(a[2]) << "x" << SignUr(2, a[3]) << fabs(a[3]) << "$." << endl;
                     //cout << "\\\\ Ответ:" << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
 
             }
             return Answer;
 }
 
-string KvadrUravn(int number)
+string KvadrUravn(int number, int AllType)
 {
-    int type = rand()%3 + 1;
+            int type;
             int type1;
             double x[2];
             double a[3];
@@ -2702,6 +2738,10 @@ string KvadrUravn(int number)
             double ost;
             double change;
             string Answer;
+            if(AllType == 0)
+                type = rand()%3 + 1;
+            else
+                type = AllType;
             switch(type)
             {
                 case 1:
@@ -2731,7 +2771,7 @@ string KvadrUravn(int number)
                     else
                         cout << "Если уравнение имеет более одного корня, в ответ запишите меньший из корней." << endl;
                     //cout << "\\\\Ответ: " << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
 
                 case 2:
@@ -2758,7 +2798,7 @@ string KvadrUravn(int number)
                     else
                         cout << "Если уравнение имеет более одного корня, в ответ запишите больший из корней." << endl;
                     //cout << "\\\\Ответ: " << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
 
                 case 3:
@@ -2799,24 +2839,28 @@ string KvadrUravn(int number)
                     else
                         cout << "Если уравнение имеет более одного корня, в ответ запишите больший из корней." << endl;
                     //cout << "\\\\Ответ: " << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
 
             }
         return Answer;
 }
 
-string LineNerav(int number)
+string LineNerav(int number, int AllType)
 {
-    double x[2];
+            double x[2];
             double a[4];
-            int type = rand()%4+1;
+            int type;
             int check = 0;
             int answer;
             double ost;
             string Answer;
             FarStringTF TrueFalse[4];
             string Out[4];
+            if(AllType == 0)
+                type = rand()%4+1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:             // >
@@ -2886,14 +2930,14 @@ string LineNerav(int number)
                     }
                 }
                 cout << "\\item Укажите решение неравенства $" << SignUr(1,a[0]) << fabs(a[0]) << SignUr(2, a[1]) << fabs(a[1]) << "x >" << SignUr(1, a[2]) << fabs(a[2]) << "x" << SignUr(2, a[3]) << fabs(a[3]) << "$." << "\\\\";
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:         // >=
@@ -2963,14 +3007,14 @@ string LineNerav(int number)
                     }
                 }
                 cout << "\\item Укажите решение неравенства $" << SignUr(1, a[0]) << fabs(a[0]) << SignUr(2, a[1]) << fabs(a[1]) << "x \\geq" << SignUr(1, a[2]) << fabs(a[2]) << "x" << SignUr(2, a[3]) << fabs(a[3]) << "$." << "\\\\";
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:             // <
@@ -3040,14 +3084,14 @@ string LineNerav(int number)
                     }
                 }
                 cout << "\\item Укажите решение неравенства $" << SignUr(1, a[0]) << fabs(a[0]) << SignUr(2, a[1]) << fabs(a[1]) << "x <" << SignUr(1, a[2]) << fabs(a[2]) << "x" << SignUr(2, a[3]) << fabs(a[3]) << "$." << "\\\\";
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:         // =<
@@ -3117,26 +3161,26 @@ string LineNerav(int number)
                     }
                 }
                 cout << "\\item Укажите решение неравенства $" << SignUr(1, a[0]) << fabs(a[0]) << SignUr(2, a[1]) << fabs(a[1]) << "x \\leq" << SignUr(1, a[2]) << fabs(a[2]) << "x" << SignUr(2, a[3]) << fabs(a[3]) << "$." << "\\\\";
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
             }
             return Answer;
 }
 
-string KvadrNerav(int number)
+string KvadrNerav(int number, int AllType)
 {
-    double x1[2];
+            double x1[2];
             double x2[2];
             double a1[2];
             double a2[2];
-            int type = rand()%4 + 1;
+            int type;
             int type1;              
             int check = 0;
             int strog;              // Строгое или нестрогое неравенство
@@ -3147,6 +3191,10 @@ string KvadrNerav(int number)
             string Answer;
             FarStringTF TrueFalse[4];
             string Out[4];
+            if(AllType == 0)
+                type = rand()%4 + 1;
+            else
+                type = AllType;
             switch(type)
             {
             case 1:
@@ -3260,14 +3308,14 @@ string KvadrNerav(int number)
                     }
                 }
                 cout << "\\item Укажите решение неравенства: $" << SignUr(1,a1[0]) << to_string(static_cast<int>(fabs(a1[0]))) << "x" << SignUr(2,a1[1]) << to_string(static_cast<int>(fabs(a1[1]))) << "x^2" << ZnakKvadrNer(strog, type1) << "0$." << endl;
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
 
                 break;
 
@@ -3382,14 +3430,14 @@ string KvadrNerav(int number)
                 }
 
                 cout << "\\item Укажите решение неравенства: $(x" << SignUr(2,a1[0]) << to_string(static_cast<int>(fabs(a1[0]))) << ")(x" << SignUr(2,a1[1]) << to_string(static_cast<int>(fabs(a1[1]))) << ")" << ZnakKvadrNer(strog, type1) << "0$." << endl;
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
 
                 break;
 
@@ -3505,14 +3553,14 @@ string KvadrNerav(int number)
                     cout << "\\item Укажите решение неравенства: $x^2-" << to_string(static_cast<int>(fabs(a1[0]))) << "" << ZnakKvadrNer(strog, type1) << "0$." << endl;
                 else
                     cout << "\\item Укажите решение неравенства: $x^2" << ZnakKvadrNer(strog, type1) << "" << to_string(static_cast<int>(fabs(a1[0]))) << "$" <<  endl;
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
 
                 break;
             
@@ -3717,14 +3765,14 @@ string KvadrNerav(int number)
                     }
                 }
 
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
 
                 break;
 
@@ -3733,12 +3781,12 @@ string KvadrNerav(int number)
             return Answer;
 }
 
-string SistNerav(int number)
+string SistNerav(int number, int AllType)
 {
     double x[2];
             double a1[3];
             double a2[3];
-            int type = rand()%2+1;
+            int type;
             int type1;              
             int check = 0;
             int strog;              // Строгое или нестрогое неравенство
@@ -3748,6 +3796,10 @@ string SistNerav(int number)
             string Answer;
             FarStringTF TrueFalse[4];
             string Out[4];
+            if(AllType == 0)
+                type = rand()%2+1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:
@@ -3946,14 +3998,14 @@ string SistNerav(int number)
                     << "    x" << SignUr(2, a2[0]) << to_string(static_cast<int>(fabs(a2[0]))) << ZnakNer(strog, type1, 2) << SignUr(1, a2[1]) << to_string(static_cast<int>(fabs(a2[1]))) << endl
                     << "\\end{cases}" << endl
                     << "$$" << endl << endl;
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -4184,27 +4236,31 @@ string SistNerav(int number)
                     << "    " << SignUr(1, a2[0]) << to_string(static_cast<int>(fabs(a2[0]))) << SignUr(2, a2[1]) << to_string(static_cast<int>(fabs(a2[1]))) << "x" << ZnakNer(strog, type1, 2) << SignUr(1, a2[2]) << to_string(static_cast<int>(fabs(a2[2]))) << endl
                     << "\\end{cases}" << endl
                     << "$$" << endl << endl;
-                cout << "\\begin{enumerate}" << endl
+                cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
                     << "	\\item " << Out[0] << endl
                     << "	\\item " << Out[1] << endl
                     << "	\\item " << Out[2] << endl
                     << "	\\item " << Out[3] << endl
                     << "\\end{enumerate}" << endl << endl;
                 //cout << "Ответ: " << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             }
             return Answer;
 }
 
-string RaschetForm(int number)
+string RaschetForm(int number, int AllType)
 {
     double P, I, R, tc, tf, n, Price1, Price2, a, w, sin1, sin2, S, d, t1, t2;
-            int type = rand()%7+1;
+            int type;
             string Answer;
             int check = 0;
             double answer;
+            if(AllType == 0)
+                type = rand()%7+1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:
@@ -4219,7 +4275,7 @@ string RaschetForm(int number)
                 cout << "\\item Мощность постоянного тока (в ваттах) вычисляется по формуле $P=I^2R$, где $I$ -- сила тока (в амперах), $R$ -- сопротивление (в омах). " << endl
                    << "Пользуясь этой формулой, найдите сопротивление $R$, если мощность составляет " << P << " Вт, а сила тока равна " << I << "А. Ответ дайте в омах." << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -4232,7 +4288,7 @@ string RaschetForm(int number)
                 } while (check != 1);
                 cout << "\\item Перевести значение температуры по шкале Фаренгейта в шкалу Цельсия позволяет формула $t_C=\\frac{5}{9}(t_F-32)$, где $t_C$ -- температура в градусах Цельсия, $t_F$ -- температура в градусах Фаренгейта. Скольким градусам по шкале Цельсия соответствует " << tf << " градусов по шкале Фаренгейта?" << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -4242,7 +4298,7 @@ string RaschetForm(int number)
                 answer = Price1 + (Price2 * n);
                 cout << "\\item В фирме <<Родник>> стоимость (в рублях) колодца из железобетонных колец рассчитывается по формуле $C=" << Price1 << "+" << Price2 << "n$, где $n$ -- число колец, установленных в колодце. Пользуясь этой формулой, рассчитайте стоимость колодца из " << n << " колец. Ответ дайте в рублях." << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -4256,7 +4312,7 @@ string RaschetForm(int number)
                 cout << "\\item Чтобы перевести значение температуры по шкале Цельсия в шкалу Фаренгейта, пользуются формулой $t_F=1,8t_C+32$, " << endl
                     << "где $t_C$ -- температура в градусах Цельсия, $t_F$ -- температура в градусах Фаренгейта. Скольким градусам по шкале Фаренгейта соответствует " << tc << "градусов по шкале Цельсия?" << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 5:
@@ -4272,7 +4328,7 @@ string RaschetForm(int number)
                     << "вычисляется по формуле $a=\\omega^2R$, где $\\omega$ -- угловая скорость $\\left(\\text{в }\\text{с}^{-1}\\right)$, $R$ -- радиус окружности (в метрах)." << endl
                     << " Пользуясь этой формулой, найдите радиус $R$, если угловая скорость равна $" << w << "\\text{ с}^ {-1}$, а центростремительное ускорение равно $" << a << "\\frac{\\text{м}}{\\text{с} ^ 2}$.Ответ дайте в метрах." << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 6:
@@ -4291,7 +4347,7 @@ string RaschetForm(int number)
                 cout << "\\item Площадь четырехугольника можно вычислить по формуле $S=\\frac{d_1d_2\\sin(\\alpha)}{2}$, где $d_1$ и $d_2$ -- длины диагоналей четырехугольника, $\\alpha$." << endl
                     << " Пользуясь этой формулой, найдите длину диагонали $d_2$, если $d_1=" << d << "$, $\\sin(\\alpha)=\\frac{" << sin1 << "}{" << sin2 << "}$, а $S=" << S << "$." << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 7:
@@ -4308,13 +4364,13 @@ string RaschetForm(int number)
                 cout << "\\item В фирме <<Эх, прокачу!>> стоимость поездки на такси (в рублях) длительностью более " << t1 << " минут рассчитывается по формуле $C=" << Price1 << "+" << Price2 << "(t-" << t1 << ")$, где $t$ -- длительность поездки (в минутах). " << endl
                     << "Пользуясь этой формулой, рассчитайте стоимость " << t2 << "-минутной поездки. Ответ дайте в рублях." << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
             }
             return Answer;    
 }
 
-string Graphic()
+string Graphic(int AllType)
 {
     // Код начало
             double k[4];
@@ -4323,7 +4379,11 @@ string Graphic()
             double c[4];
             double xver[4];
             double yver[4];
-            int type = rand()%4+1;
+            int type;
+            if(AllType == 0)
+                type = rand()%4+1;
+            else
+                type = AllType;
             int answer[3];
             int Var;
             Graph GraphVar[4];
@@ -4898,13 +4958,17 @@ string Graphic()
             return Answer;
 }
 
-string ArivmetProgr()
+string ArivmetProgr(int AllType)
 {
     double t[3];
             double delta;
             double a0, an;
             double answer;
-            int type = rand()%4 + 1;
+            int type;
+            if(AllType == 0)
+                type = rand()%4 + 1;
+            else
+                type = AllType;
             string Answer;
             switch (type)
             {
@@ -4917,7 +4981,7 @@ string ArivmetProgr()
                 cout << "\\item При проведении опыта вещество равномерно охлаждали в течение " << t[0] << " минут. При этом каждую минуту температура вещества уменьшалась на $" << delta << "^{\\circ}C$." <<
                     "Найдите температуру вещества (в градусах Цельсия) через " << t[1] << " минуты после начала проведения опыта, если его начальная температура составляла $" << a0 << "^{\\circ}C$." << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -4928,7 +4992,7 @@ string ArivmetProgr()
                 answer = t[0] * (a0 + an) / 2;
                 cout << "\\item Камень бросают в глубокое ущелье. При этом в первую секунду он пролетает " << a0 << " метров, а в каждую следующую секунду на 10 метров больше, чем в предыдущую, до тех пор, пока не достигнет дна ущелья. Сколько метров пролетит камень за первые " << t[0] << " секунд?" << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -4946,7 +5010,7 @@ string ArivmetProgr()
                     cout << "\\item В амфитеатре " << t[0] << " рядов. В первом ряду " << a0 << " мест, а в каждом следующем на " << delta << " мест больше, чем в предыдущем. Сколько всего мест в амфитеатре?" << endl;
                 }
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -4976,21 +5040,25 @@ string ArivmetProgr()
                 } while (check != 1);
                 cout << "\\item В амфитеатре " << t[0] << " рядов, причём в каждом следующем ряду на одно и то же число мест больше, чем в предыдущем. В " << t[1] << "-м ряду " << a2 << " мест, а в " << t[2] << "-м ряду " << a3 << " мест. Сколько мест в последнем ряду амфитеатра?" << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
             }
             return Answer;
 }
 
-string GeomProgr()
+string GeomProgr(int AllType)
 {
     double t[2];                   // t0 - период, tn - время когда  ищем
             double a0, an, A;
             double delta;
-            int type = rand()%3+1;
+            int type;
             double answer;
             int check = 0;
             string Answer;
+            if(AllType == 0)
+                type = rand()%3+1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:
@@ -5019,7 +5087,7 @@ string GeomProgr()
                         "составляла " << a0 << " мг.Найдите массу изотопа через " << t[1] << " минуты.Ответ дайте в миллиграммах." << endl;
                 }
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -5042,7 +5110,7 @@ string GeomProgr()
                 cout << "\\item У Тани есть теннисный мячик. Она со всей силы бросила его об асфальт. После первого отскока мячик подлетел на" << endl
                     << "высоту " << a0 << " см, а после каждого следующего отскока от асфальта подлетал на высоту в " << delta << " раза меньше предыдущей. После какого по счёту отскока высота, на которую подлетит мячик, станет меньше " << an << " см?" << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -5088,7 +5156,7 @@ string GeomProgr()
                     cout << "\\item В ходе биологического эксперимента в чашку Петри с питательной средой поместили колонию микроорганизмов массой " << a0 << " мг. За каждые " << t[0] <<" минут масса колонии увеличивается в " << delta << " раза. Найдите массу колонии микроорганизмов через " << t[1] << " минут после начала эксперимента. Ответ дайте в миллиграммах." << endl;
                     //cout << answer << endl;
                 }
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
 
@@ -5096,14 +5164,18 @@ string GeomProgr()
             return Answer;
 }
 
-string TreugUgli(int i)
+string TreugUgli(int i, int AllType)
 {
     double Agrad, Bgrad, Arad, Brad;
             double r1, r2;
-            int type = rand()%6+1;
+            int type;
             string Answer;
             double answer;
             int check = 0;
+            if(AllType == 0)
+                type = rand()%6+1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:
@@ -5143,7 +5215,7 @@ string TreugUgli(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (O);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -5172,7 +5244,7 @@ string TreugUgli(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -5203,7 +5275,7 @@ string TreugUgli(int i)
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.5](C,A,D);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -5229,7 +5301,7 @@ string TreugUgli(int i)
                     << "            \\tkzMarkRightAngle(A,B,C);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 5:
@@ -5257,7 +5329,7 @@ string TreugUgli(int i)
                     << "            \\tkzMarkRightAngle(B,H,A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 6:
@@ -5285,20 +5357,24 @@ string TreugUgli(int i)
                     << "            \\draw[thick] (B) -- (A) -- (C) -- (B);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
             }
             return Answer;
 }
 
-string TreugStoron(int i)
+string TreugStoron(int i, int AllType)
 {
     double r, R, a, h, b, c, k, max, betta[2], gamma[3];
             double alpha;
-            int type = rand()%16 + 1;
+            int type;
             string Answer;
             double answer;
             int check = 0;
+            if(AllType == 0)
+                type = rand()%16 + 1;
+            else
+                type = AllType;
             switch(type)
             {
             case 1:
@@ -5316,7 +5392,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -5334,7 +5410,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -5352,7 +5428,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -5370,7 +5446,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 5:
@@ -5390,7 +5466,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkSegment[mark=|, thick](D,A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 6:
@@ -5410,7 +5486,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.7](D,C,A);" << endl;
                    cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 7:
@@ -5429,7 +5505,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkRightAngle(A,D,C);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 8:
@@ -5457,7 +5533,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 9:
@@ -5491,7 +5567,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 10:
@@ -5520,7 +5596,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 11:
@@ -5569,7 +5645,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (M) -- (N);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 12:
@@ -5620,7 +5696,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (M) -- (B);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 13:
@@ -5649,7 +5725,7 @@ string TreugStoron(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 14:
@@ -5688,7 +5764,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 15:
@@ -5730,7 +5806,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A) -- (O) -- (C);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 16:
@@ -5766,7 +5842,7 @@ string TreugStoron(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
 
@@ -5774,13 +5850,17 @@ string TreugStoron(int i)
             return Answer;
 }
 
-string TreugReshotka(int i)
+string TreugReshotka(int i, int AllType)
 {
-    int type = rand()%3+1;
+            int type;
             double xmax, ymax, xmid, x, y;
             string Answer;
             double answer;
             int check = 0;
+            if(AllType == 0)
+                type = rand()%3+1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:
@@ -5811,7 +5891,7 @@ string TreugReshotka(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -5843,7 +5923,7 @@ string TreugReshotka(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);";
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -5875,21 +5955,25 @@ string TreugReshotka(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (A);";
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
             }
             return Answer;
 }
 
-string TreugTrigonom(int i)
+string TreugTrigonom(int i, int AllType)
 {
     double a, b, c, max, k, chisl, znam;
             double alpha;
-            int type = rand()%18+1;
+            int type;
             string Answer;
             double answer;
             int nod;
             int check = 0;
+            if(AllType == 0)
+                type = rand()%18+1;
+            else
+                type = AllType;
             switch(type)
             {
             case 1: // sinA
@@ -5924,7 +6008,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:     // sinB
@@ -5959,7 +6043,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:     //cosA
@@ -5994,7 +6078,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -6029,7 +6113,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 5:     // tgA
@@ -6057,7 +6141,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 6:         // tgB
@@ -6085,7 +6169,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 7:     // sinA kat
@@ -6125,7 +6209,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 8:     //sinA gip
@@ -6167,7 +6251,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 9:         // sinB kat
@@ -6209,7 +6293,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 10:        // sin B gip
@@ -6251,7 +6335,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 11:
@@ -6293,7 +6377,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 12:
@@ -6335,7 +6419,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 13:
@@ -6377,7 +6461,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 14:
@@ -6419,7 +6503,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 15:
@@ -6458,7 +6542,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 16:
@@ -6497,7 +6581,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 17:
@@ -6536,7 +6620,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 18:
@@ -6575,7 +6659,7 @@ string TreugTrigonom(int i)
                     << "            \\tkzMarkRightAngle(A,C,B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
 
@@ -6583,14 +6667,18 @@ string TreugTrigonom(int i)
             return Answer;
 }
 
-string Parallelogramm(int i)
+string Parallelogramm(int i, int AllType)
 {
-    int type = rand()%15 + 1;
+            int type;
             string Answer;
             double alpha, betta;
             double a, b, c, h, max, k, l, h1, h2, S;
             double answer;
             int check = 0;
+            if(AllType == 0)
+                type = rand()%15 + 1;
+            else
+                type = AllType;
             switch(type)
             {
             case 1:
@@ -6630,7 +6718,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
                 
             case 2:
@@ -6671,7 +6759,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -6717,7 +6805,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (D);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -6762,7 +6850,7 @@ string Parallelogramm(int i)
                         << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
                         cout << "\\end{tikzpicture}" << endl << endl;
                     //cout << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
 
                 case 5:
@@ -6787,7 +6875,7 @@ string Parallelogramm(int i)
                         << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl;
                         cout << "\\end{tikzpicture}" << endl << endl;
                     //cout << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
 
                 case 6:
@@ -6823,7 +6911,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 7:
@@ -6861,7 +6949,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (O);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 8:
@@ -6878,7 +6966,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 9:
@@ -6897,7 +6985,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (O);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 10:
@@ -6949,7 +7037,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (O1) -- (D) -- (O2) -- (B);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
             
             case 11:
@@ -6966,7 +7054,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 12:
@@ -6983,7 +7071,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 13:
@@ -7019,7 +7107,7 @@ string Parallelogramm(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
                     cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 14:
@@ -7045,7 +7133,7 @@ string Parallelogramm(int i)
                         << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (D);" << endl;
                         cout << "\\end{tikzpicture}" << endl << endl;
                     //cout << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
 
             case 15:
@@ -7082,21 +7170,25 @@ string Parallelogramm(int i)
                         << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (O) -- (B);" << endl;
                         cout << "\\end{tikzpicture}" << endl << endl;
                     //cout << answer << endl;
-                    Answer = "  \\item " + to_string(answer) + " \n";
+                    Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             }
             return Answer;
 }
 
-string Trapet(int i)
+string Trapet(int i, int AllType)
 {
-    int type = rand()%10 + 1;
+            int type;
             string Answer;
             double alpha, betta;
             double a, b, c, h, max, k, l, h1, h2, S;
             double answer;
             int check = 0;
+            if(AllType == 0)
+                type = rand()%10 + 1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:
@@ -7122,7 +7214,7 @@ string Trapet(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -7149,12 +7241,12 @@ string Trapet(int i)
                     << "            \\coordinate[label=right:$" << b << "$] (O1) at (-" << (a / k) << "," << (b / (2 * k)) << ");" << endl
                     << "            \\coordinate[label=above:$" << (2 * a) << "$] (O2) at (0," << (b / k) << ");" << endl
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.3](D,A,B);" << endl
-                    << "            \\tkzLabelAngle[pos=0.7](D,A,B) {$45^{\\circ}$};" << endl
+                    << "            \\tkzLabelAngle[pos=1](D,A,B) {$45^{\\circ}$};" << endl
                     << "            \\tkzMarkRightAngle(B,O,D);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (O);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -7181,12 +7273,12 @@ string Trapet(int i)
                     << "            \\coordinate[label=right:$" << b << "$] (O1) at (-" << (a / k) << "," << (b / (2 * k)) << ");" << endl
                     << "            \\coordinate[label=below:$" << (2 * a + 2 * b) << "$] (O2) at (0,0);" << endl
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.3](D,A,B);" << endl
-                    << "            \\tkzLabelAngle[pos=0.7](D,A,B) {$45^{\\circ}$};" << endl
+                    << "            \\tkzLabelAngle[pos=1](D,A,B) {$45^{\\circ}$};" << endl
                     << "            \\tkzMarkRightAngle(B,O,D);" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (B) -- (O);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -7224,7 +7316,7 @@ string Trapet(int i)
                     << "            \\draw[thick] (N) -- (M);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 5:
@@ -7260,7 +7352,7 @@ string Trapet(int i)
                     << "            \\draw[thick] (N) -- (M);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 6:
@@ -7299,7 +7391,7 @@ string Trapet(int i)
                     << "            \\draw[thick] (C) -- (O);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 7:
@@ -7332,7 +7424,7 @@ string Trapet(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 8:
@@ -7365,7 +7457,7 @@ string Trapet(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 9:
@@ -7403,7 +7495,7 @@ string Trapet(int i)
                     << "            \\draw[thick] (B) -- (O);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 10:
@@ -7430,23 +7522,27 @@ string Trapet(int i)
                     << "            \\coordinate[label=above:$" << 2*a << "$] (O1) at (0," << (b / k) << ");" << endl
                     << "            \\coordinate[label=below:$" << (2 * a + 2 * b) << "$] (O2) at (0,0);" << endl
                     << "            \\tkzMarkAngle[mark=,arc=l,size=0.3](D,A,B);" << endl
-                    << "            \\tkzLabelAngle[pos=0.7](D,A,B) {$45^{\\circ}$};" << endl
+                    << "            \\tkzLabelAngle[pos=1](D,A,B) {$45^{\\circ}$};" << endl
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
             }
             return Answer;
 }
 
-string MnogougReshotka(int i)
+string MnogougReshotka(int i, int AllType)
 {
-    int type = rand()%5+1;
+            int type;
             double xmax, ymax, x, y, delta1, delta2, x1;
             string Answer;
             double answer;
             int check = 0;
+            if(AllType == 0)
+                type = rand()%5+1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:
@@ -7477,7 +7573,7 @@ string MnogougReshotka(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -7505,7 +7601,7 @@ string MnogougReshotka(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -7537,7 +7633,7 @@ string MnogougReshotka(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -7566,7 +7662,7 @@ string MnogougReshotka(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 5:
@@ -7601,19 +7697,23 @@ string MnogougReshotka(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
             }
             return Answer;
 }
 
-string Okrugn(int i)
+string Okrugn(int i, int AllType)
 {
     double r, R, a, alpha[4], change, k, l[4], side[4], betta[4], max;
             double answer;
             string Answer;
             int check = 0;
-            int type = rand()%14 + 1;
+            int type;
+            if(AllType == 0)
+                type = rand()%14 + 1;
+            else
+                type = AllType;
             switch (type)
             {
             case 1:
@@ -7631,7 +7731,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 2:
@@ -7652,7 +7752,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 3:
@@ -7673,7 +7773,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 4:
@@ -7693,7 +7793,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 5:
@@ -7714,7 +7814,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                // cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 6:
@@ -7788,7 +7888,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 7:
@@ -7857,7 +7957,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 8:
@@ -7928,7 +8028,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 9:
@@ -7953,7 +8053,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 10:
@@ -8007,7 +8107,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 11:
@@ -8059,7 +8159,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (C) -- (B) -- (D);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 12:
@@ -8096,7 +8196,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (N) -- (M) -- (B);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 13:
@@ -8122,7 +8222,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (C) -- (B) -- (A) -- (O) -- (B);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
             case 14:
@@ -8176,7 +8276,7 @@ string Okrugn(int i)
                     << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A) -- (C) -- (B) -- (D);" << endl;
                 cout << "\\end{tikzpicture}" << endl << endl;
                 //cout << answer << endl;
-                Answer = "  \\item " + to_string(answer) + " \n";
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
 
@@ -8189,8 +8289,8 @@ int main()
 {
     setlocale(LC_ALL, "ru");
     srand(time(NULL));
-    int count_task[37];              // Создает массив из номеров заданий
-    for (int i = 0; i < 37; i++)     // Обнуляет количество заданий в номерах
+    int count_task[49];              // Создает массив из номеров заданий
+    for (int i = 0; i < 49; i++)     // Обнуляет количество заданий в номерах
         count_task[i] = 0;
     int choice = 0;
     string Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
@@ -8202,18 +8302,18 @@ int main()
             do {
                 cout << "\033[2J\033[1;1H";
                 cout << "Выберите темы:" << endl;
-                cout << "1. Числа и вычисления (" << count_task[0] + count_task[1] + count_task[2] + count_task[3] + count_task[4] + count_task[5] + count_task[6] << ")" << endl;
-                cout << "2. Алгебраические выражения (" << count_task[7] + count_task[8] + count_task[9] + count_task[10] << ")" << endl;
-                cout << "3. Теория вероятности (" << count_task[11] << ")" << endl; // Задание 12
-                cout << "4. Числовые неравенства, координатная прямая (" << count_task[12] + count_task[13] + count_task[14] << ")" << endl;
-                cout << "5. Уравнения (" << count_task[15] + count_task[16] + count_task[17] << ")" << endl;
-                cout << "6. Неравенства (" << count_task[18] + count_task[19] + count_task[20] + count_task[21] << ")" << endl;
-                cout << "7. Рассчеты по формулам (" << count_task[22] << ")" << endl;
-                cout << "8. Графики (" << count_task[23] << ")" << endl;
-                cout << "9. Прогрессии (" << count_task[24] + count_task[25] + count_task[26] << ")" << endl;
-                cout << "10. Треугольники (" << count_task[27] + count_task[28] + count_task[29] + count_task[30] + count_task[31] << ")" << endl;
-                cout << "11. Многоугольники (" << count_task[32] + count_task[33] + count_task[34] + count_task[35] << ")" << endl;
-                cout << "12. Окружности (" << count_task[36] << ")" << endl << endl;
+                cout << "1. Числа и вычисления (" << count_task[0] + count_task[1] + count_task[2] + count_task[3] + count_task[4] + count_task[5] + count_task[6] + count_task[37] << ")" << endl;
+                cout << "2. Алгебраические выражения (" << count_task[7] + count_task[8] + count_task[9] + count_task[10] + count_task[38] << ")" << endl;
+                cout << "3. Теория вероятности (" << count_task[11] + count_task[39] << ")" << endl; // Задание 12
+                cout << "4. Числовые неравенства, координатная прямая (" << count_task[12] + count_task[13] + count_task[14] + count_task[40] << ")" << endl;
+                cout << "5. Уравнения (" << count_task[15] + count_task[16] + count_task[17] + count_task[41] << ")" << endl;
+                cout << "6. Неравенства (" << count_task[18] + count_task[19] + count_task[20] + count_task[21] + count_task[42] << ")" << endl;
+                cout << "7. Рассчеты по формулам (" << count_task[22] + count_task[43] << ")" << endl;
+                cout << "8. Графики (" << count_task[23] + count_task[44] << ")" << endl;
+                cout << "9. Прогрессии (" << count_task[24] + count_task[25] + count_task[26] + count_task[45] << ")" << endl;
+                cout << "10. Треугольники (" << count_task[27] + count_task[28] + count_task[29] + count_task[30] + count_task[31] + count_task[46] << ")" << endl;
+                cout << "11. Многоугольники (" << count_task[32] + count_task[33] + count_task[34] + count_task[35] + count_task[47] << ")" << endl;
+                cout << "12. Окружности (" << count_task[36] + count_task[48] << ")" << endl << endl;
                 cout << "69. Сгенерировать" << endl;
                 cout << "0. Назад" << endl;
                 cout << "Ваш выбор: ";
@@ -8226,8 +8326,9 @@ int main()
                         cout << "Выберите темы:" << endl;
                         cout << "1. Обычные дроби (" << count_task[0] + count_task[1] + count_task[2] << ")" << endl;
                         cout << "2. Десятичные дроби (" << count_task[3] + count_task[4] + count_task[5] << ")" << endl;
-                        cout << "3. Все целиком (" << count_task[6] << ")" << endl << endl; // Задание 7
-                        cout << "0. Назад" << endl;
+                        cout << "3. Все целиком (" << count_task[6] << ")" << endl; // Задание 7
+                        cout << "4. Все типы этого номер (" << count_task[37] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
@@ -8260,6 +8361,7 @@ int main()
                                     cout << "Введите количество заданий: ";
                                     cin >> count_task[2];
                                     break;
+                                    
                                 }
                             } while (choice != 0);
                             choice = -1;
@@ -8302,6 +8404,10 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[6];
                             break;
+
+                        case 4:
+                            count_task[37] = 1;
+                            break;
                         }
                     } while (choice != 0);
                     choice = -1;
@@ -8313,8 +8419,9 @@ int main()
                         cout << "1. Буквенные выражения (" << count_task[7] << ")" << endl; // Задание 8
                         cout << "2. Степени (" << count_task[8] << ")" << endl; // Задание 9
                         cout << "3. Корни (" << count_task[9] << ")" << endl; // Задание 10
-                        cout << "4. Все целиком (" << count_task[10] << ")" << endl << endl; // Задание 11
-                        cout << "0. Назад" << endl;
+                        cout << "4. Все целиком (" << count_task[10] << ")" << endl; // Задание 11
+                        cout << "5. Все типы этого номер (" << count_task[38] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
@@ -8342,14 +8449,37 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[10];
                             break;
+
+                        case 5:
+                            count_task[38] = 1;
+                            break;
                         }
                     } while (choice != 0);
                     choice = -1;
                     break;
                 case 3:
-                    cout << "\033[2J\033[1;1H";
-                    cout << "Введите количество заданий: ";
-                    cin >> count_task[11];
+                    do {
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Произвольное количество (" << count_task[11] << ")" << endl;
+                        cout << "2. Все типы этого номер (" << count_task[39] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                        case 1:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[11];
+                            break;
+
+                        case 2:
+                            count_task[39] = 1;
+                            break;
+                        }
+                    } while (choice != 0);
+                    choice = -1;
                     break;
                 case 4:
                     do {
@@ -8357,8 +8487,9 @@ int main()
                         cout << "Выберите темы:" << endl;
                         cout << "1. Координатная прямая (" << count_task[12] << ")" << endl; // Задание 13
                         cout << "2. Числовые неравенства (" << count_task[13] << ")" << endl; // Задание 14
-                        cout << "3. Все целиком (" << count_task[14] << ")" << endl << endl; // Задание 15
-                        cout << "0. Назад" << endl;
+                        cout << "3. Все целиком (" << count_task[14] << ")" << endl; // Задание 15
+                        cout << "4. Все типы этого номер (" << count_task[40] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
@@ -8380,6 +8511,10 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[14];
                             break;
+
+                        case 4:
+                            count_task[40] = 1;
+                            break;
                         }
                     } while (choice != 0);
                     choice = -1;
@@ -8391,7 +8526,8 @@ int main()
                         cout << "1. Линейные уравнения (" << count_task[15] << ")" << endl; // Задание 16
                         cout << "2. Квадратные уравнения (" << count_task[16] << ")" << endl; // Задание 17
                         cout << "3. Все целиком (" << count_task[17] << ")" << endl; // Задание 18
-                        cout << "0. Назад" << endl;
+                        cout << "4. Все типы этого номер (" << count_task[41] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
@@ -8413,6 +8549,10 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[17];
                             break;
+
+                        case 4:
+                            count_task[41] = 1;
+                            break;
                         }
                     }while (choice != 0);
                     choice = -1;
@@ -8425,7 +8565,8 @@ int main()
                         cout << "2. Квадратные неравенства (" << count_task[19] << ")" << endl; // Задание 20
                         cout << "3. Системы неравенства (" << count_task[20] << ")" << endl; // Задание 21
                         cout << "4. Все целиком (" << count_task[21] << ")" << endl; // Задание 22
-                        cout << "0. Назад" << endl;
+                        cout << "5. Все типы этого номер (" << count_task[42] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
@@ -8453,19 +8594,61 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[21];
                             break;
+
+                        case 5:
+                            count_task[42] = 1;
+                            break;
                         }
                     }while (choice != 0);
                     choice = -1;
                     break;
                 case 7:
-                    cout << "\033[2J\033[1;1H";
-                    cout << "Введите количество заданий: ";
-                    cin >> count_task[22];                              // Задание 23
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Произвольное количество (" << count_task[22] << ")" << endl; // Задание 19
+                        cout << "2. Все типы этого номер (" << count_task[43] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                        case 1:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[22];
+                            break;
+
+                        case 2:
+                            count_task[43] = 1;
+                            break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
                     break;
                 case 8:
-                    cout << "\033[2J\033[1;1H";
-                    cout << "Введите количество заданий: ";
-                    cin >> count_task[23];                              // Задание 24
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Произвольное количество (" << count_task[23] << ")" << endl; // Задание 19
+                        cout << "2. Все типы этого номер (" << count_task[44] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                        case 1:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[23];
+                            break;
+
+                        case 2:
+                            count_task[44] = 1;
+                            break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
                     break;
                 case 9:
                     do{
@@ -8474,7 +8657,8 @@ int main()
                         cout << "1. Арифметические прогрессии (" << count_task[24] << ")" << endl; // Задание 25
                         cout << "2. Геометрические прогрессии (" << count_task[25] << ")" << endl; // Задание 26
                         cout << "3. Все целиком (" << count_task[26] << ")" << endl; // Задание 27
-                        cout << "0. Назад" << endl;
+                        cout << "4. Все типы этого номер (" << count_task[45] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
@@ -8496,6 +8680,10 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[26];
                             break;
+
+                        case 4:
+                            count_task[45] = 1;
+                            break;
                         }
                     }while (choice != 0);
                     choice = -1;
@@ -8509,7 +8697,8 @@ int main()
                         cout << "3. Треугольники - на квадратной решетке (" << count_task[29] << ")" << endl; // Задание 26
                         cout << "4. Треугольники - тригонометрия (" << count_task[30] << ")" << endl; // Задание 26
                         cout << "5. Все целиком (" << count_task[31] << ")" << endl; // Задание 27
-                        cout << "0. Назад" << endl;
+                        cout << "6. Все типы этого номер (" << count_task[46] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
@@ -8543,6 +8732,10 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[31];
                             break;
+
+                        case 6:
+                            count_task[46] = 1;
+                            break;
                         }
                     }while (choice != 0);
                     choice = -1;
@@ -8555,7 +8748,8 @@ int main()
                         cout << "2. Трапеции (" << count_task[33] << ")" << endl; // Задание 34
                         cout << "3. Многоугольник - на квадратной решетке (" << count_task[34] << ")" << endl; // Задание 35
                         cout << "4. Все целиком (" << count_task[35] << ")" << endl; // Задание 36
-                        cout << "0. Назад" << endl;
+                        cout << "5. Все типы этого номер (" << count_task[47] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
@@ -8583,15 +8777,38 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[35];
                             break;
+
+                        case 5:
+                            count_task[47] = 1;
+                            break;
                         }
                     }while (choice != 0);
                     choice = -1;
                     break;
                 case 12:
-                    cout << "\033[2J\033[1;1H";
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Произвольное количество (" << count_task[36] << ")" << endl; // Задание 19
+                        cout << "2. Все типы этого номер (" << count_task[48] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                        case 1:
+                            cout << "\033[2J\033[1;1H";
                             cout << "Введите количество заданий: ";
-                            cin >> count_task[36];                      // Задание 37
+                            cin >> count_task[36];
                             break;
+
+                        case 2:
+                            count_task[48] = 1;
+                            break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
+                    break;
                 case 69:
                     cout << "\033[2J\033[1;1H";
                     int Count = 0;
@@ -8599,7 +8816,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[0]; i++)
                         {
-                            Answers = Answers + FractionPlusMinus(Count);
+                            Answers = Answers + FractionPlusMinus(Count, 0);
                             Count++;
                         }
                         count_task[0] = 0;
@@ -8608,7 +8825,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[1]; i++)
                         {
-                            Answers = Answers + FractionMultDiv(Count);
+                            Answers = Answers + FractionMultDiv(Count, 0);
                             Count++;
                         }
                         count_task[1] = 0;
@@ -8618,9 +8835,9 @@ int main()
                         for (int i = 0; i < count_task[2]; i++)
                         {
                             if (pow(-1, rand()) > 0)
-                                Answers = Answers + FractionMultDiv(Count);
+                                Answers = Answers + FractionMultDiv(Count, 0);
                             else
-                                Answers = Answers + FractionPlusMinus(Count);
+                                Answers = Answers + FractionPlusMinus(Count, 0);
                             Count++;
                         }
                         count_task[2] = 0;
@@ -8638,7 +8855,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[4]; i++)
                         {
-                            Answers = Answers + DFractionMultDiv(Count);
+                            Answers = Answers + DFractionMultDiv(Count, 0);
                             Count++;
                         }
                         count_task[4] = 0;
@@ -8655,7 +8872,7 @@ int main()
                             }
                             else
                             {
-                                Answers = Answers + DFractionMultDiv(Count);
+                                Answers = Answers + DFractionMultDiv(Count, 0);
                                 Count++;
                             }
                         }
@@ -8669,12 +8886,12 @@ int main()
                             switch (z)
                             {
                             case 1:
-                                Answers = Answers + FractionPlusMinus(Count);
+                                Answers = Answers + FractionPlusMinus(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + FractionMultDiv(Count);
+                                Answers = Answers + FractionMultDiv(Count, 0);
                                 Count++;
                                 break;
 
@@ -8684,7 +8901,7 @@ int main()
                                 break;
 
                             case 4:
-                                Answers = Answers + DFractionMultDiv(Count);
+                                Answers = Answers + DFractionMultDiv(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -8695,7 +8912,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[7]; i++)
                         {
-                            Answers = Answers + LetterEqu(Count);
+                            Answers = Answers + LetterEqu(Count, 0);
                             Count++;
                         }
                         count_task[7] = 0;
@@ -8704,7 +8921,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[8]; i++)
                         {
-                            Answers = Answers + Pow(Count);
+                            Answers = Answers + Pow(Count, 0);
                             Count++;
                         }
                         count_task[8] = 0;
@@ -8713,7 +8930,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[9]; i++)
                         {
-                            Answers = Answers + Sqrt(Count);
+                            Answers = Answers + Sqrt(Count, 0);
                             Count++;
                         }
                         count_task[9] = 0;
@@ -8726,17 +8943,17 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + LetterEqu(Count);
+                                Answers = Answers + LetterEqu(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + Pow(Count);
+                                Answers = Answers + Pow(Count, 0);
                                 Count++;
                                 break;
 
                             case 3:
-                                Answers = Answers + Sqrt(Count);
+                                Answers = Answers + Sqrt(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -8747,7 +8964,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[11]; i++)
                         {
-                            Answers = Answers + TeorVer(Count);
+                            Answers = Answers + TeorVer(Count, 0);
                             Count++;
                         }
                         count_task[11] = 0;
@@ -8756,7 +8973,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[12]; i++)
                         {
-                            Answers = Answers + NumberLine1(Count);
+                            Answers = Answers + NumberLine1(Count, 0);
                             Count++;
                         }
                         count_task[12] = 0;
@@ -8765,7 +8982,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[13]; i++)
                         {
-                            Answers = Answers + NumberLine2(Count);
+                            Answers = Answers + NumberLine2(Count, 0);
                             Count++;
                         }
                         count_task[13] = 0;
@@ -8778,12 +8995,12 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + NumberLine1(Count);
+                                Answers = Answers + NumberLine1(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + NumberLine2(Count);
+                                Answers = Answers + NumberLine2(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -8794,7 +9011,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[15]; i++)
                         {
-                            Answers = Answers + LineUravn(Count);
+                            Answers = Answers + LineUravn(Count, 0);
                             Count++;
                         }
                         count_task[15] = 0;
@@ -8803,7 +9020,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[16]; i++)
                         {
-                            Answers = Answers + KvadrUravn(Count);
+                            Answers = Answers + KvadrUravn(Count, 0);
                             Count++;
                         }
                         count_task[16] = 0;
@@ -8816,12 +9033,12 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + LineUravn(Count);
+                                Answers = Answers + LineUravn(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + KvadrUravn(Count);
+                                Answers = Answers + KvadrUravn(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -8832,7 +9049,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[18]; i++)
                         {
-                            Answers = Answers + LineNerav(Count);
+                            Answers = Answers + LineNerav(Count, 0);
                             Count++;
                         }
                         count_task[18] = 0;
@@ -8841,7 +9058,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[19]; i++)
                         {
-                            Answers = Answers + KvadrNerav(Count);
+                            Answers = Answers + KvadrNerav(Count, 0);
                             Count++;
                         }
                         count_task[19] = 0;
@@ -8850,7 +9067,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[20]; i++)
                         {
-                            Answers = Answers + SistNerav(Count);
+                            Answers = Answers + SistNerav(Count, 0);
                             Count++;
                         }
                         count_task[20] = 0;
@@ -8863,17 +9080,17 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + LineNerav(Count);
+                                Answers = Answers + LineNerav(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + KvadrNerav(Count);
+                                Answers = Answers + KvadrNerav(Count, 0);
                                 Count++;
                                 break;
 
                             case 3:
-                                Answers = Answers + SistNerav(Count);
+                                Answers = Answers + SistNerav(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -8884,7 +9101,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[22]; i++)
                         {
-                            Answers = Answers + RaschetForm(Count);
+                            Answers = Answers + RaschetForm(Count, 0);
                             Count++;
                         }
                         count_task[22] = 0;
@@ -8893,7 +9110,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[23]; i++)
                         {
-                            Answers = Answers + Graphic();
+                            Answers = Answers + Graphic(0);
                             Count++;
                         }
                         count_task[23] = 0;
@@ -8902,7 +9119,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[24]; i++)
                         {
-                            Answers = Answers + ArivmetProgr();
+                            Answers = Answers + ArivmetProgr(0);
                             Count++;
                         }
                         count_task[24] = 0;
@@ -8911,7 +9128,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[25]; i++)
                         {
-                            Answers = Answers + GeomProgr();
+                            Answers = Answers + GeomProgr(0);
                             Count++;
                         }
                         count_task[25] = 0;
@@ -8924,12 +9141,12 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + ArivmetProgr();
+                                Answers = Answers + ArivmetProgr(0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + GeomProgr();
+                                Answers = Answers + GeomProgr(0);
                                 Count++;
                                 break;
                             }
@@ -8940,7 +9157,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[27]; i++)
                         {
-                            Answers = Answers + TreugUgli(Count);
+                            Answers = Answers + TreugUgli(Count, 0);
                             Count++;
                         }
                         count_task[27] = 0;
@@ -8949,7 +9166,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[28]; i++)
                         {
-                            Answers = Answers + TreugStoron(Count);
+                            Answers = Answers + TreugStoron(Count, 0);
                             Count++;
                         }
                         count_task[28] = 0;
@@ -8958,7 +9175,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[29]; i++)
                         {
-                            Answers = Answers + TreugReshotka(Count);
+                            Answers = Answers + TreugReshotka(Count, 0);
                             Count++;
                         }
                         count_task[29] = 0;
@@ -8967,7 +9184,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[30]; i++)
                         {
-                            Answers = Answers + TreugTrigonom(Count);
+                            Answers = Answers + TreugTrigonom(Count, 0);
                             Count++;
                         }
                         count_task[30] = 0;
@@ -8980,22 +9197,22 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + TreugUgli(Count);
+                                Answers = Answers + TreugUgli(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + TreugStoron(Count);
+                                Answers = Answers + TreugStoron(Count, 0);
                                 Count++;
                                 break;
 
                             case 3:
-                                Answers = Answers + TreugReshotka(Count);
+                                Answers = Answers + TreugReshotka(Count, 0);
                                 Count++;
                                 break;
 
                             case 4:
-                                Answers = Answers + TreugTrigonom(Count);
+                                Answers = Answers + TreugTrigonom(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9006,7 +9223,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[32]; i++)
                         {
-                            Answers = Answers + Parallelogramm(Count);
+                            Answers = Answers + Parallelogramm(Count, 0);
                             Count++;
                         }
                         count_task[32] = 0;
@@ -9015,7 +9232,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[33]; i++)
                         {
-                            Answers = Answers + Trapet(Count);
+                            Answers = Answers + Trapet(Count, 0);
                             Count++;
                         }
                         count_task[33] = 0;
@@ -9024,7 +9241,7 @@ int main()
                     {
                         for (int i = 0; i < count_task[34]; i++)
                         {
-                            Answers = Answers + MnogougReshotka(Count);
+                            Answers = Answers + MnogougReshotka(Count, 0);
                             Count++;
                         }
                         count_task[34] = 0;
@@ -9037,17 +9254,17 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + Parallelogramm(Count);
+                                Answers = Answers + Parallelogramm(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + Trapet(Count);
+                                Answers = Answers + Trapet(Count, 0);
                                 Count++;
                                 break;
 
                             case 3:
-                                Answers = Answers + MnogougReshotka(Count);
+                                Answers = Answers + MnogougReshotka(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9058,10 +9275,190 @@ int main()
                     {
                         for (int i = 0; i < count_task[36]; i++)
                         {
-                            Answers = Answers + Okrugn(Count);
+                            Answers = Answers + Okrugn(Count, 0);
                             Count++;
                         }
                         count_task[36] = 0;
+                    }
+                    if (count_task[37] != 0)
+                    {
+                        for(int i = 1; i <= 4; i++)
+                        {
+                            Answers = Answers + FractionPlusMinus(Count, i);
+                            Count++;
+                        }
+                        for(int i = 1; i <= 2; i++)
+                        {
+                            Answers = Answers + FractionMultDiv(Count, i);
+                            Count++;
+                        }
+                        for(int i = 1; i <= 2; i++)
+                        {
+                            Answers = Answers + DFractionMultDiv(Count, i);
+                            Count++;
+                        }
+                        Answers = Answers + DFractionPlusMinus(Count);
+                        Count++;
+                        count_task[37] = 0;
+                    }
+                    if(count_task[38] != 0)
+                    {
+                        for(int i = 1; i <=4; i++)
+                        {
+                            Answers = Answers + LetterEqu(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=4; i++)
+                        {
+                            Answers = Answers + Pow(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=5; i++)
+                        {
+                            Answers = Answers + Sqrt(Count, i);
+                            Count ++;
+                        }
+                        count_task[38] = 0;
+                    }
+                    if(count_task[39] != 0)
+                    {
+                        for(int i = 1; i <=7; i++)
+                        {
+                            Answers = Answers + TeorVer(Count, i);
+                            Count ++;
+                        }
+                        count_task[39] = 0;
+                    }
+                    if(count_task[40] != 0)
+                    {
+                        for(int i = 1; i <=7; i++)
+                        {
+                            Answers = Answers + NumberLine1(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=2; i++)
+                        {
+                            Answers = Answers + NumberLine2(Count, i);
+                            Count ++;
+                        }
+                        count_task[40] = 0;
+                    }
+                    if(count_task[41] != 0)
+                    {
+                        for(int i = 1; i <=2; i++)
+                        {
+                            Answers = Answers + LineUravn(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=3; i++)
+                        {
+                            Answers = Answers + KvadrUravn(Count, i);
+                            Count ++;
+                        }
+                        count_task[41] = 0;
+                    }
+                    if(count_task[42] != 0)
+                    {
+                        for(int i = 1; i <=4; i++)
+                        {
+                            Answers = Answers + LineNerav(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=4; i++)
+                        {
+                            Answers = Answers + KvadrNerav(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=2; i++)
+                        {
+                            Answers = Answers + SistNerav(Count, i);
+                            Count ++;
+                        }
+                        count_task[42] = 0;
+                    }
+                    if(count_task[43] != 0)
+                    {
+                        for(int i = 1; i <=7; i++)
+                        {
+                            Answers = Answers + RaschetForm(Count, i);
+                            Count ++;
+                        }
+                        count_task[43] = 0;
+                    }
+                    if(count_task[44] != 0)
+                    {
+                        for(int i = 1; i <=4; i++)
+                        {
+                            Answers = Answers + Graphic(i);
+                            Count ++;
+                        }
+                        count_task[44] = 0;
+                    }
+                    if(count_task[45] != 0)
+                    {
+                        for(int i = 1; i <=4; i++)
+                        {
+                            Answers = Answers + ArivmetProgr(i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=3; i++)
+                        {
+                            Answers = Answers + GeomProgr(i);
+                            Count ++;
+                        }
+                        count_task[45] = 0;
+                    }
+                    if(count_task[46] != 0)
+                    {
+                        for(int i = 1; i <=6; i++)
+                        {
+                            Answers = Answers + TreugUgli(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=16; i++)
+                        {
+                            Answers = Answers + TreugStoron(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=3; i++)
+                        {
+                            Answers = Answers + TreugReshotka(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=18; i++)
+                        {
+                            Answers = Answers + TreugTrigonom(Count, i);
+                            Count ++;
+                        }
+                        count_task[46] = 0;
+                    }
+                    if(count_task[47] != 0)
+                    {
+                        for(int i = 1; i <=15; i++)
+                        {
+                            Answers = Answers + Parallelogramm(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=10; i++)
+                        {
+                            Answers = Answers + Trapet(Count, i);
+                            Count ++;
+                        }
+                        for(int i = 1; i <=5; i++)
+                        {
+                            Answers = Answers + MnogougReshotka(Count, i);
+                            Count ++;
+                        }
+                        count_task[47] = 0;
+                    }
+                    if(count_task[48] != 0)
+                    {
+                        for(int i = 1; i <=14; i++)
+                        {
+                            Answers = Answers + Okrugn(Count, i);
+                            Count ++;
+                        }
+                        count_task[48] = 0;
                     }
                     cout << endl << "}" << endl << "\\end{enumerate} \n" << Answers << endl << "\\end{enumerate}" << endl << endl;
                     Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
@@ -9085,12 +9482,12 @@ int main()
                             switch (z)
                             {
                             case 1:
-                                Answers = Answers + FractionPlusMinus(Count);
+                                Answers = Answers + FractionPlusMinus(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + FractionMultDiv(Count);
+                                Answers = Answers + FractionMultDiv(Count, 0);
                                 Count++;
                                 break;
 
@@ -9100,7 +9497,7 @@ int main()
                                 break;
 
                             case 4:
-                                Answers = Answers + DFractionMultDiv(Count);
+                                Answers = Answers + DFractionMultDiv(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9112,12 +9509,12 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + NumberLine1(Count);
+                                Answers = Answers + NumberLine1(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + NumberLine2(Count);
+                                Answers = Answers + NumberLine2(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9129,17 +9526,17 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + LetterEqu(Count);
+                                Answers = Answers + LetterEqu(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + Pow(Count);
+                                Answers = Answers + Pow(Count, 0);
                                 Count++;
                                 break;
 
                             case 3:
-                                Answers = Answers + Sqrt(Count);
+                                Answers = Answers + Sqrt(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9151,12 +9548,12 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + LineUravn(Count);
+                                Answers = Answers + LineUravn(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + KvadrUravn(Count);
+                                Answers = Answers + KvadrUravn(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9164,19 +9561,19 @@ int main()
 
                 for (int i = 0; i < 1; i++)             // 11
                         {
-                            Answers = Answers + TeorVer(Count);
+                            Answers = Answers + TeorVer(Count, 0);
                             Count++;
                         }
 
                 for (int i = 0; i < 1; i++)             // 23
                         {
-                            Answers = Answers + Graphic();
+                            Answers = Answers + Graphic(0);
                             Count++;
                         }
 
                 for (int i = 0; i < 1; i++)             // 22
                         {
-                            Answers = Answers + RaschetForm(Count);
+                            Answers = Answers + RaschetForm(Count, 0);
                             Count++;
                         }
 
@@ -9186,17 +9583,17 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + LineNerav(Count);
+                                Answers = Answers + LineNerav(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + KvadrNerav(Count);
+                                Answers = Answers + KvadrNerav(Count, 0);
                                 Count++;
                                 break;
 
                             case 3:
-                                Answers = Answers + SistNerav(Count);
+                                Answers = Answers + SistNerav(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9208,12 +9605,12 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + ArivmetProgr();
+                                Answers = Answers + ArivmetProgr(0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + GeomProgr();
+                                Answers = Answers + GeomProgr(0);
                                 Count++;
                                 break;
                             }
@@ -9225,17 +9622,17 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + TreugUgli(Count);
+                                Answers = Answers + TreugUgli(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + TreugStoron(Count);
+                                Answers = Answers + TreugStoron(Count, 0);
                                 Count++;
                                 break;
 
                             case 3:
-                                Answers = Answers + TreugTrigonom(Count);
+                                Answers = Answers + TreugTrigonom(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9247,12 +9644,12 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + Parallelogramm(Count);
+                                Answers = Answers + Parallelogramm(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + Trapet(Count);
+                                Answers = Answers + Trapet(Count, 0);
                                 Count++;
                                 break;
                             }
@@ -9260,7 +9657,7 @@ int main()
 
                 for (int i = 0; i < 1; i++)             // 36
                         {
-                            Answers = Answers + Okrugn(Count);
+                            Answers = Answers + Okrugn(Count, 0);
                             Count++;
                         }
 
@@ -9270,12 +9667,12 @@ int main()
                             switch (type_1)
                             {
                             case 1:
-                                Answers = Answers + TreugReshotka(Count);
+                                Answers = Answers + TreugReshotka(Count, 0);
                                 Count++;
                                 break;
 
                             case 2:
-                                Answers = Answers + MnogougReshotka(Count);
+                                Answers = Answers + MnogougReshotka(Count, 0);
                                 Count++;
                                 break;
                             }
