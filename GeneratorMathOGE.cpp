@@ -2700,7 +2700,7 @@ string LineUravn(int number, int AllType)
                         check = 0;
                     }while(check!=1);
 
-                    cout << "\\item Найдите корень уравнения $" << SignUr(1, a[0]) << fabs(a[0]) << "(x " << SignUr(2, a[1]) << fabs(a[1]) << ")=" << SignUr(1, a[2]) << fabs(a[2]) << "$." << endl;
+                    cout << "\\item Найдите корень уравнения: $$" << SignUr(1, a[0]) << fabs(a[0]) << "(x " << SignUr(2, a[1]) << fabs(a[1]) << ")=" << SignUr(1, a[2]) << fabs(a[2]) << "$$" << endl;
                     //cout << "\\\\ Ответ:" << answer << endl;
                     Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
@@ -2718,7 +2718,7 @@ string LineUravn(int number, int AllType)
                         check = 0;
                     }while(check!=1);
 
-                    cout << "\\item Найдите корень уравнения $" << SignUr(1,a[0]) << fabs(a[0]) << SignUr(2, a[1]) << fabs(a[1]) << "x = " << SignUr(1,a[2]) << fabs(a[2]) << "x" << SignUr(2, a[3]) << fabs(a[3]) << "$." << endl;
+                    cout << "\\item Найдите корень уравнения: $$" << SignUr(1,a[0]) << fabs(a[0]) << SignUr(2, a[1]) << fabs(a[1]) << "x = " << SignUr(1,a[2]) << fabs(a[2]) << "x" << SignUr(2, a[3]) << fabs(a[3]) << "$$" << endl;
                     //cout << "\\\\ Ответ:" << answer << endl;
                     Answer = "  \\item " + FormatDouble(answer) + " \n";
                     break;
@@ -2765,7 +2765,7 @@ string KvadrUravn(int number, int AllType)
                     }while(check!=1);
                     type1 = rand()%2;
                     answer = x[type1];
-                    cout << "\\item Решите уравнение $" << SignUr(1, a[0]) << fabs(a[0]) << "x^2 " << SignUr(2, a[1]) << fabs(a[1]) << " = 0$. \\\\" << endl;
+                    cout << "\\item Решите уравнение: $$" << SignUr(1, a[0]) << fabs(a[0]) << "x^2 " << SignUr(2, a[1]) << fabs(a[1]) << " = 0$$" << endl;
                     if(type1 == 0)
                         cout << "Если уравнение имеет более одного корня, в ответ запишите больший из корней." << endl;
                     else
@@ -2792,7 +2792,7 @@ string KvadrUravn(int number, int AllType)
                     }
                     type1 = rand()%2;
                     answer = x[type1];
-                    cout << "\\item Решите уравнение $" << SignUr(1, a[0]) << fabs(a[0]) << "x^2 = " << SignUr(1, a[1]) << fabs(a[1]) << "x$. \\\\" << endl;
+                    cout << "\\item Решите уравнение: $$" << SignUr(1, a[0]) << fabs(a[0]) << "x^2 = " << SignUr(1, a[1]) << fabs(a[1]) << "x$$" << endl;
                     if(type1 == 0)
                         cout << "Если уравнение имеет более одного корня, в ответ запишите меньший из корней." << endl;
                     else
@@ -2833,7 +2833,7 @@ string KvadrUravn(int number, int AllType)
                     }
                     type1 = rand()%2;
                     answer = x[type1];
-                    cout << "\\item Решите уравнение $" << SignUr(1,a[0]) << fabs(a[0]) << "x^2" << SignUr(2,a[1]) << fabs(a[1]) << "x" << SignUr(2,a[2]) << fabs(a[2]) << "=0$. \\\\" << endl;
+                    cout << "\\item Решите уравнение: $$" << SignUr(1,a[0]) << fabs(a[0]) << "x^2" << SignUr(2,a[1]) << fabs(a[1]) << "x" << SignUr(2,a[2]) << fabs(a[2]) << "=0$$" << endl;
                     if(type1 == 0)
                         cout << "Если уравнение имеет более одного корня, в ответ запишите меньший из корней." << endl;
                     else
@@ -8284,13 +8284,256 @@ string Okrugn(int i, int AllType)
             return Answer;
 }
 
+string FirstFiveRoad(int i, int AllType)
+{
+    string Answer;
+    int type = rand()%2 + 1;
+    int typeother;
+    switch(type)
+    {
+        case 1:     // Тип 1 из файла
+            cout << "%" << i + 1 << endl; // 1
+            cout << "\\item" << endl
+             << "\\begin{minipage}[t]{\\linewidth}" << endl
+             << "\\begin{wrapfigure}{r}{0.4\\textwidth}" << endl
+             << "\\centering" << endl
+             << "\\includegraphics[width=0.4\\textwidth]{Дороги1.png}" << endl
+             << "\\end{wrapfigure}" << endl
+             << "Саша летом отдыхает у дедушки в деревне Масловка. В субботу они собираются съездить на велосипедах в село Захарово в магазин. Из деревни Масловка в село Захарово можно проехать по прямой лесной дорожке. Есть более длинный путь: по прямолинейному шоссе через деревню Вёсенка до деревни Полянка, где нужно повернуть под прямым углом направо на другое шоссе, ведущее в село Захарово. Есть и третий маршрут: в деревне Вёсенка можно свернуть на прямую тропинку в село Захарово, которая идёт мимо пруда. Лесная дорожка и тропинка образуют с шоссе прямоугольные треугольники. По шоссе Саша с дедушкой едут со скоростью 20 км/ч, а по лесной дорожке и тропинке -- со скоростью 15 км/ч. На плане изображено взаимное расположение населённых пунктов, сторона каждой клетки равна 1 км." << endl
+             << "\\vspace{1em} % Пустая строка (вертикальный пробел)" << endl << endl;
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "Пользуясь описанием, определите, какими цифрами на плане обозначены населённые пункты. Заполните таблицу, в бланк ответов перенесите последовательность трёх цифр без пробелов, запятых и других дополнительных символов." << endl
+                << "\\begin{center}" << endl
+                << "\\begin{tabular}{|l|l|l|l|}" << endl
+                << "\\hline" << endl
+                << "\\small Насел. пункты & д. Масловка & с. Захарово & д. Вёсенка \\\\ \\hline" << endl
+                << "Цифры &  &  &  \\\\ \\hline" << endl
+                << "\\end{tabular}" << endl
+                << "\\end{center}" << endl
+                << "\\end{minipage}" << endl << endl;
+                Answer = Answer + "  \\item 142 \n";
+                break;
+
+                case 2:
+                cout << "Пользуясь описанием, определите, какими цифрами на плане обозначены населённые пункты. Заполните таблицу, в бланк ответов перенесите последовательность трёх цифр без пробелов, запятых и других дополнительных символов." << endl
+                << "\\begin{center}" << endl
+                << "\\begin{tabular}{|l|l|l|l|}" << endl
+                << "\\hline" << endl
+                << "\\small Насел. пункты & д. Полянка & с. Захарово & д. Вёсенка \\\\ \\hline" << endl
+                << "Цифры &  &  &  \\\\ \\hline" << endl
+                << "\\end{tabular}" << endl
+                << "\\end{center}" << endl
+                << "\\end{minipage}" << endl << endl;
+                Answer = Answer + "  \\item 342 \n";
+                break;
+            }
+
+            cout << "%" << i + 2 << endl; // 2
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "\\item     Сколько километров проедут Саша с дедушкой от деревни Масловка до села Захарово, если они поедут по шоссе через деревню Полянка?" << endl << endl;
+                Answer = Answer + "  \\item 41 \n";
+                break;
+
+                case 2:
+                cout << "\\item     Сколько километров проедут Саша с дедушкой от деревни Вёсенка до села Захарово, если они поедут по шоссе через деревню Полянка?" << endl << endl;
+                Answer = Answer + "  \\item 35 \n";
+                break;
+            }
+
+            cout << "%" << i + 3 << endl; // 3
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "\\item     Найдите расстояние от деревни Масловка до села Захарово по прямой. \\\\Ответ дайте в километрах." << endl << endl;
+                Answer = Answer + "  \\item 29 \n";
+                break;
+
+                case 2:
+                cout << "\\item     Найдите расстояние от деревни Вёсенка до села Захарово по прямой. \\\\Ответ дайте в километрах." << endl << endl;
+                Answer = Answer + "  \\item 25 \n";
+                break;
+            }
+
+            cout << "%" << i + 4 << endl; // 4
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "\\item     Сколько минут затратят на дорогу из деревни Масловка в село Захарово Саша с дедушкой, если они поедут по прямой лесной дорожке?" << endl << endl;
+                Answer = Answer + "  \\item 116 \n";
+                break;
+
+                case 2:
+                cout << "\\item     Сколько минут затратят на дорогу из деревни Масловка в село Захарово Саша с дедушкой, если они поедут сначала по шоссе, а затем свернут в деревне Вёсенка на прямую тропинку, которая проходит мимо пруда?" << endl << endl;
+                Answer = Answer + "  \\item 118 \n";
+                break;
+            }
+
+            cout << "%" << i + 5 << endl; // 5
+            cout << "\\item  \\begin{minipage}[t]{\\linewidth}" << endl
+                << "В таблице указана стоимость (в рублях) некоторых продуктов в четырёх магазинах, расположенных в деревне Масловка, селе Захарово, деревне Вёсенка и деревне Полянка." << endl
+                << "\\begin{center}" << endl
+                << "\\resizebox{\\linewidth}{!}{%" << endl
+                << "\\begin{tabular}{|l|l|l|l|l|}" << endl
+                << "\\hline" << endl
+                << "Наименование продукта & д. Масловка & с. Захарово & д. Вёсенка & д. Полянка\\\\ \\hline" << endl
+                << "Молоко (1 л) & 45 & 40 & 42 & 52 \\\\ \\hline" << endl
+                << "Хлеб (1 батон) & 29 & 28 & 31 & 22 \\\\ \\hline" << endl
+                << "Сыр \"Российский\" (1 кг) & 250 & 270 & 290 & 280 \\\\ \\hline" << endl
+                << "Говядина (1 кг) & 350 & 380 & 360 & 390 \\\\ \\hline" << endl
+                << "Картофель (1 кг) & 35 & 25 & 32 & 24 \\\\ \\hline" << endl
+                << "\\end{tabular}" << endl << "}" << endl
+                << "\\end{center}" << endl;
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "Саша с дедушкой хотят купить 2 л молока, 2 кг говядины и 4 кг картофеля. В каком магазине такой набор продуктов будет стоить дешевле всего? В ответ запишите стоимость данного набора в этом магазине." << endl
+                    << "\\end{minipage}" << endl << endl;
+                Answer = Answer + "  \\item 930 \n";
+                break;
+
+                case 2:
+                cout << "Саша с дедушкой хотят купить 3 батона хлеба, 2 кг сыра «Российский» и 5 кг картофеля. В каком магазине такой набор продуктов будет стоить дешевле всего? В ответ запишите стоимость данного набора в этом магазине." << endl
+                    << "\\end{minipage}" << endl << endl;
+                Answer = Answer + "  \\item 746 \n";
+                break;
+            }
+            break;
+
+        case 2:     // Тип 3 из файла
+            cout << "%" << i + 1 << endl; // 1
+            cout << "\\item" << endl
+             << "\\begin{minipage}[t]{\\linewidth}" << endl
+             << "\\begin{wrapfigure}{r}{0.4\\textwidth}" << endl
+             << "\\centering" << endl
+             << "\\includegraphics[width=0.4\\textwidth]{Дороги3.png}" << endl
+             << "\\end{wrapfigure}" << endl
+             << "Гриша летом отдыхает у дедушки в деревне Грушёвка. В понедельник они собираются съездить на велосипедах в село Абрамово на ярмарку. Из деревни Грушёвка в село Абрамово можно проехать по прямой лесной дорожке. Есть более длинный путь: по прямолинейному шоссе через деревню Таловка до деревни Новая, где нужно повернуть под прямым углом направо на другое шоссе, ведущее в село Абрамово. Есть и третий маршрут: в деревне Таловка можно свернуть на прямую тропинку в село Абрамово, которая идёт мимо пруда. Лесная дорожка и тропинка образуют с шоссе прямоугольные треугольники. По шоссе Гриша с дедушкой едут со скоростью 15 км/ч, а по лесной дорожке и тропинке — со скоростью 12 км/ч. На плане изображено взаимное расположение населённых пунктов, длина стороны каждой клетки равна 2 км." << endl
+             << "\\vspace{1em} % Пустая строка (вертикальный пробел)" << endl << endl;
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "Пользуясь описанием, определите, какими цифрами на плане обозначены населённые пункты. Заполните таблицу, в бланк ответов перенесите последовательность трёх цифр без пробелов, запятых и других дополнительных символов." << endl
+                << "\\begin{center}" << endl
+                << "\\begin{tabular}{|l|l|l|l|}" << endl
+                << "\\hline" << endl
+                << "\\small Насел. пункты & д. Новая & с. Абрамово & д. Грушёвшка \\\\ \\hline" << endl
+                << "Цифры &  &  &  \\\\ \\hline" << endl
+                << "\\end{tabular}" << endl
+                << "\\end{center}" << endl
+                << "\\end{minipage}" << endl << endl;
+                Answer = Answer + "  \\item 143 \n";
+                break;
+
+                case 2:
+                cout << "Пользуясь описанием, определите, какими цифрами на плане обозначены населённые пункты. Заполните таблицу, в бланк ответов перенесите последовательность трёх цифр без пробелов, запятых и других дополнительных символов." << endl
+                << "\\begin{center}" << endl
+                << "\\begin{tabular}{|l|l|l|l|}" << endl
+                << "\\hline" << endl
+                << "\\small Насел. пункты & д. Таловка & д. Грушёвка & с. Абрамово \\\\ \\hline" << endl
+                << "Цифры &  &  &  \\\\ \\hline" << endl
+                << "\\end{tabular}" << endl
+                << "\\end{center}" << endl
+                << "\\end{minipage}" << endl << endl;
+                Answer = Answer + "  \\item 234 \n";
+                break;
+            }
+
+            cout << "%" << i + 2 << endl; // 2
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "\\item     Сколько километров проедут Гриша с дедушкой от деревни Грушёвка до села Абрамово, если они поедут по шоссе через деревню Новая?" << endl << endl;
+                Answer = Answer + "  \\item 42 \n";
+                break;
+
+                case 2:
+                cout << "\\item     Сколько километров проедут Гриша с дедушкой от деревни Таловка до села Абрамово, если они поедут по шоссе через деревню Новая?" << endl << endl;
+                Answer = Answer + "  \\item 34 \n";
+                break;
+            }
+
+            cout << "%" << i + 3 << endl; // 3
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "\\item     Найдите расстояние от деревни Грушёвка до села Абрамово по прямой. \\\\Ответ дайте в километрах." << endl << endl;
+                Answer = Answer + "  \\item 30 \n";
+                break;
+
+                case 2:
+                cout << "\\item     Найдите расстояние от деревни Таловка до села Абрамово по прямой. \\\\Ответ дайте в километрах." << endl << endl;
+                Answer = Answer + "  \\item 26 \n";
+                break;
+            }
+
+            cout << "%" << i + 4 << endl; // 4
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "\\item     Сколько минут затратят на дорогу из деревни Грушёвка в село Абрамово Гриша с дедушкой, если поедут через деревню Новая?" << endl << endl;
+                Answer = Answer + "  \\item 168 \n";
+                break;
+
+                case 2:
+                cout << "\\item     Сколько минут затратят на дорогу из деревни Грушёвка в село Абрамово Гриша с дедушкой, если они поедут сначала по шоссе, а затем свернут в Таловке на прямую тропинку, которая проходит мимо пруда?" << endl << endl;
+                Answer = Answer + "  \\item 162 \n";
+                break;
+            }
+
+            cout << "%" << i + 5 << endl; // 5
+            cout << "\\item  \\begin{minipage}[t]{\\linewidth}" << endl
+                << "В таблице указана стоимость (в рублях) некоторых продуктов в четырёх магазинах, расположенных в деревне Грушёвка, селе Абрамово, деревне Таловка и деревне Новая." << endl
+                << "\\begin{center}" << endl
+                << "\\resizebox{\\linewidth}{!}{%" << endl
+                << "\\begin{tabular}{|l|l|l|l|l|}" << endl
+                << "\\hline" << endl
+                << "Наименование продукта & д. Грушёвка & с. Абрамово & д. Таловка & д. Новая\\\\ \\hline" << endl
+                << "Молоко (1 л) & 32 & 33 & 31 & 34 \\\\ \\hline" << endl
+                << "Хлеб (1 батон) & 24 & 21 & 26 & 20 \\\\ \\hline" << endl
+                << "Сыр \"Российский\" (1 кг) & 320 & 310 & 330 & 300 \\\\ \\hline" << endl
+                << "Говядина (1 кг) & 390 & 360 & 370 & 420 \\\\ \\hline" << endl
+                << "Картофель (1 кг) & 10 & 18 & 15 & 12 \\\\ \\hline" << endl
+                << "\\end{tabular}" << endl << "}" << endl
+                << "\\end{center}" << endl;
+            typeother = rand()%2 + 1;
+            switch(typeother)
+            {
+                case 1:
+                cout << "Гриша с дедушкой хотят купить 3 батона хлеба, 1,5 кг сыра \"Российский\" и 5 кг картофеля. В каком магазине такой набор продуктов будет стоить дешевле всего? В ответ запишите стоимость данного набора в этом магазине." << endl
+                    << "\\end{minipage}" << endl << endl;
+                Answer = Answer + "  \\item 570 \n";
+                break;
+
+                case 2:
+                cout << "Гриша с дедушкой хотят купить 4 л молока, 5 батонов хлеба и 2 кг говядины. В каком магазине такой набор продуктов будет стоить дешевле всего? В ответ запишите стоимость данного набора в этом магазине." << endl
+                    << "\\end{minipage}" << endl << endl;
+                Answer = Answer + "  \\item 957 \n";
+                break;
+            }
+            break;
+    }
+    return Answer;
+}
 
 int main()
 {
     setlocale(LC_ALL, "ru");
     srand(time(NULL));
-    int count_task[49];              // Создает массив из номеров заданий
-    for (int i = 0; i < 49; i++)     // Обнуляет количество заданий в номерах
+    int count_task[50];              // Создает массив из номеров заданий
+    for (int i = 0; i < 50; i++)     // Обнуляет количество заданий в номерах
         count_task[i] = 0;
     int choice = 0;
     string Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
@@ -8313,8 +8556,9 @@ int main()
                 cout << "9. Прогрессии (" << count_task[24] + count_task[25] + count_task[26] + count_task[45] << ")" << endl;
                 cout << "10. Треугольники (" << count_task[27] + count_task[28] + count_task[29] + count_task[30] + count_task[31] + count_task[46] << ")" << endl;
                 cout << "11. Многоугольники (" << count_task[32] + count_task[33] + count_task[34] + count_task[35] + count_task[47] << ")" << endl;
-                cout << "12. Окружности (" << count_task[36] + count_task[48] << ")" << endl << endl;
-                cout << "69. Сгенерировать" << endl;
+                cout << "12. Окружности (" << count_task[36] + count_task[48] << ")" << endl;
+                cout << "13. Первые пять задач (" << count_task[49] << ")" << endl;
+                cout << endl << "69. Сгенерировать" << endl;
                 cout << "0. Назад" << endl;
                 cout << "Ваш выбор: ";
                 cin >> choice;
@@ -8809,9 +9053,37 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
+                case 13:
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Дороги (" << count_task[49] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                        case 1:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[49];
+                            break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
+                    break;
                 case 69:
                     cout << "\033[2J\033[1;1H";
                     int Count = 0;
+                    if(count_task[49] != 0)
+                    {
+                        for (int i = 0; i < count_task[49]; i++)
+                        {
+                            Answers = Answers + FirstFiveRoad(Count, 0);
+                            Count = Count + 5;
+                        }
+                        count_task[49] = 0;
+                    }
                     if (count_task[0] != 0)
                     {
                         for (int i = 0; i < count_task[0]; i++)
