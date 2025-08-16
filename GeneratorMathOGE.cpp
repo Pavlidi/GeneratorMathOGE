@@ -11163,13 +11163,1160 @@ string Second20Uravn(int i, int AllType)
     return Answer;
 }
 
+string Second20Sistem(int i, int AllType)
+{
+    string Answer;
+    double answer;
+    double a[4];
+    double b[5];
+    double c[3];
+    double x[2];
+    double y[2];
+    double D;
+    string A[4];
+    string B[7];
+    int check;
+    int type = rand()%3 + 1;
+    switch(type)
+    {
+        case 1:
+            check = 0;
+            do{
+                check = 1;
+                for(int i = 0; i < 4; i++)
+                {
+                    a[i] = rand()%9+1;
+                }
+                c[0] = a[0];
+                c[1] = a[1] + a[2];
+                c[2] = a[3];
+                D = c[1]*c[1]-4*c[0]*c[2];
+                if(D <= 0)
+                    check = 0;
+                else
+                {
+                    D = pow(D,0.5);
+                    if(((10*D-static_cast<int>(10*D)) > 0)||(D>3000))
+                        check = 0;
+                    else
+                    {
+                        x[0] = (c[1]-D)/(2*c[0]);
+                        x[1] = (c[1]+D)/(2*c[0]);
+                        y[0] = a[2]*x[0]-a[3];
+                        y[1] = a[2]*x[1]-a[3];
+                    }
+                }
+            }while(check != 1);
+            for(int i = 0; i<3; i++)
+            {
+                if(a[i] == 1)
+                    A[i] = " ";
+                else
+                    A[i] = FormatDouble(a[i]);
+            }
+            A[3] = FormatDouble(a[3]);
+            cout << "\\item Решите систему уравнений: \n $$\\begin{cases} \n " << A[0] << "x^2-" << A[1] << "x = y, \\\\ \n " << A[2] << "x-" << A[3] << "=y; \n \\end{cases}$$ " << endl << endl;
+            Answer = Answer + "\\item  (" + FormatDouble(x[0]) + ";" + FormatDouble(y[0]) + "), (" + FormatDouble(x[1]) + ";" + FormatDouble(y[1]) + ") \n";
+            break;
+        
+        case 2:
+            check = 0;
+            do{
+                check = 1;
+                for(int i = 0; i < 4; i++)
+                {
+                    a[i] = rand()%20+1;
+                }
+                c[0] = (a[1] + a[3])/(a[0] + a[2]);
+                if((10*pow(c[0], 0.5) - static_cast<int>(10*pow(c[0], 0.5))) > 0)
+                    check = 0;
+                else
+                {
+                    x[0] = -1*pow(c[0],0.5);
+                    x[1] = pow(c[0],0.5);
+                    y[0] = a[1]-a[0]*c[0];
+                    y[1] = y[0];
+                }
+            }while(check != 1);
+            if(a[0] == 1)
+                A[0] = " ";
+            else
+                A[0] = FormatDouble(a[0]);
+            if(a[2] == 1)
+                A[2] = " ";
+            else
+                A[2] = FormatDouble(a[2]);
+            A[1] = FormatDouble(a[1]);
+            A[3] = FormatDouble(a[3]);
+            cout << "\\item Решите систему уравнений: \n $$\\begin{cases} \n " << A[0] << "x^2+y=" << A[1] << ", \\\\ \n " << A[2] << "x^2-y=" << A[3] << "; \n \\end{cases}$$ " << endl << endl;
+            Answer = Answer + "\\item (" + FormatDouble(x[0]) + ";" + FormatDouble(y[0]) + "), (" + FormatDouble(x[1]) + ";" + FormatDouble(y[1]) + ") \n";
+            break;
+
+        case 3:
+            check = 0;
+            do{
+                check = 1;
+                a[0] = rand()%9 + 1;
+                a[1] = rand()%9 + 1;
+                a[2] = rand()%100 + 1;
+                x[0] = rand()%7 + 2;
+                x[1] = x[0];
+                D = (a[2]-a[0]*x[0]*x[0])/a[1];
+                if(D <= 0)
+                    check = 0;
+                else
+                {
+                    D = pow(D,0.5);
+                    if((10*D - static_cast<int>(10*D)) > 0)
+                        check = 0;
+                    else
+                    {
+                        y[0] = -1*D;
+                        y[1] = D;
+                    }
+                }
+            }while(check != 1);
+            if(a[0] == 1)
+                B[0] = " ";
+            else
+                B[0] = FormatDouble(a[0]);
+            if(a[1] == 1)
+                B[1] = " ";
+            else
+                B[1] = FormatDouble(a[1]);
+            if(a[2] == 1)
+                B[5] = " ";
+            else
+                B[5] = FormatDouble(a[2]);
+            B[2] = FormatDouble(a[0]*x[0]);
+            B[3] = FormatDouble(a[1]*x[0]);
+            B[4] = FormatDouble(a[2]);
+            cout << "\\item Решите систему уравнений: \n $$\\begin{cases} \n" << B[0] << "x^2+" << B[1] << "y^2=" << B[4] << ", \\\\ \n " << B[2] << "x^2 + " << B[3] << "y^2 = " << B[5] << "x; \n \\end{cases}$$" << endl << endl;
+            Answer = Answer + "\\item (" + FormatDouble(x[0]) + ";" + FormatDouble(y[0]) + "), (" + FormatDouble(x[0]) + ";" + FormatDouble(y[1]) + ") \n";
+            break;
+    }
+    return Answer;
+}
+
+string Second20Nerav(int i, int AllType)
+{
+    string Answer;
+    int d;
+    double answer;
+    double a[4];
+    double b[5];
+    double c[3];
+    double x[2];
+    double y[2];
+    double D;
+    string A[4];
+    string B[7];
+    int check;
+    int type = rand()%3 + 1;
+    switch(type)
+    {
+        case 1:
+            check = 0;
+            do{
+                check = 1;
+                for(int i = 0; i < 2; i++)
+                {
+                    a[i] = rand()%15+1;
+                }
+                if((10*pow(a[0],0.5)-static_cast<int>(10*pow(a[0],0.5))) == 0)
+                    check = 0;
+            }while(check != 1);
+            d = rand()%4 + 1;
+            switch(d)
+            {
+                case 1:
+                    cout << "\\item Решите неравенство: $$(x-" << FormatDouble(a[1]) << ")^2>\\sqrt{" << FormatDouble(a[0]) << "}(x-" << a[1] << ")$$" << endl;
+                    Answer = Answer + "\\item  $(\\infty;" + FormatDouble(a[1]) + ")\\cup(" + FormatDouble(a[1]) + "+\\sqrt{" + FormatDouble(a[0]) + "};+\\infty)$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Решите неравенство: $$(x-" << FormatDouble(a[1]) << ")^2<\\sqrt{" << FormatDouble(a[0]) << "}(x-" << a[1] << ")$$" << endl;
+                    Answer = Answer + "\\item  $(" + FormatDouble(a[1]) + ";" + FormatDouble(a[1]) + "+\\sqrt{" + FormatDouble(a[0]) + "})$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Решите неравенство: $$(x-" << FormatDouble(a[1]) << ")^2\\geq\\sqrt{" << FormatDouble(a[0]) << "}(x-" << a[1] << ")$$" << endl;
+                    Answer = Answer + "\\item  $(\\infty;" + FormatDouble(a[1]) + "]\\cup[" + FormatDouble(a[1]) + "+\\sqrt{" + FormatDouble(a[0]) + "};+\\infty)$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Решите неравенство: $$(x-" << FormatDouble(a[1]) << ")^2\\leq\\sqrt{" << FormatDouble(a[0]) << "}(x-" << a[1] << ")$$" << endl;
+                    Answer = Answer + "\\item  $[" + FormatDouble(a[1]) + ";" + FormatDouble(a[1]) + "+\\sqrt{" + FormatDouble(a[0]) + "}]$ \n";
+                    break;
+            }
+            break;
+        
+        case 2:
+            check = 0;    
+            do{
+                check = 1;
+                a[0] = pow(-1,rand())*(rand()%10+1);
+                a[1] = pow(-1,rand())*(rand()%10+1);
+                a[2] = rand()%40 + 1;
+                if(a[0] > a[1])
+                {
+                    D = a[0];
+                    a[0] = a[1];
+                    a[1] = D;
+                }
+                b[0] = -1*(a[0] + a[1]);
+                b[1] = a[0]*a[1];
+                if((b[0] == 0)||(a[0]==a[1]))
+                    check = 0;
+            }while(check != 1);
+            for(int i=0; i<2; i++)
+            {
+                if(b[i]>0)
+                    B[i] = "+";
+                else
+                    B[i] = "-";
+                b[i] = pow(pow(b[i],2),0.5);
+                B[i] = B[i] + FormatDouble(b[i]);
+            }
+            d = rand()%2 + 1;
+            switch(d)
+            {
+                case 1:
+                    cout << "\\item Решите неравенство: $$-\\frac{" << FormatDouble(a[2]) << "}{x^2" << B[0] << "x" << B[1] << "}\\geq 0$$" << endl;
+                    Answer = Answer + "\\item  $(" + FormatDouble(a[0]) + ";" + FormatDouble(a[1]) + ")$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Решите неравенство: $$-\\frac{" << FormatDouble(a[2]) << "}{x^2" << B[0] << "x" << B[1] << "}\\leq 0$$" << endl;
+                    Answer = Answer + "\\item  $(-\\infty;" + FormatDouble(a[0]) + ")\\cup(" + FormatDouble(a[1]) + ";+\\infty)$ \n";
+                    break;
+            }
+            break;
+
+        case 3:
+            check = 0;
+            do{
+                check = 1;
+                a[0] = pow(-1,rand())*(rand()%10+1);
+                a[1] = rand()%16 + 1;
+                a[2] = rand()%34 + 1;
+                if((10*pow(a[1],0.5)-static_cast<int>(10*pow(a[1],0.5))) == 0)
+                    check = 0;
+            }while(check != 1);
+            if(a[0]>0)
+                B[0] = "-";
+            else
+                B[0] = "+";
+            a[3] = pow(pow(a[0],2),0.5);
+            B[0] = B[0] + FormatDouble(a[3]);
+            d = rand()%2 + 1;
+            switch(d)
+            {
+                case 1:
+                    cout << "\\item Решите неравенство: $$-\\frac{" << FormatDouble(a[2]) << "}{(x" << B[0] << ")^2-" << FormatDouble(a[1]) << "}\\geq 0$$" << endl;
+                    Answer = Answer + "\\item  $(" + FormatDouble(a[0]) + " -\\sqrt{" + FormatDouble(a[1]) + "};" + FormatDouble(a[0]) + "+\\sqrt{" + FormatDouble(a[1]) + "})$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Решите неравенство: $$-\\frac{" << FormatDouble(a[2]) << "}{(x" << B[0] << ")^2-" << FormatDouble(a[1]) << "}\\leq 0$$" << endl;
+                    Answer = Answer + "\\item $(-\\infty;" + FormatDouble(a[0]) + "-\\sqrt{" + FormatDouble(a[1]) + "})\\cup(" + FormatDouble(a[0]) + "+\\sqrt{" + FormatDouble(a[1]) + "};+\\infty)$ \n";
+                    break;
+            }
+        
+    }
+    return Answer;
+}
+
+string Second21Road(int i, int AllType)
+{
+    string Answer;
+    int type;
+    int a[10];
+    type = rand()%7 + 1;
+    int type_2, type_3;
+    switch(type)
+    {
+        case 1:         // Движение по прямой
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 60;
+                    a[1] = 10;
+                    a[2] = 3;
+                    Answer = Answer + "\\item  10 \n";
+                    break;
+
+                case 2:
+                    a[0] = 209;
+                    a[1] = 8;
+                    a[2] = 8;
+                    Answer = Answer + "\\item  11 \n";
+                    break;
+
+                case 3:
+                    a[0] = 180;
+                    a[1] = 5;
+                    a[2] = 8;
+                    Answer = Answer + "\\item  15 \n";
+                    break;
+
+                case 4:
+                    a[0] = 105;
+                    a[1] = 16;
+                    a[2] = 3;
+                    Answer = Answer + "\\item  14 \n";
+                    break;
+
+                case 5:
+                    a[0] = 224;
+                    a[1] = 2;
+                    a[2] = 2;
+                    Answer = Answer + "\\item  16 \n";
+                    break;
+            }
+            cout << "\\item Велосипедист выехал с постоянной скоростью из города А в город В, расстояние между которыми равно " << a[0] << " км. На следующий день он отправился обратно в А, увеличив скорость на " << a[1] << " км/ч. По пути он сделал остановку на " << a[2] << " часа, в результате чего затратил на обратный путь столько же времени, сколько на путь из А в В. Найдите скорость велосипедиста на пути из А в В." << endl;
+            break;
+
+        case 2: // Движение на встречу
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 36;
+                    a[1] = 82;
+                    a[2] = 28;
+                    a[3] = 10;
+                    Answer = Answer + "\\item  26 \n";
+                    break;
+
+                case 2:
+                    a[0] = 56;
+                    a[1] = 182;
+                    a[2] = 13;
+                    a[3] = 15;
+                    Answer = Answer + "\\item  104 \n";
+                    break;
+
+                case 3:
+                    a[0] = 2;
+                    a[1] = 277;
+                    a[2] = 16;
+                    a[3] = 30;
+                    Answer = Answer + "\\item  181 \n";
+                    break;
+
+                case 4:
+                    a[0] = 51;
+                    a[1] = 251;
+                    a[2] = 10;
+                    a[3] = 20;
+                    Answer = Answer + "\\item  173 \n";
+                    break;
+
+                case 5:
+                    a[0] = 28;
+                    a[1] = 286;
+                    a[2] = 10;
+                    a[3] = 30;
+                    Answer = Answer + "\\item  218 \n";
+                    break;
+            }
+            cout << "\\item Из двух городов одновременно навстречу друг другу отправились два велосипедиста. Проехав некоторую часть пути, первый велосипедист сделал остановку на " << a[0] << " минут, а затем продолжил движение до встречи со вторым велосипедистом. Расстояние между городами составляет " << a[1] << " км, скорость первого велосипедиста равна " << a[2] << " км/ч, скорость второго – " << a[3] << " км/ч. Определите расстояние от города, из которого выехал второй велосипедист, до места встречи." << endl;
+            break;
+            
+        case 3: // Движение в догонку
+            type_3 = rand()%3 + 1;
+            switch(type_3)
+            {
+                case 1:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 560;
+                            a[1] = 10;
+                            a[2] = 1;
+                            Answer = Answer + "\\item  80 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 800;
+                            a[1] = 36;
+                            a[2] = 5;
+                            Answer = Answer + "\\item  96 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 980;
+                            a[1] = 28;
+                            a[2] = 4;
+                            Answer = Answer + "\\item  98 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 420;
+                            a[1] = 24;
+                            a[2] = 2;
+                            Answer = Answer + "\\item  84 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 660;
+                            a[1] = 11;
+                            a[2] = 2;
+                            Answer = Answer + "\\item  66 \n";
+                            break;
+                    }
+                    cout << "\\item Два автомобиля одновременно отправляются в " << a[0] << "-километровый пробег. Первый едет со скоростью, на " << a[1] << " км/ч большей, чем второй, и прибывает к финишу на " << a[2] << " час раньше второго. Найдите скорость первого автомобиля." << endl;
+                    break;
+
+                case 2:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 6;
+                            a[1] = 56;
+                            a[2] = 45;
+                            Answer = Answer + "\\item  48 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 17;
+                            a[1] = 102;
+                            a[2] = 65;
+                            Answer = Answer + "\\item  68 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 11;
+                            a[1] = 66;
+                            a[2] = 40;
+                            Answer = Answer + "\\item  44 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 8;
+                            a[1] = 90;
+                            a[2] = 75;
+                            Answer = Answer + "\\item  80 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 9;
+                            a[1] = 60;
+                            a[2] = 40;
+                            Answer = Answer + "\\item  45 \n";
+                            break;
+                    }
+                    cout << "\\item  Из А в В одновременно выехали два автомобиля. Первый проехал с постоянной скоростью весь путь. Второй проехал первую половину пути со скоростью, меньшей скорости первого автомобиля на " << a[0] << " км/ч, а вторую половину пути проехал со скоростью " << a[1] << " км/ч, в результате чего прибыл в В одновременно с первым автомобилем. Найдите скорость первого автомобиля, если известно, что она больше " << a[2] << " км/ч." << endl;
+                    break;
+
+                case 3:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 48;
+                            a[1] = 32;
+                            Answer = Answer + "\\item  64 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 57;
+                            a[1] = 38;
+                            Answer = Answer + "\\item  76 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 36;
+                            a[1] = 54;
+                            Answer = Answer + "\\item  54 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 70;
+                            a[1] = 21;
+                            Answer = Answer + "\\item  84 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 30;
+                            a[1] = 9;
+                            Answer = Answer + "\\item  36 \n";
+                            break;
+                    }
+                    cout << "\\item Из А в В одновременно выехали два автомобиля. Первый проехал с постоянной скоростью весь путь. Второй проехал первую половину пути со скоростью " << a[0] << " км/ч, а вторую половину пути проехал со скоростью на " << a[1] << " км/ч больше скорости первого, в результате чего прибыл в В одновременно с первым автомобилем. Найдите скорость первого автомобиля." << endl;
+                    break;
+            }
+            break;
+
+        case 4: // Движение по окружности
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 4;
+                    a[1] = 18;
+                    a[2] = 10;
+                    Answer = Answer + "\\item  10 \n";
+                    break;
+
+                case 2:
+                    a[0] = 2;
+                    a[1] = 9;
+                    a[2] = 5;
+                    Answer = Answer + "\\item  15 \n";
+                    break;
+
+                case 3:
+                    a[0] = 7;
+                    a[1] = 3;
+                    a[2] = 8;
+                    Answer = Answer + "\\item  12 \n";
+                    break;
+
+                case 4:
+                    a[0] = 1;
+                    a[1] = 15;
+                    a[2] = 5;
+                    Answer = Answer + "\\item  11 \n";
+                    break;
+
+                case 5:
+                    a[0] = 4;
+                    a[1] = 20;
+                    a[2] = 11;
+                    Answer = Answer + "\\item  10 \n";
+                    break;
+            }
+            cout << "\\item Два бегуна одновременно стартовали в одном направлении из одного и того же места круговой трассы в беге на несколько кругов. Спустя один час, когда одному из них оставалось " << a[0] << " км до окончания первого круга, ему сообщили, что второй бегун прошёл первый круг " << a[1] << " минуты назад. Найдите скорость первого бегуна, если известно, что она на " << a[2] << " км/ч меньше скорости второго." << endl;
+            break;
+
+        case 5: // Средняя скорость
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 450;
+                    a[1] = 90;
+                    a[2] = 230;
+                    a[3] = 115;
+                    a[4] = 120;
+                    a[5] = 40;
+                    Answer = Answer + "\\item  80 \n";
+                    break;
+
+                case 2:
+                    a[0] = 200;
+                    a[1] = 50;
+                    a[2] = 320;
+                    a[3] = 80;
+                    a[4] = 140;
+                    a[5] = 35;
+                    Answer = Answer + "\\item  55 \n";
+                    break;
+
+                case 3:
+                    a[0] = 140;
+                    a[1] = 70;
+                    a[2] = 195;
+                    a[3] = 65;
+                    a[4] = 225;
+                    a[5] = 75;
+                    Answer = Answer + "\\item  70 \n";
+                    break;
+
+                case 4:
+                    a[0] = 350;
+                    a[1] = 70;
+                    a[2] = 105;
+                    a[3] = 35;
+                    a[4] = 160;
+                    a[5] = 80;
+                    Answer = Answer + "\\item  61,5 \n";
+                    break;
+
+                case 5:
+                    a[0] = 160;
+                    a[1] = 80;
+                    a[2] = 100;
+                    a[3] = 50;
+                    a[4] = 360;
+                    a[5] = 90;
+                    Answer = Answer + "\\item  77,5 \n";
+                    break;
+            }
+            cout << "\\item Первые " << a[0] << " км автомобиль ехал со скоростью " << a[1] << " км/ч, следующие " << a[2] << " км – со скоростью " << a[3] << " км/ч, а последние " << a[4] << " км – со скоростью " << a[5] << " км/ч. Найдите среднюю скорость автомобиля на протяжении всего пути." << endl;
+            break;
+
+        case 6: // Движение протяженных тел
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 75;
+                    a[1] = 3;
+                    a[2] = 30;
+                    Answer = Answer + "\\item  650 \n";
+                    break;
+
+                case 2:
+                    a[0] = 36;
+                    a[1] = 4;
+                    a[2] = 54;
+                    Answer = Answer + "\\item  600 \n";
+                    break;
+
+                case 3:
+                    a[0] = 151;
+                    a[1] = 5;
+                    a[2] = 15;
+                    Answer = Answer + "\\item  650 \n";
+                    break;
+
+                case 4:
+                    a[0] = 129;
+                    a[1] = 6;
+                    a[2] = 8;
+                    Answer = Answer + "\\item  300 \n";
+                    break;
+
+                case 5:
+                    a[0] = 57;
+                    a[1] = 3;
+                    a[2] = 36;
+                    Answer = Answer + "\\item  600 \n";
+                    break;
+            }
+            cout << "\\item Поезд, двигаясь равномерно со скоростью " << a[0] << " км/ч, проезжает мимо пешехода, идущего параллельно путям со скоростью " << a[1] << " км/ч навстречу поезду, за " << a[2] << " секунд. Найдите длину поезда в метрах." << endl;
+            break;
+
+        case 7: // Движение по воде
+            type_3 = rand()%4 + 1;
+            switch(type_3)
+            {
+                case 1:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 56;
+                            a[1] = 54;
+                            a[2] = 5;
+                            a[3] = 5;
+                            Answer = Answer + "\\item  23 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 32;
+                            a[1] = 24;
+                            a[2] = 4;
+                            a[3] = 5;
+                            Answer = Answer + "\\item  15 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 84;
+                            a[1] = 66;
+                            a[2] = 10;
+                            a[3] = 5;
+                            Answer = Answer + "\\item  16 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 72;
+                            a[1] = 54;
+                            a[2] = 9;
+                            a[3] = 5;
+                            Answer = Answer + "\\item  15 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 48;
+                            a[1] = 42;
+                            a[2] = 5;
+                            a[3] = 5;
+                            Answer = Answer + "\\item  19 \n";
+                            break;
+                    }
+                    cout << "\\item Баржа прошла по течению реки " << a[0] << " км и, повернув обратно, прошла ещё " << a[1] << " км, затратив на весь путь " << a[2] << " часов. Найдите собственную скорость баржи, если скорость течения реки равна " << a[3] << " км/ч." << endl;
+                    break;
+
+                case 2:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 72;
+                            a[1] = 33;
+                            a[2] = 3;
+                            Answer = Answer + "\\item  15 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 126;
+                            a[1] = 36;
+                            a[2] = 4;
+                            Answer = Answer + "\\item  32 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 48;
+                            a[1] = 25;
+                            a[2] = 5;
+                            Answer = Answer + "\\item  25 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 140;
+                            a[1] = 51;
+                            a[2] = 3;
+                            Answer = Answer + "\\item  18 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 108;
+                            a[1] = 50;
+                            a[2] = 5;
+                            Answer = Answer + "\\item  25 \n";
+                            break;
+                    }
+                    cout << "\\item Расстояние между пристанями А и В равно " << a[0] << " км. Из А в В по течению реки отправился плот, а через час вслед за ним отправилась моторная лодка, которая, прибыв в пункт В, тотчас повернула обратно и возвратилась в А. К этому времени плот прошёл " << a[1] << " км. Найдите скорость лодки в неподвижной воде, если скорость течения реки равна " << a[2] << " км/ч." << endl;
+                    break;
+
+                case 3:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 72;
+                            a[1] = 2;
+                            a[2] = 3;
+                            Answer = Answer + "\\item  15 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 77;
+                            a[1] = 2;
+                            a[2] = 4;
+                            Answer = Answer + "\\item  18 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 132;
+                            a[1] = 5;
+                            a[2] = 5;
+                            Answer = Answer + "\\item  17 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 192;
+                            a[1] = 4;
+                            a[2] = 4;
+                            Answer = Answer + "\\item  20 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 255;
+                            a[1] = 2;
+                            a[2] = 1;
+                            Answer = Answer + "\\item  16 \n";
+                            break;
+                    }
+                    cout << "\\item Моторная лодка прошла против течения реки " << a[0] << " км и вернулась в пункт отправления, затратив на обратный путь на " << a[1] << " часа меньше, чем на путь против течения. Найдите скорость лодки в неподвижной воде, если скорость течения реки равна " << a[2] << " км/ч." << endl;
+                    break;
+
+                case 4:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 210;
+                            a[1] = 4;
+                            a[2] = 9;
+                            a[3] = 27;
+                            Answer = Answer + "\\item  24 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 80;
+                            a[1] = 5;
+                            a[2] = 23;
+                            a[3] = 35;
+                            Answer = Answer + "\\item  15 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 280;
+                            a[1] = 4;
+                            a[2] = 15;
+                            a[3] = 39;
+                            Answer = Answer + "\\item  24 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 216;
+                            a[1] = 5;
+                            a[2] = 5;
+                            a[3] = 23;
+                            Answer = Answer + "\\item  25 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 70;
+                            a[1] = 24;
+                            a[2] = 8;
+                            a[3] = 14;
+                            Answer = Answer + "\\item  4 \n";
+                            break;
+                    }
+                    cout << "\\item Теплоход проходит по течению реки до пункта назначения " << a[0] << " км и после стоянки возвращается в пункт отправления. Найдите скорость теплохода в неподвижной воде, если скорость течения равна " << a[1] << " км/ч, стоянка длится " << a[2] << " часов, а в пункт отправления теплоход возвращается через " << a[3] << " часа после отплытия из него." << endl;
+                    break;
+                
+            }
+            break;
+
+    }
+    return Answer;
+}
+
+string Second21Per(int i, int AllType)
+{
+    string Answer;
+    int type;
+    int a[10];
+    type = rand()%2 + 1;
+    int type_2, type_3;
+    switch(type)
+    {
+        case 1:
+            type_3 = rand()%2 + 1;
+            switch(type_3)
+            {
+                case 1:
+                    type_2 = rand()%4 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 10;
+                            a[1] = 16;
+                            a[2] = 55;
+                            a[3] = 61;
+                            Answer = Answer + "\\item  8,7 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 12;
+                            a[1] = 8;
+                            a[2] = 65;
+                            a[3] = 60;
+                            Answer = Answer + "\\item  10,2 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 80;
+                            a[1] = 70;
+                            a[2] = 63;
+                            a[3] = 65;
+                            Answer = Answer + "\\item  28 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 40;
+                            a[1] = 25;
+                            a[2] = 30;
+                            a[3] = 36;
+                            Answer = Answer + "\\item  4 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 90;
+                            a[1] = 45;
+                            a[2] = 32;
+                            a[3] = 33;
+                            Answer = Answer + "\\item  27 \n";
+                            break;
+                    }
+                    cout << "\\item Имеются два сосуда, содержащие " << a[0] << " кг и " << a[1] << " кг раствора кислоты различной концентрации. Если их слить вместе, то получится раствор, содержащий " << a[2] << "\\% кислоты. Если же слить равные массы этих растворов, то полученный раствор будет содержать " << a[3] << " \\% кислоты. Сколько процентов кис- лоты содержится в первом растворе?" << endl;
+                    break;
+
+                case 2:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 78;
+                            a[1] = 22;
+                            a[2] = 22;
+                            Answer = Answer + "\\item  78 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 93;
+                            a[1] = 16;
+                            a[2] = 21;
+                            Answer = Answer + "\\item  252 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 88;
+                            a[1] = 30;
+                            a[2] = 72;
+                            Answer = Answer + "\\item  420 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 75;
+                            a[1] = 25;
+                            a[2] = 45;
+                            Answer = Answer + "\\item  135 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 95;
+                            a[1] = 22;
+                            a[2] = 55;
+                            Answer = Answer + "\\item  858 \n";
+                            break;
+                    }
+                    cout << "\\item Свежие фрукты содержат " << a[0] << "\\% воды, а высушенные – " << a[1] << "\\%. Сколько требуется свежих фруктов для приготовления " << a[2] << " кг высушенных фруктов?" << endl;
+                    break;
+            }
+            break;
+
+        case 2:
+            type_3 = rand()%2 + 1;
+            switch(type_3)
+            {
+                case 1:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 13;
+                            a[1] = 208;
+                            a[2] = 8;
+                            Answer = Answer + "\\item  13 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 9;
+                            a[1] = 216;
+                            a[2] = 4;
+                            Answer = Answer + "\\item  18 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 5;
+                            a[1] = 200;
+                            a[2] = 2;
+                            Answer = Answer + "\\item  20 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 10;
+                            a[1] = 60;
+                            a[2] = 3;
+                            Answer = Answer + "\\item  10 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 9;
+                            a[1] = 112;
+                            a[2] = 4;
+                            Answer = Answer + "\\item  12 \n";
+                            break;
+                    }
+                    cout << "\\item Первый рабочий за час делает на " << a[0] << " деталей больше, чем второй, и выполняет заказ, состоящий из " << a[1] << " деталей, на " << a[2] << " часов быстрее, чем второй рабочий, выполняющий такой же заказ. Сколько деталей в час делает второй рабочий?" << endl;
+                    break;
+
+                case 2:
+                    type_2 = rand()%5 + 1;
+                    switch(type_2)
+                    {
+                        case 1:
+                            a[0] = 3;
+                            a[1] = 260;
+                            a[2] = 6;
+                            Answer = Answer + "\\item  13 \n";
+                            break;
+
+                        case 2:
+                            a[0] = 16;
+                            a[1] = 105;
+                            a[2] = 4;
+                            Answer = Answer + "\\item  30 \n";
+                            break;
+
+                        case 3:
+                            a[0] = 13;
+                            a[1] = 208;
+                            a[2] = 8;
+                            Answer = Answer + "\\item  26 \n";
+                            break;
+
+                        case 4:
+                            a[0] = 5;
+                            a[1] = 200;
+                            a[2] = 2;
+                            Answer = Answer + "\\item  25 \n";
+                            break;
+
+                        case 5:
+                            a[0] = 15;
+                            a[1] = 100;
+                            a[2] = 6;
+                            Answer = Answer + "\\item  25 \n";
+                            break;
+                    }
+                    cout << "\\item Первая труба пропускает на " << a[0] << " литров воды в минуту меньше, чем вторая труба. Сколько литров воды в минуту пропускает вторая труба, если резервуар объёмом " << a[1] << " литров она заполняет на " << a[2] << " минуты быстрее, чем первая труба?" << endl;
+                    break;
+            }
+            break;
+    }
+    return Answer;
+}
+
+string Second22Lin(int i, int AllType)
+{
+    string Answer;
+    int type;
+    type = rand()%5 + 1;
+    switch(type)
+    {
+        case 1:
+            cout << "\\item Постройте график функции:" << endl
+                << "    $$y = \\begin{cases}" << endl
+                << "    x - 2.5, & \\text{если } x < 2, \\\\" << endl
+                << "    -x + 1.5, & \\text{если } 2 \\leq x \\leq 3, \\\\" << endl
+                << "      x - 5, & \\text{если } x > 3." << endl
+                << "    \\end{cases}$$" << endl
+                << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+            Answer = Answer + "\\item  $[-2;-1,5)\\cup {-0,5}$ \n";
+            break;
+
+        case 2:
+            cout << "\\item Постройте график функции:" << endl
+                << "    $$y = \\begin{cases}" << endl
+                << "    4x - 5, & \\text{если } x < 1, \\\\" << endl
+                << "    -2,5x + 5, & \\text{если } 1 \\leq x \\leq 4, \\\\" << endl
+                << "      x - 9, & \\text{если } x > 4." << endl
+                << "    \\end{cases}$$" << endl
+                << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+            Answer = Answer + "\\item  $(-1;2,5]\\cup {-5}$ \n";
+            break;
+
+        case 3:
+            cout << "\\item Постройте график функции:" << endl
+                << "    $$y = \\begin{cases}" << endl
+                << "    3x - 3, & \\text{если } x < 2, \\\\" << endl
+                << "    -3x + 8.5, & \\text{если } 2 \\leq x \\leq 3, \\\\" << endl
+                << "      3,5x - 11, & \\text{если } x > 3." << endl
+                << "    \\end{cases}$$" << endl
+                << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+            Answer = Answer + "\\item  $(2,5;3]\\cup {-0,5}$ \n";
+            break;
+
+        case 4:
+            cout << "\\item Постройте график функции:" << endl
+                << "    $$y = \\begin{cases}" << endl
+                << "    2x - 2, & \\text{если } x < 3, \\\\" << endl
+                << "    -3x + 13, & \\text{если } 3 \\leq x \\leq 4, \\\\" << endl
+                << "      1,5x - 7, & \\text{если } x > 4." << endl
+                << "    \\end{cases}$$" << endl
+                << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+            Answer = Answer + "\\item  $[-1;1)\\cup {4}$ \n";
+            break;
+
+        case 5:
+            cout << "\\item Постройте график функции:" << endl
+                << "    $$y = \\begin{cases}" << endl
+                << "    2,5x - 1, & \\text{если } x < 2, \\\\" << endl
+                << "    -3,5x + 11, & \\text{если } 2 \\leq x \\leq 3, \\\\" << endl
+                << "      x - 1, & \\text{если } x > 3." << endl
+                << "    \\end{cases}$$" << endl
+                << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+            Answer = Answer + "\\item  $[0,5;2)\\cup {4}$ \n";
+            break;
+    }
+    return Answer;
+}
+
+string Second22Parab(int i, int AllType)
+{
+    string Answer;
+    int type;
+    type = 1;
+    int type_2;
+    switch(type)
+    {
+        case 1:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    -x^2 - 2x + 3, & \\text{если } x \\geq -2, \\\\" << endl
+                        << "      -x - 1, & \\text{если } x < - 2." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  $[1;3)\\cup {4}$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    x^2 - 10x + 25, & \\text{если } x \\geq 4, \\\\" << endl
+                        << "      x - 2, & \\text{если } x < 4." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  $(1;2]\\cup {0}$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    -x^2 - 4x - 1, & \\text{если } x \\geq -3, \\\\" << endl
+                        << "      -x - 3, & \\text{если } x < - 3." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  $[0;2) \\cup {3}$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    x^2 - 6x + 11, & \\text{если } x \\geq 2, \\\\" << endl
+                        << "      x + 3, & \\text{если } x < 2." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  $(3;5]\\cup {2}$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    -x^2 + 10x - 21, & \\text{если } x \\geq 3, \\\\" << endl
+                        << "      -x + 5, & \\text{если } x < 3." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях m прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  $[0;2) \\cup {4}$ \n";
+                    break;
+            }
+            break;
+    }
+    return Answer;
+}
 
 int main()
 {
     setlocale(LC_ALL, "ru");
     srand(time(NULL));
-    int count_task[58];              // Создает массив из номеров заданий
-    for (int i = 0; i < 58; i++)     // Обнуляет количество заданий в номерах
+    int count_task[66];              // Создает массив из номеров заданий
+    for (int i = 0; i < 66; i++)     // Обнуляет количество заданий в номерах
         count_task[i] = 0;
     int choice = 0;
     string Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
@@ -11194,7 +12341,9 @@ int main()
                 cout << "11. Многоугольники (" << count_task[32] + count_task[33] + count_task[34] + count_task[35] + count_task[47] << ")" << endl;
                 cout << "12. Окружности (" << count_task[36] + count_task[48] << ")" << endl;
                 cout << "13. Первые пять задач (" << count_task[49] + count_task[50] + count_task[51] + count_task[52] + count_task[53] + count_task[54] + count_task[55] + count_task[56] << ")" << endl;
-                cout << "14. Задание 20 (" << count_task[57] << ")" << endl;
+                cout << "14. Задание 20 (" << count_task[57] + count_task[58] + count_task[59] + count_task[60] << ")" << endl;
+                cout << "15. Задание 21 (" << count_task[61] + count_task[62] + count_task[63] << ")" << endl;
+                cout << "16. Задание 22 (" << count_task[64] + count_task[65] << ")" << endl;
                 cout << endl << "69. Сгенерировать" << endl;
                 cout << "0. Назад" << endl;
                 cout << "Ваш выбор: ";
@@ -11763,6 +12912,9 @@ int main()
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
                         cout << "1. Уравнения и выражения (" << count_task[57] << ")" << endl;
+                        cout << "2. Системы уравнений (" << count_task[58] << ")" << endl;
+                        cout << "3. Неравенства (" << count_task[59] << ")" << endl;
+                        cout << "4. Все целиком (" << count_task[60] << ")" << endl;
                         cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
@@ -11772,6 +12924,90 @@ int main()
                             cout << "\033[2J\033[1;1H";
                             cout << "Введите количество заданий: ";
                             cin >> count_task[57];
+                            break;
+
+                        case 2:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[58];
+                            break;
+
+                        case 3:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[59];
+                            break;
+
+                        case 4:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[60];
+                            break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
+                    break;
+                case 15:
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Задачи на движение (" << count_task[61] << ")" << endl;
+                        cout << "2. Работа и проценты (" << count_task[62] << ")" << endl;
+                        cout << "3. Все целиком (" << count_task[63] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                        case 1:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[61];
+                            break;
+
+                        case 2:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[62];
+                            break;
+
+                        case 3:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[63];
+                            break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
+                    break;
+                case 16:
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Линейная функция (" << count_task[64] << ")" << endl;
+                        cout << "2. Параболы (" << count_task[65] << ")" << endl;
+                        cout << "3. Все целиком (" << count_task[63] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                        case 1:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[64];
+                            break;
+
+                        case 2:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[65];
+                            break;
+
+                        case 3:
+                            cout << "\033[2J\033[1;1H";
+                            cout << "Введите количество заданий: ";
+                            cin >> count_task[63];
                             break;
                         }
                     }while (choice != 0);
@@ -12544,6 +13780,105 @@ int main()
                             Count ++;
                         }
                         count_task[57] = 0;
+                    }
+                    if(count_task[58] != 0)
+                    {
+                        for(int i = 0; i < count_task[58]; i++)
+                        {
+                            Answers = Answers + Second20Sistem(Count, i);
+                            Count ++;
+                        }
+                        count_task[58] = 0;
+                    }
+                    if(count_task[59] != 0)
+                    {
+                        for(int i = 0; i < count_task[59]; i++)
+                        {
+                            Answers = Answers + Second20Nerav(Count, i);
+                            Count ++;
+                        }
+                        count_task[59] = 0;
+                    }
+                    if(count_task[60] != 0) 
+                    {
+                        for(int i = 0; i < count_task[60]; i++)
+                        {
+                            int type_1 = rand() % 3 + 1;
+                            switch (type_1)
+                            {
+                            case 1:
+                                Answers = Answers + Second20Uravn(Count, 0);
+                                Count++;
+                                break;
+
+                            case 2:
+                                Answers = Answers + Second20Sistem(Count, 0);
+                                Count++;
+                                break;
+
+                            case 3:
+                                Answers = Answers + Second20Nerav(Count, 0);
+                                Count++;
+                                break;
+                            }
+                        }
+                        count_task[60] = 0;
+                    }
+                    if(count_task[61] != 0)
+                    {
+                        for(int i = 0; i < count_task[61]; i++)
+                        {
+                            Answers = Answers + Second21Road(Count, i);
+                            Count ++;
+                        }
+                        count_task[61] = 0;
+                    }
+                    if(count_task[62] != 0)
+                    {
+                        for(int i = 0; i < count_task[62]; i++)
+                        {
+                            Answers = Answers + Second21Per(Count, i);
+                            Count ++;
+                        }
+                        count_task[62] = 0;
+                    }
+                    if(count_task[63] != 0) 
+                    {
+                        for(int i = 0; i < count_task[63]; i++)
+                        {
+                            int type_1 = rand() % 2 + 1;
+                            switch (type_1)
+                            {
+                            case 1:
+                                Answers = Answers + Second21Road(Count, 0);
+                                Count++;
+                                break;
+
+                            case 2:
+                                Answers = Answers + Second21Per(Count, 0);
+                                Count++;
+                                break;
+                            }
+                        }
+                        count_task[63] = 0;
+                    }
+                    if(count_task[64] != 0)
+                    {
+                        for(int i = 0; i < count_task[64]; i++)
+                        {
+                            Answers = Answers + Second22Lin(Count, i);
+                            Count ++;
+                        }
+                        count_task[64] = 0;
+                    }
+                    if(count_task[65] != 0)
+                    {
+                        for(int i = 0; i < count_task[65]; i++)
+                        {
+                            Answers = Answers + Second22Parab(Count, i);
+                            Count ++;
+                        }
+                        count_task[65] = 0;
                     }
                     cout << endl << "}" << endl << "\\end{enumerate} \n" << Answers << endl << "\\end{enumerate}" << endl << endl;
                     Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
