@@ -12248,7 +12248,7 @@ string Second22Parab(int i, int AllType)
 {
     string Answer;
     int type;
-    type = 1;
+    type = rand()%9 + 1;
     int type_2;
     switch(type)
     {
@@ -12307,6 +12307,409 @@ string Second22Parab(int i, int AllType)
                     break;
             }
             break;
+
+        case 2:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции $y=|x^2-16|$. Какое наибольшее число общих точек график данной функции может иметь с прямой, параллельной оси абсцисс?" << endl;
+                    Answer = Answer + "\\item  4 \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции $y=|x^2-9|$. Какое наибольшее число общих точек график данной функции может иметь с прямой, параллельной оси абсцисс?" << endl;
+                    Answer = Answer + "\\item  4 \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции $y=|x^2+x-2|$. Какое наибольшее число общих точек график данной функции может иметь с прямой, параллельной оси абсцисс?" << endl;
+                    Answer = Answer + "\\item  4 \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции $y=|x^2+2x-3|$. Какое наибольшее число общих точек график данной функции может иметь с прямой, параллельной оси абсцисс?" << endl;
+                    Answer = Answer + "\\item  4 \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции $y=|x^2+4x-5|$. Какое наибольшее число общих точек график данной функции может иметь с прямой, параллельной оси абсцисс?" << endl;
+                    Answer = Answer + "\\item  4 \n";
+                    break;
+            }
+            break;
+
+        case 3:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции $y=x|x|-|x|-5x$. Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  4;-9 \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции $y=x|x|-|x|-2x$. Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  -2,25;0,25 \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции $y=x|x|-|x|-3x$. Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  -4;1 \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции $y=x|x|-|x|-6x$. Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  -12,25; 6,25 \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции $y=x|x|+2|x|-5x$. Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  -2,25; 12,25 \n";
+                    break;
+            }
+            break;
+
+        case 4:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции $y=|x|(x-1)-5x$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  -9; 4 \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции $y=|x|(x-1)-3x$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  1; -4 \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции $y=|x|(x-1)-2x$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  -2,25; 0,25 \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции $y=|x|(x-1)-6x$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  -12,25; 6,25 \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции $y=|x|(x-1)-3x$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно две общие точки." << endl;
+                    Answer = Answer + "\\item  6,25; -0,25 \n";
+                    break;
+            }
+            break;
+
+        case 5:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции $y=x^2-|2x+1|$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  0; 0,25 \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции $y=x^2-|4x+7|$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $3;\\frac{49}{16}$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции $y=x^2-|6x+5|$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $-4;\\frac{25}{36}$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции $y=x^2-|8x+3|$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $-13;\\frac{9}{64}$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции $y=x^2-|6x+1|$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $-8;\\frac{1}{36}$ \n";
+                    break;
+            }
+            break;
+
+        case 6:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции $y=x^2+3x-3|x+2|+2$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $-1;0$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции $y=x^2-11x-2|x-5|+30$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $-0,25;0$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции $y=x^2+13x-3|x+7|+42$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $-1;0$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции $y=x^2-8x-4|x-3|+15$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $-1;0$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции $y=x^2+14x-3|x+8|+48$ и определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно три общие точки." << endl;
+                    Answer = Answer + "\\item  $-0,25;0$ \n";
+                    break;
+            }
+            break;
+
+        case 7:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(0,5x^2-x)|x|}{x-2}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком ни одной общей точки." << endl;
+                    Answer = Answer + "\\item  $2$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(0,25x^2-x)|x|}{x-4}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком ни одной общей точки." << endl;
+                    Answer = Answer + "\\item  $4$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(0,75x^2-0,75x)|x|}{x-1}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком ни одной общей точки." << endl;
+                    Answer = Answer + "\\item  $0,75$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(0,75x^2-2,25x)|x|}{x-3}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком ни одной общей точки." << endl;
+                    Answer = Answer + "\\item  $6,75$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(0,5x^2+2x)|x|}{x+4}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком ни одной общей точки." << endl;
+                    Answer = Answer + "\\item  $8$ \n";
+                    break;
+            }
+            break;
+
+        case 8:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(x^2+1)(x-2)}{2-x}$$ Определите, при каких значениях параметра $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-2;2;-2,5$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(x^2+4)(x-3)}{3-x}$$ Определите, при каких значениях параметра $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-4;4;-\\frac{13}{3}$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(x^2+2,25)(x-1)}{1-x}$$ Определите, при каких значениях параметра $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-3;3;-3,25$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(x^2+6,25)(x-1)}{1-x}$$ Определите, при каких значениях параметра $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-5;5;-7,25$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции: $$y=\\frac{(x^2+1)(x+3)}{-3-x}$$ Определите, при каких значениях параметра $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-2;2;\\frac{10}{3}$ \n";
+                    break;
+            }
+            break;
+
+        case 9:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции: $$y=\\frac{x^4-13x^2+36}{(x-3)(x+2)}$$ Определите, при каких значениях параметра $c$ прямая $y=c$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-6,25$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции: $$y=\\frac{x^4-10x^2+9}{(x-3)(x+1)}$$ Определите, при каких значениях параметра $c$ прямая $y=c$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-4$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции: $$y=\\frac{x^4-20x^2+64}{(x+4)(x-2)}$$ Определите, при каких значениях параметра $c$ прямая $y=c$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-9$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции: $$y=\\frac{x^4-25x^2+144}{(x-4)(x+3)}$$ Определите, при каких значениях параметра $c$ прямая $y=c$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-12,25$ \n";
+                    break;
+            }
+            break;
+    }
+    return Answer;
+}
+
+string Second22Drob(int i, int AllType)
+{
+    string Answer;
+    int type;
+    type = rand()%4 + 1;
+    int type_2;
+    switch(type)
+    {
+        case 1:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    x^2+1, & \\text{если } x \\geq -1, \\\\" << endl
+                        << "      -\\frac{4}{x}, & \\text{если } x < -1." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком одну общую точку." << endl;
+                    Answer = Answer + "\\item  $(0;1)\\cup(4;+\\infty)$ \n";
+                    break;
+                
+                case 2:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    x^2+2, & \\text{если } x \\geq -2, \\\\" << endl
+                        << "      -\\frac{6}{x}, & \\text{если } x < -2." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком одну общую точку." << endl;
+                    Answer = Answer + "\\item  $(0;2)\\cup(6;+\\infty)$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    x^2-4x+4, & \\text{если } x \\geq -1, \\\\" << endl
+                        << "      -\\frac{9}{x}, & \\text{если } x < -1." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком одну общую точку." << endl;
+                    Answer = Answer + "\\item  ${0}\\cup[9;+\\infty)$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    x^2+6x+9, & \\text{если } x \\geq -5, \\\\" << endl
+                        << "      -\\frac{20}{x}, & \\text{если } x < -5." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком одну общую точку." << endl;
+                    Answer = Answer + "\\item  ${0}\\cup[4;+\\infty)$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции:" << endl
+                        << "    $$y = \\begin{cases}" << endl
+                        << "    x^2-2x+1, & \\text{если } x \\geq -2, \\\\" << endl
+                        << "      -\\frac{18}{x}, & \\text{если } x < -2." << endl
+                        << "    \\end{cases}$$" << endl
+                        << "    Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком одну общую точку." << endl;
+                    Answer = Answer + "\\item  ${0}\\cup[9;+\\infty)$ \n";
+                    break;
+            }
+            break;
+
+        case 2:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции: $$y=3-\\frac{x+2}{x^2+2x}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком общих точек." << endl;
+                    Answer = Answer + "\\item  $3;3,5$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции: $$y=-2-\\frac{x+4}{x^2+4x}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком общих точек." << endl;
+                    Answer = Answer + "\\item  $-2;-1,75$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции: $$y=1-\\frac{x+5}{x^2+5x}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком общих точек." << endl;
+                    Answer = Answer + "\\item  $1;1,2$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции: $$y=-4-\\frac{x+1}{x^2+x}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком общих точек." << endl;
+                    Answer = Answer + "\\item  $-4;-3$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции: $$y=2-\\frac{x-5}{x^2-5x}$$ Определите, при каких значениях $m$ прямая $y=m$ не имеет с графиком общих точек." << endl;
+                    Answer = Answer + "\\item  $2;1,8$ \n";
+                    break;
+            }
+            break;
+
+        case 3:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции: $$y=\\frac{1}{2}\\left(\\left|\\frac{x}{2}-\\frac{2}{x}\\right|+\\frac{x}{2}+\\frac{2}{x}\\right)$$ Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-1;1$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции: $$y=\\frac{1}{2}\\left(\\left|\\frac{x}{3}-\\frac{3}{x}\\right|+\\frac{x}{3}+\\frac{3}{x}\\right)$$ Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-1;1$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции: $$y=\\frac{1}{2}\\left(\\left|\\frac{x}{4}-\\frac{4}{x}\\right|+\\frac{x}{4}+\\frac{4}{x}\\right)$$ Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-1;1$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции: $$y=\\frac{1}{2}\\left(\\left|\\frac{x}{6}-\\frac{6}{x}\\right|+\\frac{x}{6}+\\frac{6}{x}\\right)$$ Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-1;1$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции: $$y=\\frac{1}{2}\\left(\\left|\\frac{x}{1,5}-\\frac{1,5}{x}\\right|+\\frac{x}{1,5}+\\frac{1,5}{x}\\right)$$ Определите, при каких значениях $m$ прямая $y=m$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $-1;1$ \n";
+                    break;
+            }
+            break;
+
+        case 4:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Постройте график функции: $$y=\\frac{4x-5}{4x^2-5x}$$ и определите, при каких значениях $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $0,64$ \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Постройте график функции: $$y=\\frac{5x-8}{5x^2-8x}$$ и определите, при каких значениях $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $2,56$ \n";
+                    break;
+
+                case 3:
+                    cout << "\\item Постройте график функции: $$y=\\frac{7x-10}{7x^2-10x}$$ и определите, при каких значениях $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $0,49$ \n";
+                    break;
+
+                case 4:
+                    cout << "\\item Постройте график функции: $$y=\\frac{6x-7}{6x^2-7x}$$ и определите, при каких значениях $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $\\frac{36}{49}$ \n";
+                    break;
+
+                case 5:
+                    cout << "\\item Постройте график функции: $$y=\\frac{2x+5}{2x^2+5x}$$ и определите, при каких значениях $k$ прямая $y=kx$ имеет с графиком ровно одну общую точку." << endl;
+                    Answer = Answer + "\\item  $0,16$ \n";
+                    break;
+            }
+            break;
     }
     return Answer;
 }
@@ -12315,8 +12718,8 @@ int main()
 {
     setlocale(LC_ALL, "ru");
     srand(time(NULL));
-    int count_task[66];              // Создает массив из номеров заданий
-    for (int i = 0; i < 66; i++)     // Обнуляет количество заданий в номерах
+    int count_task[68];              // Создает массив из номеров заданий
+    for (int i = 0; i < 68; i++)     // Обнуляет количество заданий в номерах
         count_task[i] = 0;
     int choice = 0;
     string Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
@@ -12341,9 +12744,9 @@ int main()
                 cout << "11. Многоугольники (" << count_task[32] + count_task[33] + count_task[34] + count_task[35] + count_task[47] << ")" << endl;
                 cout << "12. Окружности (" << count_task[36] + count_task[48] << ")" << endl;
                 cout << "13. Первые пять задач (" << count_task[49] + count_task[50] + count_task[51] + count_task[52] + count_task[53] + count_task[54] + count_task[55] + count_task[56] << ")" << endl;
-                cout << "14. Задание 20 (" << count_task[57] + count_task[58] + count_task[59] + count_task[60] << ")" << endl;
-                cout << "15. Задание 21 (" << count_task[61] + count_task[62] + count_task[63] << ")" << endl;
-                cout << "16. Задание 22 (" << count_task[64] + count_task[65] << ")" << endl;
+                cout << "14. Задание 20: Алгебраические выражения, уравнения, неравенства (" << count_task[57] + count_task[58] + count_task[59] + count_task[60] << ")" << endl;
+                cout << "15. Задание 21: Текстовые задачи (" << count_task[61] + count_task[62] + count_task[63] << ")" << endl;
+                cout << "16. Задание 22: Графики (" << count_task[64] + count_task[65] + count_task[66] + count_task[67] << ")" << endl;
                 cout << endl << "69. Сгенерировать" << endl;
                 cout << "0. Назад" << endl;
                 cout << "Ваш выбор: ";
@@ -12986,29 +13389,36 @@ int main()
                         cout << "Выберите темы:" << endl;
                         cout << "1. Линейная функция (" << count_task[64] << ")" << endl;
                         cout << "2. Параболы (" << count_task[65] << ")" << endl;
-                        cout << "3. Все целиком (" << count_task[63] << ")" << endl;
+                        cout << "3. Дробные функции (" << count_task[66] << ")" << endl;
+                        cout << "4. Все целиком (" << count_task[67] << ")" << endl;
                         cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
                         switch (choice)
                         {
-                        case 1:
-                            cout << "\033[2J\033[1;1H";
-                            cout << "Введите количество заданий: ";
-                            cin >> count_task[64];
-                            break;
+                            case 1:
+                                cout << "\033[2J\033[1;1H";
+                                cout << "Введите количество заданий: ";
+                                cin >> count_task[64];
+                                break;
 
-                        case 2:
-                            cout << "\033[2J\033[1;1H";
-                            cout << "Введите количество заданий: ";
-                            cin >> count_task[65];
-                            break;
+                            case 2:
+                                cout << "\033[2J\033[1;1H";
+                                cout << "Введите количество заданий: ";
+                                cin >> count_task[65];
+                                break;
 
-                        case 3:
-                            cout << "\033[2J\033[1;1H";
-                            cout << "Введите количество заданий: ";
-                            cin >> count_task[63];
-                            break;
+                            case 3:
+                                cout << "\033[2J\033[1;1H";
+                                cout << "Введите количество заданий: ";
+                                cin >> count_task[66];
+                                break;
+
+                            case 4:
+                                cout << "\033[2J\033[1;1H";
+                                cout << "Введите количество заданий: ";
+                                cin >> count_task[67];
+                                break;
                         }
                     }while (choice != 0);
                     choice = -1;
@@ -13879,6 +14289,40 @@ int main()
                             Count ++;
                         }
                         count_task[65] = 0;
+                    }
+                    if(count_task[66] != 0)
+                    {
+                        for(int i = 0; i < count_task[66]; i++)
+                        {
+                            Answers = Answers + Second22Drob(Count, i);
+                            Count ++;
+                        }
+                        count_task[66] = 0;
+                    }
+                    if(count_task[67] != 0)
+                    {
+                        for(int i = 0; i < count_task[67]; i++)
+                        {
+                            int type_1 = rand() % 3 + 1;
+                            switch (type_1)
+                            {
+                                case 1:
+                                    Answers = Answers + Second22Lin(Count, 0);
+                                    Count++;
+                                    break;
+
+                                case 2:
+                                    Answers = Answers + Second22Parab(Count, 0);
+                                    Count++;
+                                    break;
+
+                                case 3:
+                                    Answers = Answers + Second22Drob(Count, 0);
+                                    Count++;
+                                    break;
+                            }
+                        }
+                        count_task[67] = 0;
                     }
                     cout << endl << "}" << endl << "\\end{enumerate} \n" << Answers << endl << "\\end{enumerate}" << endl << endl;
                     Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
