@@ -282,6 +282,10 @@ string DFractionMultDiv(int number, int AllType)                               /
             number2 = (rand() % 999) + 1;
             number2 = number2 / 100;
             answer = number1 * number2;
+            if(number1 == 1)
+                answer = 0.12345;
+            if(number2 == 1)
+                answer = 0.12345;
         } while (((answer * 100) - static_cast<int>(answer * 100)) != 0);
         cout << "\\item Найдите значение выражения: " << endl;
         cout << "\\[" << endl;
@@ -297,6 +301,10 @@ string DFractionMultDiv(int number, int AllType)                               /
             number2 = (rand() % 999) + 1;
             number2 = number2 / 100;
             answer = number1 / number2;
+            if(number1 == number2)
+                answer = 0.12345;
+            if(number2 == 1)
+                answer = 0.12345;
         } while (((answer * 100) - static_cast<int>(answer * 100)) != 0);
         cout << "\\item Найдите значение выражения: " << endl;
         cout << "\\[" << endl;
@@ -325,6 +333,55 @@ string DFractionPlusMinus(int number)                             // Генер�
     Answer = "  \\item " + FormatDouble(answer) + "\n";
     return Answer;
 
+}
+
+string FractionUpper(int i, int AllType)
+{
+    string Answer, Quest_Znak, Quest_Word;
+    double a[6];
+    int nod, check;
+    int type = 1;
+    switch(type)
+    {
+        case 1:
+            do{
+                check = 1;
+                for(int k = 0; k < 6; k++)
+                {
+                    a[k] = rand()%10 + 1;
+                }
+                for(int k = 0; k < 6; k=k+2)
+                {
+                    if(a[k] > a[k+1])
+                    {
+                        double swap = a[k+1];
+                        a[k+1] = a[k];
+                        a[k] = swap;
+                    }
+                    nod = NOD(a[k],a[k+1]);
+                    a[k] = a[k]/nod;
+                    a[k+1] = a[k+1]/nod;
+                }
+                if(rand()%2 == 0)
+                {
+                    Quest_Znak = "+";
+                    a[5] = a[1]*a[3];
+                    a[4] = a[0]*a[3] + a[1]*a[2];
+                }
+                else
+                {
+                    Quest_Znak = "-";
+                    a[5] = a[1]*a[3];
+                    a[4] = a[0]*a[3] - a[1]*a[2];
+                }
+                nod = NOD(a[5],a[4]);
+                a[4] = a[4]/nod;
+                a[5] = a[5]/nod;
+            }while(check !=1);
+
+
+    }
+    return Answer;
 }
 
 string LetterEqu(int number, int AllType)
@@ -1969,7 +2026,7 @@ string NumberLine1(int number, int AllType)
 			string Out[4];
 			string Answer;
             if(AllType == 0)
-                type = rand()%7 + 1;
+                type = 2;//rand()%7 + 1;
             else
                 type = AllType;
 			switch (type)
@@ -7705,13 +7762,15 @@ string MnogougReshotka(int i, int AllType)
 
 string Okrugn(int i, int AllType)
 {
-    double r, R, a, alpha[4], change, k, l[4], side[4], betta[4], max;
+    double r, R, a, alpha[4], change, k, l[4], side[4], betta[4], max, x, y;
             double answer;
             string Answer;
+            string Pos, Dan, Quest;
+            string pos[3];
             int check = 0;
-            int type;
+            int type, type_1;
             if(AllType == 0)
-                type = rand()%14 + 1;
+                type = 19;//rand()%19 + 1;
             else
                 type = AllType;
             switch (type)
@@ -8279,6 +8338,271 @@ string Okrugn(int i, int AllType)
                 Answer = "  \\item " + FormatDouble(answer) + " \n";
                 break;
 
+            case 15:
+                R = rand()%20 + 1;
+                answer = 4*R*R/5;
+                cout << "%" << i + 1 << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Точка O является серединой стороны CD квадрата ABCD. Радиус окружности с центром в точке O, проходящей через вершину A, равен " << FormatDouble(R) << ". Найдите площадь квадрата ABCD." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                    << "            \\draw (0,0) circle (2cm);" << endl
+                    << "            \\draw (-2,0) -- (2,0);" << endl
+                    << "            \\coordinate[label=above left:$A$] (A) at (-0.894427191,1.788854382);" << endl
+                    << "            \\coordinate[label=above right:$B$] (B) at (0.894427191,1.788854382);" << endl
+                    << "            \\coordinate[label=below right:$C$] (C) at (0.894427191,0);" << endl
+                    << "            \\coordinate[label=below left:$D$] (D) at (-0.894427191,0);" << endl
+                    << "            \\coordinate[label=below:$O$] (O) at (0,0);" << endl
+                    << "            \\draw[fill=black] (0,0) circle(2pt);" << endl
+                    << "            \\draw[thick] (A) -- (B) -- (C) -- (D) -- (A);" << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
+                //cout << answer << endl;
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
+                break;
+            
+            case 16:
+                do{
+                    check = 1;
+                    R = rand()%30+1;
+                    a = rand()%30+1;
+                    if(a >= R)
+                        check = 0;
+                    else
+                    {
+                        answer = pow((pow(R,2)-pow(a,2)),0.5);
+                        if((answer - static_cast<int>(answer))!= 0)
+                            check = 0;
+                    }
+                    if(rand()%2 == 0)
+                    {
+                        Quest = "AC";
+                        Dan = "BC";
+                        if(answer > a)
+                        {
+                            r = 180*a/(answer + a);
+                            Pos = "right";
+                        }
+                        else
+                        {
+                            r = 180*a/(answer + a);
+                            Pos = "left";
+                        }
+                    }
+                    else
+                    {
+                        Quest = "BC";
+                        Dan = "AC";
+                        if(answer > a)
+                        {
+                            r = 180*answer/(answer + a);
+                            Pos = "left";
+                        }
+                        else
+                        {
+                            r = 180*answer/(answer + a);
+                            Pos = "right";
+                        }
+                    }
+                }while(check!=1);
+                cout << "%" << i + 1 << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Центр окружности, описанной около треугольника ABC, лежит на стороне AB. Радиус окружности равен " << FormatDouble(R/2) << ". Найдите " << Quest << ", если " << Dan << " = " << FormatDouble(a) << "." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                    << "            \\draw[thick] (0,0) circle(1.5);" << endl
+                    << "            \\coordinate[label=left:$A$] (A) at (180:1.5);" << endl
+                    << "            \\coordinate[label=above " << Pos << ":$C$] (C) at (" << FormatDouble(r) << ":1.5);" << endl
+                    << "            \\coordinate[label=right:$B$] (B) at (0:1.5);" << endl
+                    << "            \\draw[thick] (A) -- (B);" << endl
+                    << "            \\draw[thick] (B) -- (C);" << endl
+                    << "            \\draw[thick] (C) -- (A);" << endl
+                    << "            \\draw[fill=black] (0,0) circle(2pt);" << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
+                //cout << answer << endl;
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
+                break;
+
+            case 17:
+                a = rand()%50 + 20;
+                answer = 90 - a;
+                if(rand()%2 == 0)
+                {
+                    Quest = "ABC";
+                    Dan = "BAC";
+                    if(answer > a)
+                    {
+                        r = 180 - 2*answer;
+                        Pos = "right";
+                    }
+                    else
+                    {
+                        r = 180 - 2*answer;
+                        Pos = "left";
+                    }
+                }
+                else
+                {
+                    Quest = "BAC";
+                    Dan = "ABC";
+                    if(answer > a)
+                    {
+                        r = 180 - 2*a;
+                        Pos = "left";
+                    }
+                    else
+                    {
+                        r = 180 - 2*a;
+                        Pos = "right";
+                    }
+                }
+                cout << "%" << i + 1 << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        Центр окружности, описанной около треугольника ABC, лежит на стороне AB. Найдите угол " << Quest << ", если угол " << Dan << " равен $" << FormatDouble(a) << "^{\\circ}$. Ответ дайте в градусах." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                    << "            \\draw[thick] (0,0) circle(1.5);" << endl
+                    << "            \\coordinate[label=left:$A$] (A) at (180:1.5);" << endl
+                    << "            \\coordinate[label=above " << Pos << ":$C$] (C) at (" << FormatDouble(r) << ":1.5);" << endl
+                    << "            \\coordinate[label=right:$B$] (B) at (0:1.5);" << endl
+                    << "            \\draw[thick] (A) -- (B);" << endl
+                    << "            \\draw[thick] (B) -- (C);" << endl
+                    << "            \\draw[thick] (C) -- (A);" << endl
+                    << "            \\draw[fill=black] (0,0) circle(2pt);" << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
+                //cout << answer << endl;
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
+                break;
+
+            case 18:
+                do{
+                    check = 1;
+                    x = rand()%10;
+                    y = rand()%10;
+                    r = 5*(rand()%14+1);
+                    R = pow((25*x*x + 25*y*y),0.5);
+                    if(r<R)
+                        answer = R*R/(r*r);
+                    else
+                        answer = r*r/(R*R);
+                    if(r==R)
+                        check = 0;
+                    if((100*answer - static_cast<int>(100*answer))!= 0)
+                        check = 0;
+                    if(R+r > 30)
+                        check = 0;
+                    if(R<5)
+                        check = 0;
+                    if((2*r+10 > 50)||(2*R+10 > 50))
+                        check = 0;
+                    if(((R/5)-static_cast<int>(R/5))==0)
+                        check = 0;
+                    a = 5*static_cast<int>((R+5)/5);
+                }while(check != 1);
+                cout << "%" << i + 1 << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        На клетчатой бумаге изображены два круга. Во сколько раз площадь большего круга больше площади меньшего?" << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                    << "            \\draw[step=0.5, gray] (0,0) grid (7,5);" << endl
+                    << "            \\draw[thick] (" << FormatDouble(7-0.5-(r/10)) << "," << FormatDouble(5-0.5-(r/10)) << ") circle (" << FormatDouble(r/10) << ");" << endl
+                    << "            \\draw[thick] (" << FormatDouble(a/10) << "," << FormatDouble(a/10) << ") circle (" << FormatDouble(R/10) << ");" << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
+                //cout << answer << endl;
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
+                break;
+
+            case 19:
+                do{
+                    check = 1;
+                    type_1 = rand()%7 + 1;
+                    switch(type_1)
+                    {
+                        case 1:
+                            a = 30;
+                            break;
+
+                        case 2:
+                            a = 45;
+                            break;
+
+                        case 3:
+                            a = 60;
+                            break;
+
+                        case 4:
+                            a = 90;
+                            break;
+
+                        case 5:
+                            a = 120;
+                            break;
+
+                        case 6:
+                            a = 135;
+                            break;
+
+                        case 7:
+                            a = 150;
+                            break;
+                    }
+                    alpha[0] = rand()%360;
+                    alpha[1] = rand()%80 + 10;
+                    alpha[2] = alpha[0] + alpha[1] + 2*a;
+                    betta[0] = alpha[0];
+                    betta[1] = (alpha[0] + alpha[1]);
+                    betta[2] = alpha[2];
+                    k = rand()%20 + 1;
+                    if((a == 30)||(a == 150))
+                        Quest = " ";
+                    if((a == 45)||(a == 135))
+                        Quest = "\\sqrt{2}";
+                    if((a == 60)||(a == 120))
+                        Quest = "\\sqrt{3}";
+                    if(a == 90)
+                        Quest = " ";
+                    if(a == 90)
+                        answer = k/2;
+                    else
+                        answer = k;
+                    for(int i=0; i<3; i++)
+                    {
+                        if(betta[i]>360)
+                        {
+                            do{
+                                check = 1;
+                                betta[i] = betta[i] - 360;
+                                if(betta[i] > 360)
+                                    check = 0;
+                            }while(check != 1);
+                        }
+                    }
+                    for(int i = 0; i<3; i++)
+                    {
+                        if((betta[i] >= 0)&&(betta[i] <= 90))
+                            pos[i] = "above right";
+                        if((betta[i] >= 90)&&(betta[i] <= 180))
+                            pos[i] = "above left";
+                        if((betta[i] >= 180)&&(betta[i] <= 270))
+                            pos[i] = "below left";
+                        if((betta[i] >= 270)&&(betta[i] <= 360))
+                            pos[i] = "below right";
+                    }
+                    if(pow(pow((betta[0]-betta[1]),2),0.5)<30)
+                        check = 0;
+                    if(pow(pow((betta[0]-betta[2]),2),0.5)<30)
+                        check = 0;
+                }while(check != 1);
+                cout << "%" << i + 1 << endl;
+                cout << "\\item\n" << endl << "\\begin{geometrytask}" << endl;
+                cout << "        В треугольнике ABC угол C равен $" << FormatDouble(a) << "^{\\circ}$, $AB = " << FormatDouble(k) << Quest << "$. Найдите радиус окружности, описанной около этого треугольника." << endl;
+                cout << "\\end{geometrytask}\\hfill" << endl << "\\begin{tikzpicture}[scale=0.7, baseline=(current bounding box.center)] % Добавлено baseline" << endl
+                    << "            \\draw[thick] (0,0) circle(1.5);" << endl
+                    << "            \\coordinate[label=" << pos[2] << ":$A$] (A) at (" << FormatDouble(alpha[2]) << ":1.5);" << endl
+                    << "            \\coordinate[label=" << pos[0] << ":$C$] (C) at (" << FormatDouble(alpha[0]) << ":1.5);" << endl
+                    << "            \\coordinate[label=" << pos[1] << ":$B$] (B) at (" << FormatDouble(alpha[0]+alpha[1]) << ":1.5);" << endl
+                    << "            \\draw[thick] (A) -- (B);" << endl
+                    << "            \\draw[thick] (B) -- (C);" << endl
+                    << "            \\draw[thick] (C) -- (A);" << endl;
+                cout << "\\end{tikzpicture}" << endl << endl;
+                //cout << answer << endl;
+                Answer = "  \\item " + FormatDouble(answer) + " \n";
+                break;
 
             }
             return Answer;
@@ -10859,7 +11183,11 @@ string Second20Uravn(int i, int AllType)
     string A[4];
     string B[4];
     int check;
-    int type = rand()%10+1;
+    int type;
+    if(AllType == 0)
+        type = rand()%10+1;
+    else
+        type = AllType;
     switch(type)
     {
         case 1:
@@ -11176,7 +11504,11 @@ string Second20Sistem(int i, int AllType)
     string A[4];
     string B[7];
     int check;
-    int type = rand()%3 + 1;
+    int type;
+    if(AllType == 0)
+        type = rand()%3 + 1;
+    else
+        type = AllType;
     switch(type)
     {
         case 1:
@@ -11312,7 +11644,11 @@ string Second20Nerav(int i, int AllType)
     string A[4];
     string B[7];
     int check;
-    int type = rand()%3 + 1;
+    int type;
+    if(AllType == 0)
+        type = rand()%3 + 1;
+    else
+        type = AllType;
     switch(type)
     {
         case 1:
@@ -11432,7 +11768,10 @@ string Second21Road(int i, int AllType)
     string Answer;
     int type;
     int a[10];
-    type = rand()%7 + 1;
+    if(AllType == 0)
+        type = rand()%7 + 1;
+    else
+        type = AllType;
     int type_2, type_3;
     switch(type)
     {
@@ -11982,17 +12321,23 @@ string Second21Road(int i, int AllType)
     return Answer;
 }
 
-string Second21Per(int i, int AllType)
+string Second21Per(int i, int AllType, int AllType2)
 {
     string Answer;
     int type;
     int a[10];
-    type = rand()%2 + 1;
+    if(AllType == 0)
+        type = rand()%2 + 1;
+    else
+        type = AllType;
     int type_2, type_3;
     switch(type)
     {
         case 1:
-            type_3 = rand()%2 + 1;
+            if(AllType2 == 0)
+                type_3 = rand()%2 + 1;
+            else
+                type_3 = AllType2;
             switch(type_3)
             {
                 case 1:
@@ -12087,7 +12432,10 @@ string Second21Per(int i, int AllType)
             break;
 
         case 2:
-            type_3 = rand()%2 + 1;
+            if(AllType2 == 0)
+                type_3 = rand()%2 + 1;
+            else
+                type_3 = AllType2;
             switch(type_3)
             {
                 case 1:
@@ -12183,7 +12531,10 @@ string Second22Lin(int i, int AllType)
 {
     string Answer;
     int type;
-    type = rand()%5 + 1;
+    if(AllType == 0)
+        type = rand()%5 + 1;
+    else
+        type = AllType;
     switch(type)
     {
         case 1:
@@ -12248,7 +12599,10 @@ string Second22Parab(int i, int AllType)
 {
     string Answer;
     int type;
-    type = rand()%9 + 1;
+    if(AllType == 0)
+        type = rand()%9 + 1;
+    else
+        type = AllType;
     int type_2;
     switch(type)
     {
@@ -12558,7 +12912,10 @@ string Second22Drob(int i, int AllType)
 {
     string Answer;
     int type;
-    type = rand()%4 + 1;
+    if(AllType == 0)
+        type = rand()%4 + 1;
+    else
+        type = AllType;
     int type_2;
     switch(type)
     {
@@ -12714,12 +13071,1753 @@ string Second22Drob(int i, int AllType)
     return Answer;
 }
 
+string Second23(int i, int AllType)
+{
+    string Answer;
+    int type;
+    double a[10];
+    if(AllType == 0)
+        type = rand()%19 + 1;
+    else
+        type = AllType;
+    int type_2;
+    switch(type)
+    {
+        case 1:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 5;
+                    a[1] = 14;
+                    Answer = Answer + "\\item  48 \n";
+                    break;
+
+                case 2:
+                    a[0] = 3;
+                    a[1] = 19;
+                    Answer = Answer + "\\item  44 \n";
+                    break;
+
+                case 3:
+                    a[0] = 8;
+                    a[1] = 13;
+                    Answer = Answer + "\\item  42 \n";
+                    break;
+
+                case 4:
+                    a[0] = 7;
+                    a[1] = 12;
+                    Answer = Answer + "\\item  38 \n";
+                    break;
+
+                case 5:
+                    a[0] = 10;
+                    a[1] = 18;
+                    Answer = Answer + "\\item  56 \n";
+                    break;
+            }
+            cout << "\\item Биссектриса угла A параллелограмма ABCD пересекает сторону BC в точке K. Найдите периметр параллелограмма, если BK=" << FormatDouble(a[0]) << ", CK=" << FormatDouble(a[1]) << "." << endl;
+            break;
+
+        case 2:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 15;
+                    a[1] = 60;
+                    Answer = Answer + "\\item  60, 120 \n";
+                    break;
+
+                case 2:
+                    a[0] = 13;
+                    a[1] = 52;
+                    Answer = Answer + "\\item  60, 120 \n";
+                    break;
+
+                case 3:
+                    a[0] = 19;
+                    a[1] = 76;
+                    Answer = Answer + "\\item  60, 120 \n";
+                    break;
+
+                case 4:
+                    a[0] = 11;
+                    a[1] = 44;
+                    Answer = Answer + "\\item  60, 120 \n";
+                    break;
+
+                case 5:
+                    a[0] = 16;
+                    a[1] = 64;
+                    Answer = Answer + "\\item  60, 120 \n";
+                    break;
+            }
+            cout << "\\item Расстояние от точки пересечения диагоналей ромба до одной из его сторон равно " << FormatDouble(a[0]) << ", а одна из диагоналей ромба равна " << FormatDouble(a[1]) << ". Найдите углы ромба." << endl;
+            break;
+
+        case 3:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 15;
+                    a[1] = 2;
+                    Answer = Answer + "\\item  8 \n";
+                    break;
+
+                case 2:
+                    a[0] = 20;
+                    a[1] = 5;
+                    Answer = Answer + "\\item  15 \n";
+                    break;
+
+                case 3:
+                    a[0] = 24;
+                    a[1] = 1;
+                    Answer = Answer + "\\item  7 \n";
+                    break;
+
+                case 4:
+                    a[0] = 8;
+                    a[1] = 2;
+                    Answer = Answer + "\\item  6 \n";
+                    break;
+
+                case 5:
+                    a[0] = 12;
+                    a[1] = 3;
+                    Answer = Answer + "\\item  9 \n";
+                    break;
+            }
+            cout << "\\item Высота AH ромба ABCD делит сторону CD на отрезки DH=" << FormatDouble(a[0]) << " и CH=" << FormatDouble(a[1]) << ". Найдите высоту ромба." << endl;
+            break;
+
+        case 4:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 6;
+                    a[1] = 8;
+                    Answer = Answer + "\\item  5 \n";
+                    break;
+
+                case 2:
+                    a[0] = 12;
+                    a[1] = 16;
+                    Answer = Answer + "\\item  10 \n";
+                    break;
+
+                case 3:
+                    a[0] = 10;
+                    a[1] = 24;
+                    Answer = Answer + "\\item  13 \n";
+                    break;
+
+                case 4:
+                    a[0] = 14;
+                    a[1] = 48;
+                    Answer = Answer + "\\item  25 \n";
+                    break;
+            }
+            cout << "\\item В прямоугольном треугольнике ABC с прямым углом C известны катеты: AC=" << FormatDouble(a[0]) << ", BC=" << FormatDouble(a[1]) << ". Найдите медиану CK этого треугольника." << endl;
+            break;
+
+        case 5:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 15;
+                    a[1] = 20;
+                    Answer = Answer + "\\item  12 \n";
+                    break;
+
+                case 2:
+                    a[0] = 18;
+                    a[1] = 24;
+                    Answer = Answer + "\\item  14,4 \n";
+                    break;
+
+                case 3:
+                    a[0] = 15;
+                    a[1] = 36;
+                    Answer = Answer + "\\item  $\\frac{180}{13}$ \n";
+                    break;
+
+                case 4:
+                    a[0] = 21;
+                    a[1] = 28;
+                    Answer = Answer + "\\item  16,8 \n";
+                    break;
+
+                case 5:
+                    a[0] = 10;
+                    a[1] = 24;
+                    Answer = Answer + "\\item  $\\frac{120}{13}$ \n";
+                    break;
+            }
+            cout << "\\item Катеты прямоугольного треугольника равны " << FormatDouble(a[0]) << " и " << FormatDouble(a[1]) << ". Найдите высоту, проведённую к гипотенузе." << endl;
+            break;
+
+        case 6:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 21;
+                    a[1] = 75;
+                    Answer = Answer + "\\item  20,16 \n";
+                    break;
+
+                case 2:
+                    a[0] = 16;
+                    a[1] = 34;
+                    Answer = Answer + "\\item  $\\frac{240}{17}$ \n";
+                    break;
+
+                case 3:
+                    a[0] = 35;
+                    a[1] = 125;
+                    Answer = Answer + "\\item  33,6 \n";
+                    break;
+
+                case 4:
+                    a[0] = 24;
+                    a[1] = 51;
+                    Answer = Answer + "\\item  $\\frac{360}{17}$ \n";
+                    break;
+
+                case 5:
+                    a[0] = 20;
+                    a[1] = 52;
+                    Answer = Answer + "\\item  $\\frac{240}{13}$ \n";
+                    break;
+            }
+            cout << "\\item Катет и гипотенуза прямоугольного треугольника равны " << FormatDouble(a[0]) << " и " << FormatDouble(a[1]) << ". Найдите высоту, проведённую к гипотенузе." << endl;
+            break;
+
+        case 7:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 24;
+                    a[1] = 10;
+                    Answer = Answer + "\\item  26 \n";
+                    break;
+
+                case 2:
+                    a[0] = 16;
+                    a[1] = 12;
+                    Answer = Answer + "\\item  20 \n";
+                    break;
+
+                case 3:
+                    a[0] = 20;
+                    a[1] = 15;
+                    Answer = Answer + "\\item  25 \n";
+                    break;
+
+                case 4:
+                    a[0] = 15;
+                    a[1] = 8;
+                    Answer = Answer + "\\item  17 \n";
+                    break;
+
+                case 5:
+                    a[0] = 32;
+                    a[1] = 24;
+                    Answer = Answer + "\\item  40 \n";
+                    break;
+            }
+            cout << "\\item Биссектрисы углов A и B при боковой стороне AB трапеции ABCD пересекаются в точке F. Найдите AB, если AF=" << FormatDouble(a[0]) << ", BF=" << FormatDouble(a[1]) << "." << endl;
+            break;
+
+        case 8:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 11;
+                    a[1] = 44;
+                    a[2] = 18;
+                    Answer = Answer + "\\item  6 \n";
+                    break;
+
+                case 2:
+                    a[0] = 16;
+                    a[1] = 20;
+                    a[2] = 15;
+                    Answer = Answer + "\\item  60 \n";
+                    break;
+
+                case 3:
+                    a[0] = 15;
+                    a[1] = 25;
+                    a[2] = 22;
+                    Answer = Answer + "\\item  33 \n";
+                    break;
+
+                case 4:
+                    a[0] = 17;
+                    a[1] = 51;
+                    a[2] = 32;
+                    Answer = Answer + "\\item  16 \n";
+                    break;
+
+                case 5:
+                    a[0] = 22;
+                    a[1] = 55;
+                    a[2] = 36;
+                    Answer = Answer + "\\item  24 \n";
+                    break;
+            }
+            cout << "\\item Прямая, параллельная стороне AC треугольника ABC, пересекает стороны AB и BC в точках M и N соответственно. Найдите BN, если MN=" << FormatDouble(a[0]) << ", AС=" << FormatDouble(a[1]) << ", NС=" << FormatDouble(a[2]) << "." << endl;
+            break;
+
+        case 9:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 12;
+                    a[1] = 48;
+                    a[2] = 35;
+                    Answer = Answer + "\\item  28 \n";
+                    break;
+
+                case 2:
+                    a[0] = 10;
+                    a[1] = 25;
+                    a[2] = 56;
+                    Answer = Answer + "\\item  40 \n";
+                    break;
+
+                case 3:
+                    a[0] = 13;
+                    a[1] = 65;
+                    a[2] = 42;
+                    Answer = Answer + "\\item  35 \n";
+                    break;
+
+                case 4:
+                    a[0] = 14;
+                    a[1] = 42;
+                    a[2] = 52;
+                    Answer = Answer + "\\item  39 \n";
+                    break;
+
+                case 5:
+                    a[0] = 11;
+                    a[1] = 22;
+                    a[2] = 27;
+                    Answer = Answer + "\\item  18 \n";
+                    break;
+            }
+            cout << "\\item Отрезки AB и DC лежат на параллельных прямых, а отрезки AC и BD пересекаются в точке M. Найдите MC, если AB=" << FormatDouble(a[0]) << ", СD=" << FormatDouble(a[1]) << ", AС=" << FormatDouble(a[2]) << "." << endl;
+            break;
+
+        case 10:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 9;
+                    a[1] = 36;
+                    Answer = Answer + "\\item  18 \n";
+                    break;
+
+                case 2:
+                    a[0] = 6;
+                    a[1] = 24;
+                    Answer = Answer + "\\item  12 \n";
+                    break;
+
+                case 3:
+                    a[0] = 5;
+                    a[1] = 45;
+                    Answer = Answer + "\\item  15 \n";
+                    break;
+
+                case 4:
+                    a[0] = 4;
+                    a[1] = 16;
+                    Answer = Answer + "\\item  8 \n";
+                    break;
+
+                case 5:
+                    a[0] = 3;
+                    a[1] = 27;
+                    Answer = Answer + "\\item  9 \n";
+                    break;
+            }
+            cout << "\\item Точка H является основанием высоты, проведённой из вершины прямого угла В треугольника АВС к гипотенузе АС. Найдите АВ, если AH=" << FormatDouble(a[0]) << ", AC=" << FormatDouble(a[1]) << "." << endl;
+            break;
+
+        case 11:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 60;
+                    a[1] = 135;
+                    a[2] = 36;
+                    Answer = Answer + "\\item  $12\\sqrt{6}$ \n";
+                    break;
+
+                case 2:
+                    a[0] = 60;
+                    a[1] = 135;
+                    a[2] = 24;
+                    Answer = Answer + "\\item  $8\\sqrt{6}$ \n";
+                    break;
+
+                case 3:
+                    a[0] = 60;
+                    a[1] = 150;
+                    a[2] = 33;
+                    Answer = Answer + "\\item  $11\\sqrt{3}$ \n";
+                    break;
+
+                case 4:
+                    a[0] = 60;
+                    a[1] = 150;
+                    a[2] = 45;
+                    Answer = Answer + "\\item  $15\\sqrt{3}$ \n";
+                    break;
+
+                case 5:
+                    a[0] = 45;
+                    a[1] = 120;
+                    a[2] = 34;
+                    Answer = Answer + "\\item  $17\\sqrt{6}$ \n";
+                    break;
+            }
+            cout << "\\item Найдите боковую сторону AB трапеции ABCD, если углы ABC и BCD равны соответственно $" << FormatDouble(a[0]) << "^{\\circ}$ и $" << FormatDouble(a[1]) << "^{\\circ}$, а CD=$" << FormatDouble(a[2]) << "$." << endl;
+            break;
+
+        case 12:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 42;
+                    a[1] = 14;
+                    a[2] = 4;
+                    a[3] = 5;
+                    Answer = Answer + "\\item  30 \n";
+                    break;
+
+                case 2:
+                    a[0] = 35;
+                    a[1] = 21;
+                    a[2] = 5;
+                    a[3] = 2;
+                    Answer = Answer + "\\item  31 \n";
+                    break;
+
+                case 3:
+                    a[0] = 36;
+                    a[1] = 18;
+                    a[2] = 7;
+                    a[3] = 2;
+                    Answer = Answer + "\\item  32 \n";
+                    break;
+
+                case 4:
+                    a[0] = 48;
+                    a[1] = 16;
+                    a[2] = 5;
+                    a[3] = 3;
+                    Answer = Answer + "\\item  36 \n";
+                    break;
+
+                case 5:
+                    a[0] = 44;
+                    a[1] = 24;
+                    a[2] = 3;
+                    a[3] = 1;
+                    Answer = Answer + "\\item  39 \n";
+                    break;
+            }
+            cout << "\\item Прямая, параллельная основаниям трапеции ABCD, пересекает её боковые стороны AB и CD в точках E и F соответственно. Найдите длину отрезка EF, если AD=" << FormatDouble(a[0]) << ", BC=" << FormatDouble(a[1]) << ", CF:DF=" << FormatDouble(a[2]) << ":" << FormatDouble(a[3]) << "." << endl;
+            break;
+
+        case 13:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 24;
+                    a[1] = 16;
+                    a[2] = 12;
+                    Answer = Answer + "\\item  32 \n";
+                    break;
+
+                case 2:
+                    a[0] = 18;
+                    a[1] = 12;
+                    a[2] = 9;
+                    Answer = Answer + "\\item  24 \n";
+                    break;
+
+                case 3:
+                    a[0] = 12;
+                    a[1] = 8;
+                    a[2] = 6;
+                    Answer = Answer + "\\item  16 \n";
+                    break;
+
+                case 4:
+                    a[0] = 10;
+                    a[1] = 12;
+                    a[2] = 5;
+                    Answer = Answer + "\\item  24 \n";
+                    break;
+
+                case 5:
+                    a[0] = 16;
+                    a[1] = 15;
+                    a[2] = 8;
+                    Answer = Answer + "\\item  30 \n";
+                    break;
+            }
+            cout << "\\item Отрезки AB и CD являются хордами окружности. Найдите длину хорды CD, если AB=" << FormatDouble(a[0]) << ", а расстояния от центра окружности до хорд AB и CD равны соответственно " << FormatDouble(a[1]) << " и " << FormatDouble(a[2]) << "." << endl;
+            break;
+
+        case 14:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 14;
+                    a[1] = 48;
+                    a[2] = 24;
+                    Answer = Answer + "\\item  7 \n";
+                    break;
+
+                case 2:
+                    a[0] = 40;
+                    a[1] = 42;
+                    a[2] = 21;
+                    Answer = Answer + "\\item  20 \n";
+                    break;
+
+                case 3:
+                    a[0] = 16;
+                    a[1] = 30;
+                    a[2] = 15;
+                    Answer = Answer + "\\item  8 \n";
+                    break;
+
+                case 4:
+                    a[0] = 30;
+                    a[1] = 40;
+                    a[2] = 20;
+                    Answer = Answer + "\\item  15 \n";
+                    break;
+
+                case 5:
+                    a[0] = 36;
+                    a[1] = 48;
+                    a[2] = 24;
+                    Answer = Answer + "\\item  18 \n";
+                    break;
+            }
+            cout << "\\item Отрезки AB и CD являются хордами окружности. Найдите расстояние от центра окружности до хорды CD, если AB=" << FormatDouble(a[0]) << ", CD=" << FormatDouble(a[1]) << ", а расстояние от центра окружности до хорды AB равно " << FormatDouble(a[2]) << "." << endl;
+            break;
+
+        case 15:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 11;
+                    Answer = Answer + "\\item  11 \n";
+                    break;
+
+                case 2:
+                    a[0] = 13;
+                    Answer = Answer + "\\item  13 \n";
+                    break;
+
+                case 3:
+                    a[0] = 10;
+                    Answer = Answer + "\\item  10 \n";
+                    break;
+
+                case 4:
+                    a[0] = 9;
+                    Answer = Answer + "\\item  9 \n";
+                    break;
+
+                case 5:
+                    a[0] = 12;
+                    Answer = Answer + "\\item  12 \n";
+                    break;
+            }
+            cout << "\\item Точка H является основанием высоты BH, проведённой из вершины прямого угла B прямоугольного треугольника ABC. Окружность с диаметром BH пересекает стороны AB и CB в точках P и K соответственно. Найдите BH, если PK=" << FormatDouble(a[0]) << "." << endl;
+            break;
+
+        case 16:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 36;
+                    a[1] = 1.8;
+                    Answer = Answer + "\\item  20 \n";
+                    break;
+
+                case 2:
+                    a[0] = 21;
+                    a[1] = 1.5;
+                    Answer = Answer + "\\item  14 \n";
+                    break;
+
+                case 3:
+                    a[0] = 9;
+                    a[1] = 3;
+                    Answer = Answer + "\\item  3 \n";
+                    break;
+
+                case 4:
+                    a[0] = 30;
+                    a[1] = 1.2;
+                    Answer = Answer + "\\item  25 \n";
+                    break;
+
+                case 5:
+                    a[0] = 34;
+                    a[1] = 2;
+                    Answer = Answer + "\\item  17 \n";
+                    break;
+            }
+            cout << "\\item Окружность пересекает стороны AB и AC треугольника ABC в точках K и P соответственно и проходит через вершины B и C. Найдите длину отрезка KP, если AP=" << FormatDouble(a[0]) << ", а сторона BC в " << FormatDouble(a[1]) << " раза меньше стороны AB." << endl;
+            break;
+
+        case 17:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 16;
+                    a[1] = 15;
+                    Answer = Answer + "\\item  25 \n";
+                    break;
+
+                case 2:
+                    a[0] = 15;
+                    a[1] = 4;
+                    Answer = Answer + "\\item  16 \n";
+                    break;
+
+                case 3:
+                    a[0] = 3.6;
+                    a[1] = 8;
+                    Answer = Answer + "\\item  8.2 \n";
+                    break;
+
+                case 4:
+                    a[0] = 7.5;
+                    a[1] = 2;
+                    Answer = Answer + "\\item  4.25 \n";
+                    break;
+
+                case 5:
+                    a[0] = 6.4;
+                    a[1] = 6;
+                    Answer = Answer + "\\item  6.8 \n";
+                    break;
+            }
+            cout << "\\item Окружность с центром на стороне AC треугольника ABC проходит через вершину C и касается прямой AB в точке B. Найдите AC, если диаметр окружности равен " << FormatDouble(a[0]) << ", а AB=" << FormatDouble(a[1]) << "." << endl;
+            break;
+
+        case 18:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 3;
+                    a[1] = 9;
+                    Answer = Answer + "\\item  8 \n";
+                    break;
+
+                case 2:
+                    a[0] = 4;
+                    a[1] = 16;
+                    Answer = Answer + "\\item  15 \n";
+                    break;
+
+                case 3:
+                    a[0] = 1;
+                    a[1] = 5;
+                    Answer = Answer + "\\item  4.8 \n";
+                    break;
+
+                case 4:
+                    a[0] = 2;
+                    a[1] = 8;
+                    Answer = Answer + "\\item  7.5 \n";
+                    break;
+
+                case 5:
+                    a[0] = 6;
+                    a[1] = 10;
+                    Answer = Answer + "\\item  6.4 \n";
+                    break;
+            }
+            cout << "\\item Окружность с центром на стороне AC треугольника ABC проходит через вершину C и касается прямой AB в точке B. Найдите диаметр окружности, если AB=" << FormatDouble(a[0]) << ", AC=" << FormatDouble(a[1]) << "." << endl;
+            break;
+
+        case 19:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 63;
+                    a[1] = 87;
+                    a[2] = 11;
+                    Answer = Answer + "\\item  11 \n";
+                    break;
+
+                case 2:
+                    a[0] = 66;
+                    a[1] = 84;
+                    a[2] = 15;
+                    Answer = Answer + "\\item  15 \n";
+                    break;
+
+                case 3:
+                    a[0] = 71;
+                    a[1] = 79;
+                    a[2] = 8;
+                    Answer = Answer + "\\item  8 \n";
+                    break;
+
+                case 4:
+                    a[0] = 67;
+                    a[1] = 83;
+                    a[2] = 16;
+                    Answer = Answer + "\\item  16 \n";
+                    break;
+
+                case 5:
+                    a[0] = 72;
+                    a[1] = 78;
+                    a[2] = 17;
+                    Answer = Answer + "\\item  17 \n";
+                    break;
+            }
+            cout << "\\item Углы B и C треугольника ABC равны соответственно $" << FormatDouble(a[0]) << "^{\\circ}$ и $" << FormatDouble(a[1]) << "^{\\circ}$. Найдите BC, если радиус окружности, описанной около треугольника ABC, равен " << FormatDouble(a[2]) << "." << endl;
+            break;
+    }
+    return Answer;
+}
+
+string Second24(int i, int AllType)
+{
+    string Answer;
+    int type;
+    if(AllType == 0)
+        type = rand()%14 + 1;
+    else
+        type = AllType;
+    int type_2;
+    switch(type)
+    {
+        case 1:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Через точку O пересечения диагоналей параллелограмма ABCD проведена прямая, пересекающая стороны AB и CD в точках E и F соответственно. Докажите, что отрезки AE и CF равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Через точку O пересечения диагоналей параллелограмма ABCD проведена прямая, пересекающая стороны AB и CD в точках P и Q соответственно. Докажите, что отрезки BP и DQ равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item Через точку O пересечения диагоналей параллелограмма ABCD проведена прямая, пересекающая стороны BC и AD в точках K и M соответственно. Докажите, что отрезки BK и DM равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item Через точку O пересечения диагоналей параллелограмма ABCD проведена прямая, пересекающая стороны BC и AD в точках L и N соответственно. Докажите, что отрезки CL и AN равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+            }
+            break;
+
+        case 2:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Сторона AD параллелограмма ABCD вдвое больше стороны CD. Точка M – середина стороны AD. Докажите, что CM – биссектриса угла BCD." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Сторона BC параллелограмма ABCD вдвое больше стороны AB. Точка K – середина стороны BC. Докажите, что AK – биссектриса угла BAD." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item Сторона AB параллелограмма ABCD вдвое больше стороны AD. Точка L – середина стороны AB. Докажите, что DL – биссектриса угла ADC." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item Сторона CD параллелограмма ABCD вдвое больше стороны BC. Точка N – середина стороны CD. Докажите, что BN – биссектриса угла ABC." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+            }
+            break;
+
+        case 3:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Биссектрисы углов A и B параллелограмма ABCD пересекаются в точке M, лежащей на стороне CD. Докажите, что M – середина CD." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Биссектрисы углов C и D параллелограмма ABCD пересекаются в точке L, лежащей на стороне AB. Докажите, что L – середина AB." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item Биссектрисы углов B и C параллелограмма ABCD пересекаются в точке M, лежащей на стороне AD. Докажите, что M – середина AD." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item Биссектрисы углов A и D параллелограмма ABCD пересекаются в точке K, лежащей на стороне BC. Докажите, что K – середина BC." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+            }
+            break;
+
+        case 4:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Биссектрисы углов A и D четырехугольника ABCD пересекаются в точке M, лежащей на стороне BC. Докажите, что точка M равноудалена от прямых AB, AD и CD." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Биссектрисы углов A и B четырехугольника ABCD пересекаются в точке K, лежащей на стороне CD. Докажите, что точка K равноудалена от прямых AB, BC и AD." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item Биссектрисы углов C и D четырехугольника ABCD пересекаются в точке P, лежащей на стороне AB. Докажите, что точка P равноудалена от прямых BC, CD и AD." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item Биссектрисы углов B и C четырехугольника ABCD пересекаются в точке O, лежащей на стороне AD. Докажите, что точка O равноудалена от прямых AB, BC и CD." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+            }
+            break;
+
+        case 5:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Внутри параллелограмма ABCD выбрали произвольную точку E. Докажите, что сумма площадей треугольников BEC и AED равна половине площади параллелограмма." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Внутри параллелограмма ABCD выбрали произвольную точку F. Докажите, что сумма площадей треугольников BFC и AFD равна половине площади параллелограмма." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item Внутри параллелограмма ABCD выбрали произвольную точку E. Докажите, что сумма площадей треугольников AEB и CED равна половине площади параллелограмма." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item Внутри параллелограмма ABCD выбрали произвольную точку F. Докажите, что сумма площадей треугольников AFB и CFD равна половине площади параллелограмма." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+            }
+            break;
+
+        case 6:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item В трапеции ABCD с основаниями AD и BC диагонали пересекаются в точке O. Докажите, что площади треугольников AOB и COD равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item В трапеции ABCD с основаниями AD и BC диагонали пересекаются в точке P. Докажите, что площади треугольников APB и CPD равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item Точка E – середина боковой стороны AB трапеции ABCD. Докажите, что площадь треугольника ECD равна половине площади трапеции." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item Точка K – середина боковой стороны CD трапеции ABCD. Докажите, что площадь треугольника KAB равна половине площади трапеции." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+            }
+            break;
+
+        case 7:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item На средней линии трапеции ABCD с основаниями AD и BC выбрали произвольную точку E. Докажите, что сумма площадей треугольников BEC и AED равна половине площади трапеции." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item На средней линии трапеции ABCD с основаниями AD и BC выбрали произвольную точку K. Докажите, что сумма площадей треугольников BKC и AKD равна половине площади трапеции." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item На средней линии трапеции ABCD с основаниями AD и BC выбрали произвольную точку F. Докажите, что сумма площадей треугольников BFC и AFD равна половине площади трапеции." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item На средней линии трапеции ABCD с основаниями AD и BC выбрали произвольную точку M. Докажите, что сумма площадей треугольников BMC и AMD равна половине площади трапеции." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+            }
+            break;
+
+        case 8:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Основания BC и AD трапеции ABCD равны соответственно 4 и 64, BD=16. Докажите, что треугольники CBD и BDA подобны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Основания BC и AD трапеции ABCD равны соответственно 7 и 28, BD=14. Докажите, что треугольники CBD и BDA подобны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item Основания BC и AD трапеции ABCD равны соответственно 5 и 45, BD=15. Докажите, что треугольники CBD и BDA подобны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item Основания BC и AD трапеции ABCD равны соответственно 2 и 32, BD=8. Докажите, что треугольники CBD и BDA подобны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+            }
+            break;
+
+        case 9:
+            type_2 = rand()%2 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Известно, что около четырёхугольника ABCD можно описать окружность и что продолжения сторон AD и BC четырёхугольника пересекаются в точке K. Докажите, что треугольники KAB и KCD подобны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Известно, что около четырёхугольника ABCD можно описать окружность и что продолжения сторон AB и CD четырёхугольника пересекаются в точке M. Докажите, что треугольники MBC и MDA подобны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+            }
+            break;
+
+        case 10:
+            type_2 = rand()%2 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item В треугольнике ABC с тупым углом ACB проведены высоты $AA_1$ и $BB_1$. Докажите, что треугольники $A_1B_1C$ и ABC подобны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item В треугольнике ABC с тупым углом BAC проведены высоты $BB_1$ и $CC_1$. Докажите, что треугольники $AB_1C_1$ и ABC подобны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+            }
+            break;
+
+        case 11:
+            type_2 = rand()%3 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item В остроугольном треугольнике ABC проведены высоты $AA_1$ и $BB_1$. Докажите, что углы $AA_1B_1$ и $ABB_1$ равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item В остроугольном треугольнике ABC проведены высоты $AA_1$ и $CC_1$. Докажите, что углы $CC_1A_1$ и $CAA_1$ равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item В остроугольном треугольнике ABC проведены высоты $BB_1$ и $CC_1$. Докажите, что углы $BB_1C_1$ и $BCC_1$ равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+            }
+            break;
+
+        case 12:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item В выпуклом четырёхугольнике ABCD углы DAC и DBC равны. Докажите, что углы CDB и CAB также равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item В выпуклом четырёхугольнике ABCD углы BCA и BDA равны. Докажите, что углы ABD и ACD также равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item В выпуклом четырёхугольнике ABCD углы CDB и CAB равны. Докажите, что углы BCA и BDA также равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item В выпуклом четырёхугольнике ABCD углы ABD и ACD равны. Докажите, что углы DAC и DBC также равны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+            }
+            break;
+
+        case 13:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Окружности с центрами в точках P и Q пересекаются в точках K и L, причём точки P и Q лежат по одну сторону от прямой KL. Докажите, что прямые PQ и KL перпендикулярны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Окружности с центрами в точках E и F пересекаются в точках C и D, причём точки E и F лежат по одну сторону от прямой CD. Докажите, что CD и EF перпендикулярны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 3:
+                    cout << "\\item Окружности с центрами в точках I и J пересекаются в точках A и B, причём точки I и J лежат по одну сторону от прямой AB. Докажите, что прямые AB и IJ перпендикулярны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+
+                case 4:
+                    cout << "\\item Окружности с центрами в точках M и N пересекаются в точках S и T, причём точки M и N лежат по одну сторону от прямой ST. Докажите, что прямые MN и ST перпендикулярны." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+            }
+            break;
+
+        case 14:
+            type_2 = rand()%2 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    cout << "\\item Окружности с центрами в точках P и Q не имеют общих точек, и ни одна из них не лежит внутри другой. Внутренняя общая касательная к этим окружностям делит отрезок, соединяющий их центры, в отношении $a:b$. Докажите, что диаметры этих окружностей относятся как $a:b$." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break;
+
+                case 2:
+                    cout << "\\item Окружности с центрами в точках I и J не имеют общих точек, и ни одна из них не лежит внутри другой. Внутренняя общая касательная к этим окружностям делит отрезок, соединяющий их центры, в отношении $m:n$. Докажите, что диаметры этих окружностей относятся как $m:n$." << endl;
+                    Answer = Answer + "\\item  Доказательство \n";
+                    break; 
+            }
+            break;
+    }
+    return Answer;
+}
+
+string Second25(int i, int AllType)
+{
+    string Answer;
+    int type;
+    double a[10];
+    if(AllType == 0)
+        type = rand()%16 + 1;
+    else
+        type = AllType;
+    int type_2;
+    switch(type)
+    {
+        case 1:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 10;
+                    a[1] = 26;
+                    a[2] = 1;
+                    Answer = Answer + "\\item  130 \n";
+                    break;
+
+                case 2:
+                    a[0] = 18;
+                    a[1] = 30;
+                    a[2] = 3;
+                    Answer = Answer + "\\item  270 \n";
+                    break;
+
+                case 3:
+                    a[0] = 20;
+                    a[1] = 29;
+                    a[2] = 4;
+                    Answer = Answer + "\\item  290 \n";
+                    break;
+
+                case 4:
+                    a[0] = 24;
+                    a[1] = 25;
+                    a[2] = 9;
+                    Answer = Answer + "\\item  300 \n";
+                    break;
+
+                case 5:
+                    a[0] = 28;
+                    a[1] = 35;
+                    a[2] = 7;
+                    Answer = Answer + "\\item  490 \n";
+                    break;
+            }
+            cout << "\\item Боковые стороны AB и CD трапеции ABCD равны соответственно " << FormatDouble(a[0]) << " и " << FormatDouble(a[1]) << ", а основание BC равно " << FormatDouble(a[2]) << ". Биссектриса угла ADC проходит через середину стороны AB. Найдите площадь трапеции." << endl;
+            break;
+
+        case 2:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 77;
+                    a[1] = 13;
+                    a[2] = 11;
+                    a[3] = 10;
+                    Answer = Answer + "\\item  21; 1 \n";
+                    break;
+
+                case 2:
+                    a[0] = 7;
+                    a[1] = 83;
+                    a[2] = 14;
+                    a[3] = 11;
+                    Answer = Answer + "\\item  25; 3 \n";
+                    break;
+
+                case 3:
+                    a[0] = 50;
+                    a[1] = 40;
+                    a[2] = 15;
+                    a[3] = 13;
+                    Answer = Answer + "\\item  28; 2 \n";
+                    break;
+
+                case 4:
+                    a[0] = 47;
+                    a[1] = 43;
+                    a[2] = 16;
+                    a[3] = 14;
+                    Answer = Answer + "\\item  30; 2 \n";
+                    break;
+
+                case 5:
+                    a[0] = 39;
+                    a[1] = 51;
+                    a[2] = 19;
+                    a[3] = 3;
+                    Answer = Answer + "\\item  22; 16 \n";
+                    break;
+            }
+            cout << "\\item Углы при одном из оснований трапеции равны $" << FormatDouble(a[0]) << "^{\\circ}$ и $" << FormatDouble(a[1]) << "^{\\circ}$, а отрезки, соединяющие середины противоположных сторон трапеции, равны " << FormatDouble(a[2]) << " и " << FormatDouble(a[3]) << ". Найдите основания трапеции." << endl;
+            break;
+
+        case 3:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 100;
+                    a[1] = 500;
+                    Answer = Answer + "\\item  4 \n";
+                    break;
+
+                case 2:
+                    a[0] = 200;
+                    a[1] = 2000;
+                    Answer = Answer + "\\item  8 \n";
+                    break;
+
+                case 3:
+                    a[0] = 120;
+                    a[1] = 540;
+                    Answer = Answer + "\\item  1,8 \n";
+                    break;
+
+                case 4:
+                    a[0] = 80;
+                    a[1] = 320;
+                    Answer = Answer + "\\item  3,2 \n";
+                    break;
+
+                case 5:
+                    a[0] = 180;
+                    a[1] = 1620;
+                    Answer = Answer + "\\item  7,2 \n";
+                    break;
+            }
+            cout << "\\item В равнобедренную трапецию, периметр которой равен " << FormatDouble(a[0]) << ", а площадь равна " << FormatDouble(a[1]) << ", можно вписать окружность. Найдите расстояние от точки пересечения диагоналей трапеции до её меньшего основания." << endl;
+            break;
+
+        case 4:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 5;
+                    a[1] = 4;
+                    a[2] = 3;
+                    Answer = Answer + "\\item  168 \n";
+                    break;
+
+                case 2:
+                    a[0] = 25;
+                    a[1] = 14;
+                    a[2] = 7;
+                    Answer = Answer + "\\item  1008 \n";
+                    break;
+
+                case 3:
+                    a[0] = 10;
+                    a[1] = 9;
+                    a[2] = 6;
+                    Answer = Answer + "\\item  480 \n";
+                    break;
+
+                case 4:
+                    a[0] = 13;
+                    a[1] = 9;
+                    a[2] = 5;
+                    Answer = Answer + "\\item  420 \n";
+                    break;
+
+                case 5:
+                    a[0] = 13;
+                    a[1] = 7;
+                    a[2] = 5;
+                    Answer = Answer + "\\item  720 \n";
+                    break;
+            }
+            cout << "\\item В параллелограмме ABCD проведена диагональ AC. Точка O является центром окружности, вписанной в треугольник ABC. Расстояния от точки O до точки A и прямых AD и AC соответственно равны " << FormatDouble(a[0]) << ", " << FormatDouble(a[1]) << " и " << FormatDouble(a[2]) << ". Найдите площадь параллелограмма ABCD." << endl;
+            break;
+
+        case 5:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 11;
+                    a[1] = 3;
+                    Answer = Answer + "\\item  66 \n";
+                    break;
+
+                case 2:
+                    a[0] = 6;
+                    a[1] = 6;
+                    Answer = Answer + "\\item  72 \n";
+                    break;
+
+                case 3:
+                    a[0] = 17;
+                    a[1] = 10;
+                    Answer = Answer + "\\item  340 \n";
+                    break;
+
+                case 4:
+                    a[0] = 18;
+                    a[1] = 1;
+                    Answer = Answer + "\\item  36 \n";
+                    break;
+
+                case 5:
+                    a[0] = 7;
+                    a[1] = 4;
+                    Answer = Answer + "\\item  56 \n";
+                    break;
+            }
+            cout << "\\item Биссектрисы углов A и B параллелограмма ABCD пересекаются в точке K. Найдите площадь параллелограмма, если BC=" << FormatDouble(a[0]) << ", а расстояние от точки K до стороны AB равно " << FormatDouble(a[1]) << "." << endl;
+            break;
+
+        case 6:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 12;
+                    Answer = Answer + "\\item  $3\\sqrt{13};\\quad 6\\sqrt{13}; \\quad 9\\sqrt{5}$ \n";
+                    break;
+
+                case 2:
+                    a[0] = 20;
+                    Answer = Answer + "\\item  $5\\sqrt{13};\\quad 10\\sqrt{13}; \\quad 15\\sqrt{5}$ \n";
+                    break;
+
+                case 3:
+                    a[0] = 28;
+                    Answer = Answer + "\\item  $7\\sqrt{13};\\quad 14\\sqrt{13}; \\quad 21\\sqrt{5}$ \n";
+                    break;
+
+                case 4:
+                    a[0] = 36;
+                    Answer = Answer + "\\item  $9\\sqrt{13};\\quad 18\\sqrt{13}; \\quad 27\\sqrt{5}$ \n";
+                    break;
+
+                case 5:
+                    a[0] = 40;
+                    Answer = Answer + "\\item  $10\\sqrt{13};\\quad 20\\sqrt{13}; \\quad 30\\sqrt{5}$ \n";
+                    break;
+            }
+            cout << "\\item В треугольнике ABC биссектриса BE и медиана AD перпендикулярны и имеют одинаковую длину, равную " << FormatDouble(a[0]) << ". Найдите стороны треугольника ABC." << endl;
+            break;
+
+        case 7:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 5;
+                    a[1] = 3;
+                    a[2] = 8;
+                    Answer = Answer + "\\item  5 \n";
+                    break;
+
+                case 2:
+                    a[0] = 17;
+                    a[1] = 15;
+                    a[2] = 16;
+                    Answer = Answer + "\\item  17 \n";
+                    break;
+
+                case 3:
+                    a[0] = 41;
+                    a[1] = 40;
+                    a[2] = 18;
+                    Answer = Answer + "\\item  41 \n";
+                    break;
+
+                case 4:
+                    a[0] = 25;
+                    a[1] = 24;
+                    a[2] = 14;
+                    Answer = Answer + "\\item  25 \n";
+                    break;
+
+                case 5:
+                    a[0] = 5;
+                    a[1] = 4;
+                    a[2] = 12;
+                    Answer = Answer + "\\item  10 \n";
+                    break;
+            }
+            cout << "\\item В треугольнике ABC биссектриса угла A делит высоту, проведенную из вершины B в отношении " << FormatDouble(a[0]) << ":" << FormatDouble(a[1]) << ", считая от точки B. Найдите радиус окружности, описанной около треугольника ABC, если BC=" << FormatDouble(a[2]) << "." << endl;
+            break;
+
+        case 8:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 28;
+                    a[1] = 4;
+                    a[2] = 90;
+                    a[3] = 15;
+                    Answer = Answer + "\\item  10 \n";
+                    break;
+
+                case 2:
+                    a[0] = 18;
+                    a[1] = 6;
+                    a[2] = 90;
+                    a[3] = 10;
+                    Answer = Answer + "\\item  10 \n";
+                    break;
+
+                case 3:
+                    a[0] = 33;
+                    a[1] = 11;
+                    a[2] = 90;
+                    a[3] = 20;
+                    Answer = Answer + "\\item  20 \n";
+                    break;
+
+                case 4:
+                    a[0] = 34;
+                    a[1] = 14;
+                    a[2] = 90;
+                    a[3] = 12;
+                    Answer = Answer + "\\item  14,4 \n";
+                    break;
+
+                case 5:
+                    a[0] = 48;
+                    a[1] = 24;
+                    a[2] = 90;
+                    a[3] = 13;
+                    Answer = Answer + "\\item  19,5 \n";
+                    break;
+            }
+            cout << "\\item В трапеции ABCD основания AD и BC равны соответственно " << FormatDouble(a[0]) << " и " << FormatDouble(a[1]) << ", а сумма углов при основании AD равна $" << FormatDouble(a[2]) << "^{\\circ}$. Найдите радиус окружности, проходящей через точки A и B и касающейся прямой CD, если AB=" << FormatDouble(a[3]) << "." << endl;
+            break;
+
+        case 9:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 4;
+                    a[1] = 2;
+                    Answer = Answer + "\\item  $2\\sqrt{2}$ \n";
+                    break;
+
+                case 2:
+                    a[0] = 6;
+                    a[1] = 5;
+                    Answer = Answer + "\\item  $\\sqrt{6}$ \n";
+                    break;
+
+                case 3:
+                    a[0] = 8;
+                    a[1] = 4;
+                    Answer = Answer + "\\item  $4\\sqrt{2}$ \n";
+                    break;
+
+                case 4:
+                    a[0] = 14;
+                    a[1] = 7;
+                    Answer = Answer + "\\item  $7\\sqrt{2}$ \n";
+                    break;
+
+                case 5:
+                    a[0] = 12;
+                    a[1] = 9;
+                    Answer = Answer + "\\item  6 \n";
+                    break;
+            }
+            cout << "\\item В трапеции ABCD боковая сторона AB перпендикулярна основанию BC. Окружность проходит через точки C и D и касается прямой AB в точке E. Найдите расстояние от точки E до прямой CD, если AD=" << FormatDouble(a[0]) << ", BC=" << FormatDouble(a[1]) << "." << endl;
+            break;
+
+        case 10:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 4;
+                    a[1] = 60;
+                    Answer = Answer + "\\item  15 \n";
+                    break;
+
+                case 2:
+                    a[0] = 12;
+                    a[1] = 20;
+                    Answer = Answer + "\\item  30 \n";
+                    break;
+
+                case 3:
+                    a[0] = 22;
+                    a[1] = 99;
+                    Answer = Answer + "\\item  72 \n";
+                    break;
+
+                case 4:
+                    a[0] = 36;
+                    a[1] = 45;
+                    Answer = Answer + "\\item  80 \n";
+                    break;
+
+                case 5:
+                    a[0] = 45;
+                    a[1] = 90;
+                    Answer = Answer + "\\item  120 \n";
+                    break;
+            }
+            cout << "\\item Окружности радиусов " << FormatDouble(a[0]) << " и " << FormatDouble(a[1]) << " касаются внешним образом. Точки A и B лежат на первой окружности, точки C и D – на второй. При этом AC и BD – общие касательные окружностей. Найдите расстояние между прямыми AB и CD." << endl;
+            break;
+
+        case 11:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 84;
+                    a[1] = 98;
+                    Answer = Answer + "\\item  26 \n";
+                    break;
+
+                case 2:
+                    a[0] = 36;
+                    a[1] = 54;
+                    Answer = Answer + "\\item  30 \n";
+                    break;
+
+                case 3:
+                    a[0] = 40;
+                    a[1] = 64;
+                    Answer = Answer + "\\item  39 \n";
+                    break;
+
+                case 4:
+                    a[0] = 28;
+                    a[1] = 56;
+                    Answer = Answer + "\\item  42 \n";
+                    break;
+
+                case 5:
+                    a[0] = 12;
+                    a[1] = 72;
+                    Answer = Answer + "\\item  70 \n";
+                    break;
+            }
+            cout << "\\item В треугольнике ABC известны длины сторон AB=" << FormatDouble(a[0]) << ", AC=" << FormatDouble(a[1]) << ", точка O – центр окружности, описанной около треугольника ABC. Прямая BD, перпендикулярная прямой AO, пересекает сторону AC в точке D. Найдите CD." << endl;
+            break;
+
+        case 12:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 49;
+                    a[1] = 42;
+                    Answer = Answer + "\\item  13 \n";
+                    break;
+
+                case 2:
+                    a[0] = 45;
+                    a[1] = 15;
+                    Answer = Answer + "\\item  40 \n";
+                    break;
+
+                case 3:
+                    a[0] = 81;
+                    a[1] = 9;
+                    Answer = Answer + "\\item  80 \n";
+                    break;
+
+                case 4:
+                    a[0] = 80;
+                    a[1] = 64;
+                    Answer = Answer + "\\item  28,8 \n";
+                    break;
+
+                case 5:
+                    a[0] = 90;
+                    a[1] = 69;
+                    Answer = Answer + "\\item  37,1 \n";
+                    break;
+            }
+            cout << "\\item На стороне BC остроугольного треугольника ABC как на диаметре построена полуокружность, пересекающая высоту AD в точке M, AD=" << FormatDouble(a[0]) << ", MD=" << FormatDouble(a[1]) << ", H – точка пересечения высот треугольника ABC. Найдите AH." << endl;
+            break;
+
+        case 13:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 8;
+                    a[1] = 129;
+                    a[2] = 96;
+                    Answer = Answer + "\\item  $8\\sqrt{2}$ \n";
+                    break;
+
+                case 2:
+                    a[0] = 9;
+                    a[1] = 116;
+                    a[2] = 94;
+                    Answer = Answer + "\\item  $6\\sqrt{3}$ \n";
+                    break;
+
+                case 3:
+                    a[0] = 10;
+                    a[1] = 112;
+                    a[2] = 113;
+                    Answer = Answer + "\\item  $10\\sqrt{2}$ \n";
+                    break;
+
+                case 4:
+                    a[0] = 12;
+                    a[1] = 115;
+                    a[2] = 95;
+                    Answer = Answer + "\\item  $8\\sqrt{3}$ \n";
+                    break;
+
+                case 5:
+                    a[0] = 11;
+                    a[1] = 126;
+                    a[2] = 99;
+                    Answer = Answer + "\\item  $11\\sqrt{2}$ \n";
+                    break;
+            }
+            cout << "\\item Середина M стороны AD выпуклого четырёхугольника ABCD равноудалена от всех его вершин. Найдите AD, если BC=" << FormatDouble(a[0]) << ", а углы B и C четырёхугольника равны соответственно $" << FormatDouble(a[0]) << "^{\\circ}$ и $" << FormatDouble(a[0]) << "^{\\circ}$." << endl;
+            break;
+
+        case 14:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 44;
+                    a[1] = 8;
+                    a[2] = 60;
+                    Answer = Answer + "\\item  28 \n";
+                    break;
+
+                case 2:
+                    a[0] = 5;
+                    a[1] = 17;
+                    a[2] = 60;
+                    Answer = Answer + "\\item  $\\sqrt{133}$ \n";
+                    break;
+
+                case 3:
+                    a[0] = 12;
+                    a[1] = 30;
+                    a[2] = 60;
+                    Answer = Answer + "\\item  $2\\sqrt{117}$ \n";
+                    break;
+
+                case 4:
+                    a[0] = 34;
+                    a[1] = 22;
+                    a[2] = 60;
+                    Answer = Answer + "\\item  $2\\sqrt{199}$ \n";
+                    break;
+
+                case 5:
+                    a[0] = 39;
+                    a[1] = 6;
+                    a[2] = 60;
+                    Answer = Answer + "\\item  $\\sqrt{597}$ \n";
+                    break;
+            }
+            cout << "\\item Четырёхугольник ABCD со сторонами AB=" << FormatDouble(a[0]) << " и CD=" << FormatDouble(a[1]) << " вписан в окружность. Диагонали AC и BD пересекаются в точке K, причём $\\angle AKB=60^{\\circ}$. Найдите радиус окружности, описанной около этого четырёхугольника." << endl;
+            break;
+
+        case 15:
+            type_2 = rand()%5 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 9;
+                    a[1] = 11;
+                    a[2] = 11;
+                    a[3] = 6;
+                    Answer = Answer + "\\item  81 \n";
+                    break;
+
+                case 2:
+                    a[0] = 16;
+                    a[1] = 39;
+                    a[2] = 39;
+                    a[3] = 8;
+                    Answer = Answer + "\\item  12,8 \n";
+                    break;
+
+                case 3:
+                    a[0] = 18;
+                    a[1] = 40;
+                    a[2] = 5;
+                    a[3] = 3;
+                    Answer = Answer + "\\item  13,5 \n";
+                    break;
+
+                case 4:
+                    a[0] = 24;
+                    a[1] = 42;
+                    a[2] = 7;
+                    a[3] = 4;
+                    Answer = Answer + "\\item  8 \n";
+                    break;
+
+                case 5:
+                    a[0] = 9;
+                    a[1] = 35;
+                    a[2] = 35;
+                    a[3] = 6;
+                    Answer = Answer + "\\item  27 \n";
+                    break;
+            }
+            cout << "\\item Точки M и N лежат на стороне AC треугольника ABC на расстояниях соответственно " << FormatDouble(a[0]) << " и " << FormatDouble(a[1]) << " от вершины A. Найдите радиус окружности, проходящей через точки M и N и касающейся луча AB если $\\cos\\left(\\angle BAC\\right)=\\frac{\\sqrt{" << FormatDouble(a[2]) << "}}{" << FormatDouble(a[3]) << "}$." << endl;
+            break;
+
+        case 16:
+            type_2 = rand()%4 + 1;
+            switch(type_2)
+            {
+                case 1:
+                    a[0] = 8;
+                    a[1] = 5;
+                    Answer = Answer + "\\item  3,2 \n";
+                    break;
+
+                case 2:
+                    a[0] = 12;
+                    a[1] = 8;
+                    Answer = Answer + "\\item  4,5 \n";
+                    break;
+
+                case 3:
+                    a[0] = 16;
+                    a[1] = 12;
+                    Answer = Answer + "\\item  $5\\frac{1}{3}$ \n";
+                    break;
+
+                case 4:
+                    a[0] = 18;
+                    a[1] = 12;
+                    Answer = Answer + "\\item  6,75 \n";
+                    break;
+            }
+            cout << "\\item Основание AC равнобедренного треугольника ABC равно " << FormatDouble(a[0]) << ". Окружность радиуса " << FormatDouble(a[1]) << " с центром вне этого треугольника касается продолжения боковых сторон треугольника и касается основания AC. Найдите радиус окружности, вписанной в треугольник ABC." << endl;
+            break;
+    }
+    return Answer;
+}
+
 int main()
 {
     setlocale(LC_ALL, "ru");
     srand(time(NULL));
-    int count_task[68];              // Создает массив из номеров заданий
-    for (int i = 0; i < 68; i++)     // Обнуляет количество заданий в номерах
+    int count_task[77];              // Создает массив из номеров заданий
+    for (int i = 0; i < 77; i++)     // Обнуляет количество заданий в номерах
         count_task[i] = 0;
     int choice = 0;
     string Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
@@ -12731,29 +14829,32 @@ int main()
             do {
                 cout << "\033[2J\033[1;1H";
                 cout << "Выберите темы:" << endl;
-                cout << "1. Числа и вычисления (" << count_task[0] + count_task[1] + count_task[2] + count_task[3] + count_task[4] + count_task[5] + count_task[6] + count_task[37] << ")" << endl;
-                cout << "2. Алгебраические выражения (" << count_task[7] + count_task[8] + count_task[9] + count_task[10] + count_task[38] << ")" << endl;
-                cout << "3. Теория вероятности (" << count_task[11] + count_task[39] << ")" << endl; // Задание 12
-                cout << "4. Числовые неравенства, координатная прямая (" << count_task[12] + count_task[13] + count_task[14] + count_task[40] << ")" << endl;
-                cout << "5. Уравнения (" << count_task[15] + count_task[16] + count_task[17] + count_task[41] << ")" << endl;
-                cout << "6. Неравенства (" << count_task[18] + count_task[19] + count_task[20] + count_task[21] + count_task[42] << ")" << endl;
-                cout << "7. Рассчеты по формулам (" << count_task[22] + count_task[43] << ")" << endl;
-                cout << "8. Графики (" << count_task[23] + count_task[44] << ")" << endl;
-                cout << "9. Прогрессии (" << count_task[24] + count_task[25] + count_task[26] + count_task[45] << ")" << endl;
-                cout << "10. Треугольники (" << count_task[27] + count_task[28] + count_task[29] + count_task[30] + count_task[31] + count_task[46] << ")" << endl;
-                cout << "11. Многоугольники (" << count_task[32] + count_task[33] + count_task[34] + count_task[35] + count_task[47] << ")" << endl;
-                cout << "12. Окружности (" << count_task[36] + count_task[48] << ")" << endl;
-                cout << "13. Первые пять задач (" << count_task[49] + count_task[50] + count_task[51] + count_task[52] + count_task[53] + count_task[54] + count_task[55] + count_task[56] << ")" << endl;
-                cout << "14. Задание 20: Алгебраические выражения, уравнения, неравенства (" << count_task[57] + count_task[58] + count_task[59] + count_task[60] << ")" << endl;
-                cout << "15. Задание 21: Текстовые задачи (" << count_task[61] + count_task[62] + count_task[63] << ")" << endl;
-                cout << "16. Задание 22: Графики (" << count_task[64] + count_task[65] + count_task[66] + count_task[67] << ")" << endl;
+                cout << " Задания 1-5 (" << count_task[49] + count_task[50] + count_task[51] + count_task[52] + count_task[53] + count_task[54] + count_task[55] + count_task[56] << ")" << endl;         
+                cout << " Задание 6: Числа и вычисления (" << count_task[0] + count_task[1] + count_task[2] + count_task[3] + count_task[4] + count_task[5] + count_task[6] + count_task[37] << ")" << endl;
+                cout << " Задание 7: Числовые неравенства, координатная прямая (" << count_task[12] + count_task[13] + count_task[14] + count_task[40] << ")" << endl;
+                cout << " Задание 8: Алгебраические выражения (" << count_task[7] + count_task[8] + count_task[9] + count_task[10] + count_task[38] << ")" << endl;
+                cout << " Задание 9: Уравнения (" << count_task[15] + count_task[16] + count_task[17] + count_task[41] << ")" << endl;
+                cout << " Задание 10: Теория вероятности (" << count_task[11] + count_task[39] << ")" << endl; // Задание 12
+                cout << " Задание 11: Графики (" << count_task[23] + count_task[44] << ")" << endl;
+                cout << " Задание 12: Рассчеты по формулам (" << count_task[22] + count_task[43] << ")" << endl;
+                cout << " Задание 13: Неравенства (" << count_task[18] + count_task[19] + count_task[20] + count_task[21] + count_task[42] << ")" << endl;
+                cout << " Задание 14: Прогрессии (" << count_task[24] + count_task[25] + count_task[26] + count_task[45] << ")" << endl;
+                cout << " Задание 15: Треугольники (" << count_task[27] + count_task[28] + count_task[29] + count_task[30] + count_task[31] + count_task[46] << ")" << endl;
+                cout << " Задание 16: Многоугольники (" << count_task[32] + count_task[33] + count_task[34] + count_task[35] + count_task[47] << ")" << endl;
+                cout << " Задание 17: Окружности (" << count_task[36] + count_task[48] << ")" << endl;
+                cout << " Задание 20: Алгебраические выражения, уравнения, неравенства (" << count_task[57] + count_task[58] + count_task[59] + count_task[60] + count_task[68] << ")" << endl;
+                cout << " Задание 21: Текстовые задачи (" << count_task[61] + count_task[62] + count_task[63] + count_task[69] << ")" << endl;
+                cout << " Задание 22: Графики (" << count_task[64] + count_task[65] + count_task[66] + count_task[67] + count_task[70] << ")" << endl;
+                cout << " Задание 23: Геометрические задачи на вычисления  (" << count_task[71] + count_task[72] << ")" << endl;
+                cout << " Задание 24: Геометрические задачи на доказательство  (" << count_task[73] + count_task[74] << ")" << endl;
+                cout << " Задание 25: Геометрические задачи повышенной сложности  (" << count_task[75] + count_task[76] << ")" << endl;
                 cout << endl << "69. Сгенерировать" << endl;
                 cout << "0. Назад" << endl;
                 cout << "Ваш выбор: ";
                 cin >> choice;
                 switch (choice)
                 {
-                case 1:
+                case 6:
                     do {
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -12845,7 +14946,7 @@ int main()
                     } while (choice != 0);
                     choice = -1;
                     break;
-                case 2:
+                case 8:
                     do {
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -12890,7 +14991,7 @@ int main()
                     } while (choice != 0);
                     choice = -1;
                     break;
-                case 3:
+                case 10:
                     do {
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -12914,7 +15015,7 @@ int main()
                     } while (choice != 0);
                     choice = -1;
                     break;
-                case 4:
+                case 7:
                     do {
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -12952,7 +15053,7 @@ int main()
                     } while (choice != 0);
                     choice = -1;
                     break;
-                case 5:
+                case 9:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -12990,7 +15091,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 6:
+                case 13:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13035,7 +15136,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 7:
+                case 12:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13059,7 +15160,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 8:
+                case 11:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13083,7 +15184,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 9:
+                case 14:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13121,7 +15222,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 10:
+                case 15:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13173,7 +15274,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 11:
+                case 16:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13218,7 +15319,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 12:
+                case 17:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13242,7 +15343,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 13:
+                case 1:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13310,7 +15411,7 @@ int main()
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 14:
+                case 20:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13318,6 +15419,7 @@ int main()
                         cout << "2. Системы уравнений (" << count_task[58] << ")" << endl;
                         cout << "3. Неравенства (" << count_task[59] << ")" << endl;
                         cout << "4. Все целиком (" << count_task[60] << ")" << endl;
+                        cout << "5. Все типы этого номера (" << count_task[68] << ")" << endl;
                         cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
@@ -13346,17 +15448,22 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[60];
                             break;
+
+                        case 5:
+                            count_task[68] = 1;
+                            break;
                         }
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 15:
+                case 21:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
                         cout << "1. Задачи на движение (" << count_task[61] << ")" << endl;
                         cout << "2. Работа и проценты (" << count_task[62] << ")" << endl;
                         cout << "3. Все целиком (" << count_task[63] << ")" << endl;
+                        cout << "4. Все типы этого номера (" << count_task[69] << ")" << endl;
                         cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
@@ -13379,11 +15486,15 @@ int main()
                             cout << "Введите количество заданий: ";
                             cin >> count_task[63];
                             break;
+
+                        case 4:
+                            count_task[69] = 1;
+                            break;
                         }
                     }while (choice != 0);
                     choice = -1;
                     break;
-                case 16:
+                case 22:
                     do{
                         cout << "\033[2J\033[1;1H";
                         cout << "Выберите темы:" << endl;
@@ -13391,6 +15502,7 @@ int main()
                         cout << "2. Параболы (" << count_task[65] << ")" << endl;
                         cout << "3. Дробные функции (" << count_task[66] << ")" << endl;
                         cout << "4. Все целиком (" << count_task[67] << ")" << endl;
+                        cout << "5. Все типы этого номера (" << count_task[70] << ")" << endl;
                         cout << endl << "0. Назад" << endl;
                         cout << "Ваш выбор: ";
                         cin >> choice;
@@ -13419,10 +15531,87 @@ int main()
                                 cout << "Введите количество заданий: ";
                                 cin >> count_task[67];
                                 break;
+
+                            case 5:
+                                count_task[70] = 1;
+                                break;
                         }
                     }while (choice != 0);
                     choice = -1;
                     break;
+                case 23:
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Произвольное количество (" << count_task[71] << ")" << endl;
+                        cout << "2. Все типы этого номера (" << count_task[72] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                            case 1:
+                                cout << "\033[2J\033[1;1H";
+                                cout << "Введите количество заданий: ";
+                                cin >> count_task[71];
+                                break;
+
+                            case 2:
+                                count_task[72] = 1;
+                                break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
+                    break;
+                case 24:
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Произвольное количество (" << count_task[73] << ")" << endl;
+                        cout << "2. Все типы этого номера (" << count_task[74] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                            case 1:
+                                cout << "\033[2J\033[1;1H";
+                                cout << "Введите количество заданий: ";
+                                cin >> count_task[73];
+                                break;
+
+                            case 2:
+                                count_task[74] = 1;
+                                break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
+                    break;
+                case 25:
+                    do{
+                        cout << "\033[2J\033[1;1H";
+                        cout << "Выберите темы:" << endl;
+                        cout << "1. Произвольное количество (" << count_task[75] << ")" << endl;
+                        cout << "2. Все типы этого номера (" << count_task[76] << ")" << endl;
+                        cout << endl << "0. Назад" << endl;
+                        cout << "Ваш выбор: ";
+                        cin >> choice;
+                        switch (choice)
+                        {
+                            case 1:
+                                cout << "\033[2J\033[1;1H";
+                                cout << "Введите количество заданий: ";
+                                cin >> count_task[75];
+                                break;
+
+                            case 2:
+                                count_task[76] = 1;
+                                break;
+                        }
+                    }while (choice != 0);
+                    choice = -1;
+                    break;
+
                 case 69:
                     cout << "\033[2J\033[1;1H";
                     int Count = 0;
@@ -14175,7 +16364,7 @@ int main()
                     }
                     if(count_task[48] != 0)
                     {
-                        for(int i = 1; i <=14; i++)
+                        for(int i = 1; i <=19; i++)
                         {
                             Answers = Answers + Okrugn(Count, i);
                             Count ++;
@@ -14234,6 +16423,25 @@ int main()
                         }
                         count_task[60] = 0;
                     }
+                    if(count_task[68] != 0)
+                    {
+                        for(int i = 1; i <= 10; i++)
+                        {
+                            Answers = Answers + Second20Uravn(Count, i);
+                            Count++;
+                        }
+                        for(int i = 1; i <= 3; i++)
+                        {
+                            Answers = Answers + Second20Sistem(Count, i);
+                            Count++;
+                        }
+                        for(int i = 1; i <= 3; i++)
+                        {
+                            Answers = Answers + Second20Nerav(Count, i);
+                            Count++;
+                        }
+                        count_task[68] = 0;
+                    }
                     if(count_task[61] != 0)
                     {
                         for(int i = 0; i < count_task[61]; i++)
@@ -14247,7 +16455,7 @@ int main()
                     {
                         for(int i = 0; i < count_task[62]; i++)
                         {
-                            Answers = Answers + Second21Per(Count, i);
+                            Answers = Answers + Second21Per(Count, i, 0);
                             Count ++;
                         }
                         count_task[62] = 0;
@@ -14265,12 +16473,29 @@ int main()
                                 break;
 
                             case 2:
-                                Answers = Answers + Second21Per(Count, 0);
+                                Answers = Answers + Second21Per(Count, 0, 0);
                                 Count++;
                                 break;
                             }
                         }
                         count_task[63] = 0;
+                    }
+                    if(count_task[69] != 0)
+                    {
+                        for(int i = 1; i <= 7; i++)
+                        {
+                            Answers = Answers + Second21Road(Count, i);
+                            Count++;
+                        }
+                        for(int i = 1; i <= 2; i++)
+                        {
+                            for(int k = 1; k <= 2; k++)
+                            {
+                                Answers = Answers + Second21Per(Count, i, k);
+                                Count++;
+                            }
+                        }
+                        count_task[69] = 0;
                     }
                     if(count_task[64] != 0)
                     {
@@ -14323,6 +16548,79 @@ int main()
                             }
                         }
                         count_task[67] = 0;
+                    }
+                    if(count_task[70] != 0)
+                    {
+                        for(int i = 1; i <= 5; i++)
+                        {
+                            Answers = Answers + Second22Lin(Count, i);
+                            Count++;
+                        }
+                        for(int i = 1; i <= 9; i++)
+                        {
+                            Answers = Answers + Second22Parab(Count, i);
+                            Count++;
+                        }
+                        for(int i = 1; i <= 4; i++)
+                        {
+                            Answers = Answers + Second22Drob(Count, i);
+                            Count++;
+                        }
+                        count_task[70] = 0;
+                    }
+                    if(count_task[71] != 0)
+                    {
+                        for(int i = 0; i < count_task[71]; i++)
+                        {
+                            Answers = Answers + Second23(Count, 0);
+                            Count++;
+                        }
+                        count_task[71] = 0;
+                    }
+                    if(count_task[72] != 0)
+                    {
+                        for(int i = 1; i <= 19; i++)
+                        {
+                            Answers = Answers + Second23(Count, i);
+                            Count++;
+                        }
+                        count_task[72] = 0;
+                    }
+                    if(count_task[73] != 0)
+                    {
+                        for(int i = 0; i < count_task[73]; i++)
+                        {
+                            Answers = Answers + Second24(Count, 0);
+                            Count++;
+                        }
+                        count_task[73] = 0;
+                    }
+                    if(count_task[74] != 0)
+                    {
+                        for(int i = 1; i <= 14; i++)
+                        {
+                            Answers = Answers + Second24(Count, i);
+                            Count++;
+                        }
+                        count_task[74] = 0;
+                    }
+                    if(count_task[75] != 0)
+                    {
+                        for(int i = 0; i < count_task[75]; i++)
+                        {
+                            Answers = Answers + Second25(Count, 0);
+                            Count++;
+                        }
+                        count_task[75] = 0;
+                    }
+                    if(count_task[76] != 0)
+                    {
+                        for(int i = 1; i <= 16; i++)
+                        {
+                            Answers = Answers + Second25(Count, i);
+                            Count++;
+                        }
+                        count_task[76] = 0;
                     }
                     cout << endl << "}" << endl << "\\end{enumerate} \n" << Answers << endl << "\\end{enumerate}" << endl << endl;
                     Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
@@ -14541,7 +16839,75 @@ int main()
                                 break;
                             }
                         }
+                for (int i = 0; i < 1; i++)             // 29 34
+                        {
+                            int type_1 = rand() % 3 + 1;
+                            switch (type_1)
+                            {
+                            case 1:
+                                Answers = Answers + Second20Nerav(Count, 0);
+                                Count++;
+                                break;
 
+                            case 2:
+                                Answers = Answers + Second20Sistem(Count, 0);
+                                Count++;
+                                break;
+                            
+
+                            case 3:
+                                Answers = Answers + Second20Uravn(Count, 0);
+                                Count++;
+                                break;
+                            }
+                        }
+
+                    for (int i = 0; i < 1; i++)             // 29 34
+                        {
+                            int type_1 = rand() % 2 + 1;
+                            switch (type_1)
+                            {
+                            case 1:
+                                Answers = Answers + Second21Per(Count, 0, 0);
+                                Count++;
+                                break;
+
+                            case 2:
+                                Answers = Answers + Second21Road(Count, 0);
+                                Count++;
+                                break;
+                            
+                            }
+                        }
+
+                    for (int i = 0; i < 1; i++)             // 29 34
+                        {
+                            int type_1 = rand() % 3 + 1;
+                            switch (type_1)
+                            {
+                            case 1:
+                                Answers = Answers + Second22Drob(Count, 0);
+                                Count++;
+                                break;
+
+                            case 2:
+                                Answers = Answers + Second22Lin(Count, 0);
+                                Count++;
+                                break;
+
+                            case 3:
+                                Answers = Answers + Second22Parab(Count, 0);
+                                Count++;
+                                break;
+                            
+                            }
+                        }
+                    Answers = Answers + Second23(Count, 0);
+                    Count++;
+                    Answers = Answers + Second24(Count, 0);
+                    Count++;
+                    Answers = Answers + Second25(Count, 0);
+                    Count++;
                 cout << endl << "}" << endl << "\\end{enumerate} \n" << Answers << endl << "\\end{enumerate}" << endl << endl;
                 Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
                 cout << "0. Назад" << endl;
