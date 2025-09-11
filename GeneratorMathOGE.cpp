@@ -2026,7 +2026,7 @@ string NumberLine1(int number, int AllType)
 			string Out[4];
 			string Answer;
             if(AllType == 0)
-                type = 2;//rand()%7 + 1;
+                type = rand()%7 + 1;
             else
                 type = AllType;
 			switch (type)
