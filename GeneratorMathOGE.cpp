@@ -1337,7 +1337,7 @@ string NumberLine2(int number, int AllType)
 						"		\\draw[fill=black] (r) circle (1.5pt);" << endl <<
 						"	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 					cout << "Какая из разностей $q-p$, $q-r$, $r-p$ положительна?" << endl;
-					cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+					cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 						<< "	\\item " << Out[0] << endl
 						<< "	\\item " << Out[1] << endl
 						<< "	\\item " << Out[2] << endl
@@ -1453,7 +1453,7 @@ string NumberLine2(int number, int AllType)
 						"		\\draw[fill=black] (r) circle (1.5pt);" << endl <<
 						"	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 					cout << "Какая из разностей $q-p$, $q-r$, $r-p$ отрицательна?" << endl;
-					cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+					cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 						<< "	\\item " << Out[0] << endl
 						<< "	\\item " << Out[1] << endl
 						<< "	\\item " << Out[2] << endl
@@ -1728,7 +1728,7 @@ string NumberLine2(int number, int AllType)
 					}
 					cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 					cout << "Какое из утверждений для этого числа является верным?" << endl;
-					cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+					cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 						<< "	\\item " << Out[0] << endl
 						<< "	\\item " << Out[1] << endl
 						<< "	\\item " << Out[2] << endl
@@ -2001,7 +2001,7 @@ string NumberLine2(int number, int AllType)
 					}
 					cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 					cout << "Какое из утверждений для этого числа является не верным?" << endl;
-					cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+					cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 						<< "	\\item " << Out[0] << endl
 						<< "	\\item " << Out[1] << endl
 						<< "	\\item " << Out[2] << endl
@@ -2087,7 +2087,7 @@ string NumberLine1(int number, int AllType)
 				}
 
 				cout << "\\item Между какими числами заключено число $\\sqrt{" << a1 << "}$ ? " << endl;
-				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
@@ -2165,7 +2165,7 @@ string NumberLine1(int number, int AllType)
 				}
 
 				cout << "\\item Между какими числами заключено число $\\frac{" << a2[0] << "}{" << a2[1] << "}$ ? " << endl;
-				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
@@ -2245,7 +2245,7 @@ string NumberLine1(int number, int AllType)
 					}
 				}
 				cout << "\\item Какому из данных промежутков принадлежит число $\\frac{" << a3[0] << "}{" << a3[1] << "}$ ? " << endl;
-				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
@@ -2352,7 +2352,7 @@ string NumberLine1(int number, int AllType)
 
 				cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 				cout << "Какая это точка?" << endl;
-				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
@@ -2474,7 +2474,7 @@ string NumberLine1(int number, int AllType)
 
 				cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 				cout << "Какая это точка?" << endl;
-				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
@@ -2591,7 +2591,7 @@ string NumberLine1(int number, int AllType)
 
 				cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 				cout << "Какое это число?" << endl;
-				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
@@ -2703,7 +2703,7 @@ string NumberLine1(int number, int AllType)
 
 				cout << "	\\end{tikzpicture}" << endl << "\\end{center}" << endl;
 				cout << "Какой точке соответствует число " << a7[aanswer] << "?" << endl;
-				cout << "\\begin{enumerate}[label=\\arabic*)]" << endl
+				cout << "\\begin{enumerate}[label=\\arabic*]" << endl
 					<< "	\\item " << Out[0] << endl
 					<< "	\\item " << Out[1] << endl
 					<< "	\\item " << Out[2] << endl
