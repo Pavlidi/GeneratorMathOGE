@@ -1108,6 +1108,15 @@ struct Graph
 
 };
 
+struct MulTab
+{
+    double a; // Первое число
+    double b; // Второе число
+    char action; //m or d
+    double answer;
+    bool used;
+};
+
 const double PI = 3.14159265;
 
 string ScobNer(int type, int pos) //type: 1 - строгое неравенство, 2 - нестрогое;   pos: 1 - открывающая скобка, 2 - закрывающая
@@ -14812,12 +14821,54 @@ string Second25(int i, int AllType)
     return Answer;
 }
 
+string MultipTable(int i)
+{
+    string Answer;
+    MulTab All[128];
+    double first = 2; 
+    double second = 2;
+    for(int i=0; i<64; i++)
+    {
+        All[i].a = first;
+        All[i].b = second;
+        All[i].action = 'm';
+        All[i].answer = first*second;
+        All[i].used = 0;
+        if(i%8 == 7)
+        {
+            first++;
+            second = 2;
+        }
+        else
+            second++;
+    }
+    first = 2;
+    second = 2;
+    for(int i=64; i<128; i++)
+    {
+        All[i].a = first*second;
+        All[i].b = second;
+        All[i].action = 'd';
+        All[i].answer = first;
+        All[i].used = 0;
+        if(i%8 == 7)
+        {
+            first++;
+            second = 2;
+        }
+        else
+            second++;
+    }
+    
+    return Answer;
+}
+
 int main()
 {
     setlocale(LC_ALL, "ru");
     srand(time(NULL));
-    int count_task[77];              // Создает массив из номеров заданий
-    for (int i = 0; i < 77; i++)     // Обнуляет количество заданий в номерах
+    int count_task[78];              // Создает массив из номеров заданий
+    for (int i = 0; i < 78; i++)     // Обнуляет количество заданий в номерах
         count_task[i] = 0;
     int choice = 0;
     string Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
@@ -14848,6 +14899,7 @@ int main()
                 cout << " Задание 23: Геометрические задачи на вычисления  (" << count_task[71] + count_task[72] << ")" << endl;
                 cout << " Задание 24: Геометрические задачи на доказательство  (" << count_task[73] + count_task[74] << ")" << endl;
                 cout << " Задание 25: Геометрические задачи повышенной сложности  (" << count_task[75] + count_task[76] << ")" << endl;
+                cout << endl << endl << " Задание 30: Таблица умножения (" << count_task[77] << ")" << endl;
                 cout << endl << "69. Сгенерировать" << endl;
                 cout << "0. Назад" << endl;
                 cout << "Ваш выбор: ";
@@ -15609,6 +15661,13 @@ int main()
                                 break;
                         }
                     }while (choice != 0);
+                    choice = -1;
+                    break;
+
+                case 30:
+                    cout << "\033[2J\033[1;1H";
+                    cout << "Введите количество заданий: ";
+                    cin >> count_task[77];
                     choice = -1;
                     break;
 
