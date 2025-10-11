@@ -14821,20 +14821,21 @@ string Second25(int i, int AllType)
     return Answer;
 }
 
-string MultipTable(int i)
+string MultipTableTotal(int i)
 {
     string Answer;
     MulTab All[128];
+    int type, whl;
     double first = 2; 
     double second = 2;
-    for(int i=0; i<64; i++)
+    for(int k=0; k<64; k++)
     {
-        All[i].a = first;
-        All[i].b = second;
-        All[i].action = 'm';
-        All[i].answer = first*second;
-        All[i].used = 0;
-        if(i%8 == 7)
+        All[k].a = first;
+        All[k].b = second;
+        All[k].action = 'm';
+        All[k].answer = first*second;
+        All[k].used = 0;
+        if(k%8 == 7)
         {
             first++;
             second = 2;
@@ -14844,14 +14845,14 @@ string MultipTable(int i)
     }
     first = 2;
     second = 2;
-    for(int i=64; i<128; i++)
+    for(int k=64; k<128; k++)
     {
-        All[i].a = first*second;
-        All[i].b = second;
-        All[i].action = 'd';
-        All[i].answer = first;
-        All[i].used = 0;
-        if(i%8 == 7)
+        All[k].a = first*second;
+        All[k].b = second;
+        All[k].action = 'd';
+        All[k].answer = first;
+        All[k].used = 0;
+        if(k%8 == 7)
         {
             first++;
             second = 2;
@@ -14859,7 +14860,23 @@ string MultipTable(int i)
         else
             second++;
     }
-    
+    for(int k=0; k<i; k++)
+    {
+        whl = 0;
+        do{
+            type = rand()%128;
+            if(All[type].used == 0)
+                whl = 1;
+            else
+                whl = 0;
+        }while(whl != 1);
+        if(All[type].action == 'm')
+            cout << "\\item $$" << All[type].a << "\\cdot " << All[type].b << "= $$" << endl;
+        else
+            cout << "\\item $$" << All[type].a << ":" << All[type].b << "= $$" << endl;
+        Answer = Answer + "\\item  " + FormatDouble(All[type].answer) + " \n";
+        All[type].used = 1;
+    }
     return Answer;
 }
 
@@ -16680,6 +16697,12 @@ int main()
                             Count++;
                         }
                         count_task[76] = 0;
+                    }
+                    if(count_task[77] != 0)
+                    {
+                        Answers = Answers + MultipTableTotal(count_task[77]);
+                        Count++;
+                        count_task[77] = 0;
                     }
                     cout << endl << "}" << endl << "\\end{enumerate} \n" << Answers << endl << "\\end{enumerate}" << endl << endl;
                     Answers = "\\newpage \n {\\centering \\subsubsection*{Ответы}} \n \\begin{enumerate} \n";
